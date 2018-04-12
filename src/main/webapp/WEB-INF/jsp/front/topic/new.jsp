@@ -13,6 +13,7 @@
     <link id="data-uikit-theme" rel="stylesheet" href="${pageContext.request.contextPath}/assets/uikit-2.25.0/css/uikit.almost-flat.css">
     <%--<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/docs.css">--%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/editor-md-master/css/editormd.css" />
+    <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/assets/jquery/jquery.js"></script>
     <script src="${pageContext.request.contextPath}/assets/editor-md-master/editormd.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/uikit-2.25.0/js/uikit.min.js"></script>
