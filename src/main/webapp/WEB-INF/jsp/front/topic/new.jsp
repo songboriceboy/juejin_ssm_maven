@@ -18,45 +18,7 @@
     <script src="${pageContext.request.contextPath}/assets/uikit-2.25.0/js/uikit.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/uikit-2.25.0/js/components/form-select.js"></script>
 
-    <style>
-        .turnonart {
-            width: 336px;
-            border: 1px solid black;
-        }
 
-
-        .turnonart .li1 {
-            color: #949CA5;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .turnonart .li2 {
-            color: #949CA5;
-            font-size: 18px;
-        }
-
-        .turnonart li .a2 {
-            background-color: white;
-            border: 1px solid #007BFF;
-            color: #007BFF;
-        }
-
-        .turnonart li ul li a {
-            color: #949494;
-            background-color: #FFFFFF;
-        }
-
-        .turnonart li ul li a:hover {
-            color: #007BFF;
-            background-color: #F7FFFF;
-        }
-
-        .turnonart li ul li .a1 {
-            color: #007BFF;
-            background-color: #F7FFFF;
-        }
-    </style>
     <script>
         window.onload = function () {
             var ul = document.getElementById("lis");
