@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="juejin_maven:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="juejin.war">
+      <element id="artifact" artifact-name="juejin_maven:war exploded" />
+    </root>
+  </artifact>
+</component>
