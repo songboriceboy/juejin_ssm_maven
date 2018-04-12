@@ -6,6 +6,8 @@ import org.springframework.web.servlet.ModelAndView;
 import school.coder.domain.SectionInfo;
 import school.coder.domain.TopicInfoEx;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -20,5 +22,10 @@ public class TagController {
         ModelAndView maView = new ModelAndView();
         maView.setViewName("front/tag/tag");
         return maView;
+    }
+    @RequestMapping("/get_tags")
+    public void get_tags(String tag, HttpServletResponse response) throws IOException {
+
+        response.getWriter().println(tag);
     }
 }

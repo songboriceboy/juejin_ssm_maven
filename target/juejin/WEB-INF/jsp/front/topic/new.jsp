@@ -82,6 +82,20 @@
                 form.action = '${pageContext.request.contextPath}/topic/add_topic';
                 form.submit();
             }
+
+            var tag_input = document.getElementById('tag_input');
+            tag_input.onkeyup = function () {
+                alert(tag_input.value);
+                $.post('${pageContext.request.contextPath}/tag/get_tags', {'tag':tag_input.value})
+                .done(function (tag_list) {
+                    alert(tag_list);
+
+                })
+                .fail(function () {
+
+                });
+
+            }
         }
         //        var testEditor = null;
 
@@ -234,7 +248,21 @@
 
                             </ul>
                         </li>
+                        <li>
+                            <div>
+                                <div class="li2 uk-margin-top">标签</div>
+                            <ul>
+                            <li class="uk-display-inline-block uk-margin-small-top uk-margin-small-right" id="java">
+                                <a href="#" class="a1 uk-button">java</a>
+                            </li>
+                            <li class="uk-display-inline-block uk-margin-small-top uk-margin-small-right" id="php">
+                                <a href="#" class="a1 uk-button">php</a>
+                            </li>
+                            </ul>
 
+                                <input id="tag_input" type="text" placeholder="搜索标签（可选填）" class="input uk-margin-top uk-width-1-1 uk-form-blank">
+                            </div>
+                        </li>
                         <li>
                             <div class="uk-text-center"><a href="#" class="a2 uk-button uk-margin-top" id="submit">确定并发布</a></div>
                         </li>
