@@ -101,6 +101,7 @@
 
         //        var testEditor = null;
 
+        var tags_select = [];
         $(function () {
             $("#tag_input").bigAutocomplete({
 //                     width:543,
@@ -109,12 +110,29 @@
 
                 callback:function(data){
 
-                    var html = template('tag-selected-item', data);
+                    if(tags_select.indexOf(data.title) < 0)
+                    {
+                        tags_select.push(data.title);
+                        var html = template('tag-selected-item', data);
+                        $('#tag-selected').append(html);
+                    }
 
-                    $('#tag-selected').append(html);
 //                    alert(data.title);
                 }
             });
+
+
+            $("#tag-selected").delegate("a", "click", function() {
+                var tag = $(this).text();
+                var index = tags_select.indexOf(tag);
+                if(index > -1)
+                {
+                    tags_select.splice(index, 1);
+                }
+                $(this).hide();
+            })
+
+
 
             var testEditor = editormd({
                 id: "test-editormd",
@@ -304,8 +322,8 @@
 
 </form>
 <script type="text/html" id="tag-selected-item">
-    <li class="uk-display-inline-block uk-margin-small-top uk-margin-small-right tag-selected-item">
-        <a href="#" class="a1 uk-button">{{title}}</a>
+    <li class="uk-display-inline-block uk-margin-small-top uk-margin-small-right">
+        <a href="javascript:;" class="a1 uk-button tag-selected-item">{{title}}</a>
     </li>
     </script>
 
