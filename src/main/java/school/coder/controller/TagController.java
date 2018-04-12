@@ -42,6 +42,7 @@ public class TagController {
         {
             TagAuto tagAuto = new TagAuto();
             tagAuto.setTitle(tagInfo.getTag_name());
+            tagAuto.setTid(tagInfo.getTag_id());
             lstTagAuto.add(tagAuto);
         }
         TagList tagList = new TagList();

@@ -5,6 +5,15 @@ package school.coder.vo;
  */
 public class TagAuto {
     private String title;
+    private int tid;
+
+    public int getTid() {
+        return tid;
+    }
+
+    public void setTid(int tid) {
+        this.tid = tid;
+    }
 
     public String getTitle() {
         return title;

@@ -134,8 +134,9 @@ public class TopicController {
         return maView;
     }
     @RequestMapping("/add_topic")
-    public String addTopic(HttpServletRequest request, HttpServletResponse response, TopicInfo topicInfo) throws IOException {
+    public String addTopic(HttpServletRequest request, HttpServletResponse response, TopicInfo topicInfo,String tagids) throws IOException {
 
+        System.out.println(tagids);
         UserInfo userInfo = (UserInfo)request.getSession().getAttribute("user_info");
         String strMarkdown = request.getParameter("test-editormd-html-code");
         topicInfo.setTopic_content(strMarkdown);

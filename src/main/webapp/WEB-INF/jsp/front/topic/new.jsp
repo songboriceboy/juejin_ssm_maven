@@ -62,6 +62,7 @@
         }
     </style>
     <script>
+        var tags_select = [];
         window.onload = function () {
             var ul = document.getElementById("lis");
             var lis = ul.getElementsByTagName('li');
@@ -80,6 +81,7 @@
             var btn = document.getElementById('submit');
             btn.onclick = function () {
                 $('[data-uk-dropdown]').hide();
+                $('#select-tags').val(tags_select.join(','));
                 var form = document.getElementById('article_form');
                 form.action = '${pageContext.request.contextPath}/topic/add_topic';
                 form.submit();
@@ -101,7 +103,7 @@
 
         //        var testEditor = null;
 
-        var tags_select = [];
+
         $(function () {
             $("#tag_input").bigAutocomplete({
 //                     width:543,
@@ -110,9 +112,9 @@
 
                 callback:function(data){
 
-                    if(tags_select.indexOf(data.title) < 0)
+                    if(tags_select.indexOf(data.tid) < 0)
                     {
-                        tags_select.push(data.title);
+                        tags_select.push(data.tid);
                         var html = template('tag-selected-item', data);
                         $('#tag-selected').append(html);
                     }
@@ -123,8 +125,8 @@
 
 
             $("#tag-selected").delegate("a", "click", function() {
-                var tag = $(this).text();
-                var index = tags_select.indexOf(tag);
+                var tid = $(this).attr('tid');
+                var index = tags_select.indexOf(tid);
                 if(index > -1)
                 {
                     tags_select.splice(index, 1);
@@ -249,6 +251,7 @@
         <div class="uk-width-4-5">
             <input type="hidden" name = "topic_id" value="${topic.topic_id}" id="topic_id">
             <input type="hidden" name = "section_id" value="1" id="section_id">
+            <input type="hidden" name = "tagids" value="" id="select-tags">
             <input type="text" placeholder="请输入标题" class="uk-width-1-1 uk-form-large uk-form-blank" name="topic_title" value="${topic.topic_title}" id = "title">
         </div>
 
@@ -323,7 +326,7 @@
 </form>
 <script type="text/html" id="tag-selected-item">
     <li class="uk-display-inline-block uk-margin-small-top uk-margin-small-right">
-        <a href="javascript:;" class="a1 uk-button tag-selected-item">{{title}}</a>
+        <a href="javascript:;" class="a1 uk-button tag-selected-item" tid="{{tid}}">{{title}}</a>
     </li>
     </script>
 
