@@ -101,13 +101,22 @@ public class UserController {
         return maView;
     }
     @RequestMapping("/reguser")
-    public ModelAndView reguser(UserInfo userInfo) throws NoSuchAlgorithmException {
+    public ModelAndView reguser(UserInfo userInfo, HttpServletRequest request) throws NoSuchAlgorithmException {
         userInfo.setUser_phone("");
         userInfo.setUser_pwd(CreateMD5.getMd5(userInfo.getUser_pwd()));
         userService.regUser(userInfo);
+
+        UserInfo userInfo1 = userService.userLogin(userInfo);
+        if(userInfo1!=null)
+        {
+            request.getSession().setAttribute("user_info",userInfo1);
+        }
         ModelAndView maView = new ModelAndView();
         maView.setViewName("front/index");
         return maView;
+//        ModelAndView maView = new ModelAndView();
+//        maView.setViewName("front/index");
+//        return maView;
     }
     @RequestMapping("/userlogin")
     public ModelAndView userlogin(UserInfo userInfo, HttpServletRequest request) throws NoSuchAlgorithmException {

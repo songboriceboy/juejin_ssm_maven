@@ -133,6 +133,27 @@ public class TopicController {
         maView.addObject("user_avatar","${comment.user_avatar}");
         return maView;
     }
+    @RequestMapping("/add_topic")
+    public String addTopic(HttpServletRequest request, HttpServletResponse response, TopicInfo topicInfo) throws IOException {
+
+        UserInfo userInfo = (UserInfo)request.getSession().getAttribute("user_info");
+        String strMarkdown = request.getParameter("test-editormd-html-code");
+        topicInfo.setTopic_content(strMarkdown);
+        topicInfo.setTopic_createtime(new Date());
+        topicInfo.setUser_id(userInfo.getUser_id());
+        System.out.println(topicInfo);
+        //代表是新增
+        if(topicInfo.getTopic_id() == 0)
+        {
+            topicService.insertTopic(topicInfo);
+        }
+        else //代表是修改文章
+        {
+            topicService.updateTopic(topicInfo);
+        }
+
+        return "redirect:/";
+    }
     @RequestMapping("/save_topic")
     public void saveTopic(HttpServletRequest request, HttpServletResponse response, TopicInfo topicInfo) throws IOException {
 
@@ -155,7 +176,6 @@ public class TopicController {
         String strJson = JSON.toJSONString(topicInfo);
         response.getWriter().println(strJson);
     }
-
     @RequestMapping("/uploadimg")
     public void uploadImg(HttpServletRequest request, HttpServletResponse response, TopicInfo topicInfo) throws IOException {
         String strTemp = request.getParameter("base");

@@ -153,15 +153,15 @@
                   <div id="ulogin" class="login uk-panel uk-panel-box uk-panel-box-secondary">
 
                       <div class="uk-text-bold uk-margin-bottom">铸剑-zhujian</div>
-                      <form class="uk-form  uk-margin-small-top">
+                      <form class="uk-form  uk-margin-small-top" action="${pageContext.request.contextPath}/user/reguser" method="post">
                           <div class="uk-form-row ">
-                              <input type="text" placeholder="昵称" class="uk-form-blank uk-form-width-medium ">
+                              <input type="text" placeholder="昵称" name = "user_name" class="uk-form-blank uk-form-width-medium ">
                           </div>
                           <div class="uk-form-row">
-                              <input type="text" placeholder="邮箱/手机" class="uk-form-blank uk-form-width-medium">
+                              <input type="text" placeholder="密码（不少于6位）" name="user_pwd" class="uk-form-blank uk-form-width-medium">
                           </div>
                           <div class="uk-form-row">
-                              <input type="password" placeholder="密码（不少于6位）" class="uk-form-blank uk-form-width-medium">
+                              <input type="password" name="user_pwd_again" placeholder="确认密码" class="uk-form-blank uk-form-width-medium">
                           </div>
 
                           <button id="login" class="uk-margin-top uk-button uk-button-primary uk-width-1-1" >立即注册</button>

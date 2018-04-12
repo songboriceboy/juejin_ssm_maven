@@ -18,8 +18,69 @@
     <script src="${pageContext.request.contextPath}/assets/uikit-2.25.0/js/uikit.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/uikit-2.25.0/js/components/form-select.js"></script>
 
-    <script>
+    <style>
+        .turnonart {
+            width: 336px;
+            border: 1px solid black;
+        }
 
+
+        .turnonart .li1 {
+            color: #949CA5;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .turnonart .li2 {
+            color: #949CA5;
+            font-size: 18px;
+        }
+
+        .turnonart li .a2 {
+            background-color: white;
+            border: 1px solid #007BFF;
+            color: #007BFF;
+        }
+
+        .turnonart li ul li a {
+            color: #949494;
+            background-color: #FFFFFF;
+        }
+
+        .turnonart li ul li a:hover {
+            color: #007BFF;
+            background-color: #F7FFFF;
+        }
+
+        .turnonart li ul li .a1 {
+            color: #007BFF;
+            background-color: #F7FFFF;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var ul = document.getElementById("lis");
+            var lis = ul.getElementsByTagName('li');
+            var section_id = document.getElementById('section_id');
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].onclick = function () {
+                    section_id.value = this.id;
+                    for (var i = 0; i < lis.length; i++) {
+                        lis[i].getElementsByTagName('a')[0].className = 'uk-button';
+                    }
+                    this.getElementsByTagName('a')[0].className = 'a1 uk-button';
+
+                }
+            }
+
+            var btn = document.getElementById('submit');
+            btn.onclick = function () {
+                $('[data-uk-dropdown]').hide();
+                var form = document.getElementById('article_form');
+                form.action = '${pageContext.request.contextPath}/topic/add_topic';
+                form.submit();
+            }
+        }
         //        var testEditor = null;
 
         $(function () {
@@ -104,21 +165,21 @@
                 }
             });
 
-            $("#submit").click(function () {
-                var param = $("#article_form").serialize();
-                $.post('${pageContext.request.contextPath}/topic/save_topic', param)
-                        .done(function (article) {
-                            if(article.topic_id >= 0)
-                            {
-                                alert("ok");
-                                return false;
-                            }
+            <%--$("#submit").click(function () {--%>
+                <%--var param = $("#article_form").serialize();--%>
+                <%--$.post('${pageContext.request.contextPath}/topic/save_topic', param)--%>
+                        <%--.done(function (article) {--%>
+                            <%--if(article.topic_id >= 0)--%>
+                            <%--{--%>
+                                <%--alert("ok");--%>
+                                <%--return false;--%>
+                            <%--}--%>
 
-                        })
-                        .fail(function () {
+                        <%--})--%>
+                        <%--.fail(function () {--%>
 
-                        });
-            })
+                        <%--});--%>
+            <%--})--%>
 
         });
     </script>
@@ -139,30 +200,48 @@
     <div class="uk-grid">
         <div class="uk-width-4-5">
             <input type="hidden" name = "topic_id" value="${topic.topic_id}" id="topic_id">
+            <input type="hidden" name = "section_id" value="1" id="section_id">
             <input type="text" placeholder="请输入标题" class="uk-width-1-1 uk-form-large uk-form-blank" name="topic_title" value="${topic.topic_title}" id = "title">
         </div>
-        <%--<div class="uk-width-1-4">--%>
 
-                <%--<select name="section_id"  class="uk-form-large uk-width-1-1">--%>
-                    <%--<c:forEach items="${sectionList}" var="section">--%>
-                        <%--<c:choose>--%>
-                            <%--<c:when test="${section.section_id == topic.section_id}">--%>
-                                <%--<option value="${section.section_id}" selected>${section.section_name}</option>--%>
-                            <%--</c:when>--%>
-
-                            <%--<c:otherwise>--%>
-                                <%--<option value="${section.section_id}">${section.section_name}</option>--%>
-                            <%--</c:otherwise>--%>
-                        <%--</c:choose>--%>
-                    <%--</c:forEach>--%>
-
-                <%--</select>--%>
-
-        <%--</div>--%>
-        <div class="uk-width-1-5 uk-text-center">
-            <a href="#" id = "submit" class="uk-link-muted uk-text-large uk-text-primary" style="line-height: 40px">发布文章</a>
             <%--<input type="button" value="发布文章" id = "submit" class="uk-width-1-1 uk-form-large">--%>
+            <div class="uk-width-1-5 uk-text-center uk-button-dropdown" data-uk-dropdown="{pos:'bottom-right',mode:'click'}">
+                <a href="#" class="uk-link-muted uk-text-large uk-text-primary" style="line-height: 40px">发布文章</a>
+
+                <div class="turnonart uk-dropdown uk-text-left uk-dropdown-bottom">
+                    <ul class="uk-list uk-margin-left">
+                        <li class="li1 uk-margin-top">发布文章</li>
+                        <li class="li2 uk-margin-top">选择分类</li>
+                        <li id="lis">
+                            <ul class=" uk-margin-top">
+
+                                <c:forEach items="${sectionList}" var="section">
+                                <c:choose>
+                                <c:when test="${section.section_id == 1}">
+                                    <li class="uk-display-inline-block uk-margin-small-top uk-margin-small-right" id="${section.section_id}">
+                                        <a href="#" class="a1 uk-button">${section.section_name}</a>
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li class="uk-display-inline-block uk-margin-small-top uk-margin-small-right" id="${section.section_id}">
+                                        <a href="#" class="uk-button">${section.section_name}</a>
+                                    </li>
+                                </c:otherwise>
+                                </c:choose>
+                                </c:forEach>
+
+                            </ul>
+                        </li>
+
+                        <li>
+                            <div class="uk-text-center"><a href="#" class="a2 uk-button uk-margin-top" id="submit">确定并发布</a></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
+
+
     </div>
 
     <div class="uk-grid uk-margin-remove mk-ed">
