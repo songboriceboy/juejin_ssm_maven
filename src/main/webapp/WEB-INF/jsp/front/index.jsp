@@ -18,6 +18,7 @@
         var isNoMore = false;
         var iiLoading=null;
       var curr_req_id = 0;
+        var g_sid = 0;
       function refresh(loadmore) {
         $(window).scroll(function(){
           console.log('正在滑动f');
@@ -63,7 +64,7 @@
           }
           curr_req_id = last_id;
             iiLoading = layer.load();
-          $.post("${pageContext.request.contextPath}/topic/getpagedtopics",{section_id:0,last_topic_id:last_id}, function (res) {
+          $.post("${pageContext.request.contextPath}/topic/getpagedtopics",{section_id:g_sid,last_topic_id:last_id}, function (res) {
             // layer.msg(ret.msg);
             var data = JSON.parse(res);
 
@@ -80,14 +81,19 @@
             curr_req_id = 0;
           });
         });
+          getTopicsBySectionID(g_sid);
 
-        $.post("${pageContext.request.contextPath}/topic/getpagedtopics",{section_id:0,last_topic_id:0}, function (res) {
-          var data = JSON.parse(res);
-          var html = template('topic-list-tpl', data);
-          $('#topic-list').append(html);
-        });
       })
 
+        function getTopicsBySectionID(sid) {
+            g_sid = sid;
+            $.post("${pageContext.request.contextPath}/topic/getpagedtopics",{section_id:sid,last_topic_id:0}, function (res) {
+                var data = JSON.parse(res);
+                var html = template('topic-list-tpl', data);
+                $('#topic-list').html('');
+                $('#topic-list').append(html);
+            });
+        }
 
     </script>
 
@@ -108,7 +114,7 @@
       <div class="uk-panel uk-panel-box uk-text-center app-cate">
           <ul class="uk-subnav uk-position-relative">
               <c:forEach items="${sections}" var="section">
-                  <li><a href="javascript:;" section_id="${section.section_id}">${section.section_name}</a></li>
+                  <li><a href="javascript:;" id="${section.section_id}" onclick="getTopicsBySectionID(this.id);">${section.section_name}</a></li>
               </c:forEach>
               <%--<li class="uk-active"><a href="#">我关注的</a></li>--%>
               <%--<li><a href="#">Android</a></li>--%>
@@ -284,7 +290,7 @@
               <a href="${pageContext.request.contextPath}/topic/show/{{topic.topic_id}}">{{topic.topic_title}}</a>
           </div>
           <div>
-              <a href="javascript:;" section_id = {{topic.section_id}}>
+              <a href="javascript:;" id = {{topic.section_id}}>
                                     <span class="topic-cate">
                                         {{topic.section_name}}
                                     </span>

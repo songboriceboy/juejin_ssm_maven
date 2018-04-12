@@ -26,11 +26,11 @@ public class HomeController {
 	{
 
 		System.out.println("hello");
-		List<TopicInfoEx> topicInfoList = topicService.getAllTopics();
+//		List<TopicInfoEx> topicInfoList = topicService.getAllTopics();
 		List<SectionInfo> sectionInfoList = sectionService.getAllSections();
 		ModelAndView maView = new ModelAndView();
 		maView.setViewName("front/index");
-		maView.addObject("topics",topicInfoList);
+//		maView.addObject("topics",topicInfoList);
 		maView.addObject("sections",sectionInfoList);
 		return maView;
 	}
