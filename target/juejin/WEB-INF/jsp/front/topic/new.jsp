@@ -20,6 +20,7 @@
     <script src="${pageContext.request.contextPath}/assets/uikit-2.25.0/js/uikit.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/uikit-2.25.0/js/components/form-select.js"></script>
     <script src="${pageContext.request.contextPath}/assets/bigautocomplete/js/jquery.bigautocomplete.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/template.js"></script>
     <style>
         /*发表文章*/
         .turnonart {
@@ -102,12 +103,16 @@
 
         $(function () {
             $("#tag_input").bigAutocomplete({
-//                width:543,
+//                     width:543,
 
                 url:'${pageContext.request.contextPath}/tag/get_tags',
 
                 callback:function(data){
-                    alert(data);
+
+                    var html = template('tag-selected-item', data);
+
+                    $('#tag-selected').append(html);
+//                    alert(data.title);
                 }
             });
 
@@ -260,13 +265,9 @@
                         <li>
                             <div>
                                 <div class="li2 uk-margin-top">标签</div>
-                            <ul>
-                            <li class="uk-display-inline-block uk-margin-small-top uk-margin-small-right" id="java">
-                                <a href="#" class="a1 uk-button">java</a>
-                            </li>
-                            <li class="uk-display-inline-block uk-margin-small-top uk-margin-small-right" id="php">
-                                <a href="#" class="a1 uk-button">php</a>
-                            </li>
+                            <ul id="tag-selected">
+
+
                             </ul>
 
                                 <input id="tag_input" type="text" value="" placeholder="搜索标签（可选填）" class="input uk-margin-top uk-width-1-1 uk-form-blank">
@@ -302,7 +303,11 @@
     </div>
 
 </form>
-
+<script type="text/html" id="tag-selected-item">
+    <li class="uk-display-inline-block uk-margin-small-top uk-margin-small-right tag-selected-item">
+        <a href="#" class="a1 uk-button">{{title}}</a>
+    </li>
+    </script>
 
 </body>
 </html>

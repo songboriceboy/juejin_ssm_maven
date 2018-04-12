@@ -25,13 +25,15 @@
 			
 			//单击选中行后，选中行内容设置到输入框中，并执行callback函数
 			$("#bigAutocompleteContent").delegate("tr", "click", function() {
-				bigAutocomplete.currentInputText.val( $(this).find("div:last").html());
+				// bigAutocomplete.currentInputText.val( $(this).find("div:last").html());
+				bigAutocomplete.currentInputText.val( '');
 				var callback_ = bigAutocomplete.currentInputText.data("config").callback;
 				if($("#bigAutocompleteContent").css("display") != "none" && callback_ && $.isFunction(callback_)){
 					callback_($(this).data("jsonData"));
 					
 				}				
 				bigAutocomplete.hideAutocomplete();
+				return false;
 			})			
 			
 		}
@@ -77,8 +79,8 @@
 					
 					if($nextSiblingTr.length > 0){//有下一行时（不是最后一行）
 						$nextSiblingTr.addClass("ct");//选中的行加背景
-						$this.val($nextSiblingTr.find("div:last").html());//选中行内容设置到输入框中
-						
+						// $this.val($nextSiblingTr.find("div:last").html());//选中行内容设置到输入框中
+						$this.val('');//选中
 						//div滚动到选中的行,jquery-1.6.1 $nextSiblingTr.offset().top 有bug，数值有问题
 						$bigAutocompleteContent.scrollTop($nextSiblingTr[0].offsetTop - $bigAutocompleteContent.height() + $nextSiblingTr.height() );
 						
@@ -101,8 +103,8 @@
 					
 					if($previousSiblingTr.length > 0){//有上一行时（不是第一行）
 						$previousSiblingTr.addClass("ct");//选中的行加背景
-						$this.val($previousSiblingTr.find("div:last").html());//选中行内容设置到输入框中
-						
+						// $this.val($previousSiblingTr.find("div:last").html());//选中行内容设置到输入框中
+						$this.val('');//选中行内容设置到输入框中
 						//div滚动到选中的行,jquery-1.6.1 $$previousSiblingTr.offset().top 有bug，数值有问题
 						$bigAutocompleteContent.scrollTop($previousSiblingTr[0].offsetTop - $bigAutocompleteContent.height() + $previousSiblingTr.height());
 					}else{
