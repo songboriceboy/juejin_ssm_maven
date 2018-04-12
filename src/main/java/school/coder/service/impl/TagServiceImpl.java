@@ -16,7 +16,7 @@ public class TagServiceImpl implements TagServcie {
     @Autowired
     TagMapper tagMapper;
     @Override
-    public List<TagInfo> getAllTags() {
-        return tagMapper.getAllTags();
+    public List<TagInfo> getAllTags(String search) {
+        return tagMapper.getAllTags(search);
     }
 }

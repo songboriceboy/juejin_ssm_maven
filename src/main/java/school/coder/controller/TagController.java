@@ -1,13 +1,21 @@
 package school.coder.controller;
 
+import com.alibaba.fastjson.JSON;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import school.coder.domain.SectionInfo;
+import school.coder.domain.TagInfo;
 import school.coder.domain.TopicInfoEx;
+import school.coder.service.TagServcie;
+import school.coder.vo.TagAuto;
+import school.coder.vo.TagList;
 
 import javax.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,6 +24,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/tag")
 public class TagController {
+    @Autowired
+    TagServcie tagServcie;
     @RequestMapping("/index")
     public ModelAndView index()
     {
@@ -24,8 +34,20 @@ public class TagController {
         return maView;
     }
     @RequestMapping("/get_tags")
-    public void get_tags(String tag, HttpServletResponse response) throws IOException {
-
-        response.getWriter().println(tag);
+    public void get_tags(String keyword, HttpServletResponse response) throws IOException {
+        System.out.println(keyword);
+        List<TagInfo> lst = tagServcie.getAllTags("%"+keyword+"%");
+        List<TagAuto> lstTagAuto = new ArrayList<>();
+        for(TagInfo tagInfo : lst)
+        {
+            TagAuto tagAuto = new TagAuto();
+            tagAuto.setTitle(tagInfo.getTag_name());
+            lstTagAuto.add(tagAuto);
+        }
+        TagList tagList = new TagList();
+        tagList.setData(lstTagAuto);
+        String strJson = JSON.toJSONString(tagList);
+        System.out.println(strJson);
+        response.getWriter().println(strJson);
     }
 }

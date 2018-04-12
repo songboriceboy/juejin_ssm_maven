@@ -13,12 +13,13 @@
     <link id="data-uikit-theme" rel="stylesheet" href="${pageContext.request.contextPath}/assets/uikit-2.25.0/css/uikit.almost-flat.css">
     <%--<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/docs.css">--%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/editor-md-master/css/editormd.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bigautocomplete/css/jquery.bigautocomplete.css" />
 
     <script src="${pageContext.request.contextPath}/assets/jquery/jquery.js"></script>
     <script src="${pageContext.request.contextPath}/assets/editor-md-master/editormd.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/uikit-2.25.0/js/uikit.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/uikit-2.25.0/js/components/form-select.js"></script>
-
+    <script src="${pageContext.request.contextPath}/assets/bigautocomplete/js/jquery.bigautocomplete.js"></script>
     <style>
         /*发表文章*/
         .turnonart {
@@ -83,24 +84,32 @@
                 form.submit();
             }
 
-            var tag_input = document.getElementById('tag_input');
-            tag_input.onkeyup = function () {
-                alert(tag_input.value);
-                $.post('${pageContext.request.contextPath}/tag/get_tags', {'tag':tag_input.value})
-                .done(function (tag_list) {
-                    alert(tag_list);
+            <%--var tag_input = document.getElementById('tag_input');--%>
+            <%--tag_input.onkeyup = function () {--%>
+                <%--alert(tag_input.value);--%>
+                <%--$.post('${pageContext.request.contextPath}/tag/get_tags', {'tag':tag_input.value})--%>
+                <%--.done(function (tag_list) {--%>
+                    <%--alert(tag_list);--%>
 
-                })
-                .fail(function () {
+                <%--})--%>
+                <%--.fail(function () {--%>
 
-                });
+                <%--});--%>
 
             }
-        }
+
         //        var testEditor = null;
 
         $(function () {
+            $("#tag_input").bigAutocomplete({
+//                width:543,
 
+                url:'${pageContext.request.contextPath}/tag/get_tags',
+
+                callback:function(data){
+                    alert(data);
+                }
+            });
 
             var testEditor = editormd({
                 id: "test-editormd",
@@ -260,15 +269,21 @@
                             </li>
                             </ul>
 
-                                <input id="tag_input" type="text" placeholder="搜索标签（可选填）" class="input uk-margin-top uk-width-1-1 uk-form-blank">
+                                <input id="tag_input" type="text" value="" placeholder="搜索标签（可选填）" class="input uk-margin-top uk-width-1-1 uk-form-blank">
+
                             </div>
+
                         </li>
                         <li>
                             <div class="uk-text-center"><a href="#" class="a2 uk-button uk-margin-top" id="submit">确定并发布</a></div>
                         </li>
                     </ul>
                 </div>
+
+
+
             </div>
+
         </div>
 
 

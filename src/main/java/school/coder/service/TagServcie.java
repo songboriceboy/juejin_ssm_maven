@@ -8,5 +8,5 @@ import java.util.List;
  * Created by Administrator on 2018/4/12.
  */
 public interface TagServcie {
-    List<TagInfo> getAllTags();
+    List<TagInfo> getAllTags(String search);
 }
