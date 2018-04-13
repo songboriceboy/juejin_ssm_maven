@@ -4483,7 +4483,8 @@ Editor.prototype = {
                     }
                     _this.isFocus = false;
                 } else {
-                    if (!_this.isFocus) {
+                    // if (!_this.isFocus)
+                    {
                         _this.onfocus && _this.onfocus();
                     }
                     _this.isFocus = true;

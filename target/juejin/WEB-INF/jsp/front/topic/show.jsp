@@ -118,10 +118,20 @@
 
 
                     editor = new E('#editor');
-                    editor.create();
 
+                    editor.customConfig.onfocus = function () {
+                        var $div = $('#reply-anywhere');
+                        if ($div.length > 0)
+                        {
+                            $('#editor2').remove();
+                            $('#reply-anywhere').remove();
+
+                        }
+                    }
+                    editor.create();
                     //点击某条评论里的回复按钮，动态生成一个textarea
                     $('#uk-comment-list').on('click', '.btn-reply', function () {
+
 
                         var $isChildComment = $(this).closest('.reply-child-item');
                         var toAuthor = '';
@@ -135,7 +145,6 @@
                         var $div = $('#reply-anywhere');
                         if ($div.length > 0)
                         {
-//                            testEditor2.editor.remove();
                             $('#editor2').remove();
                             $('#reply-anywhere').remove();
 
@@ -147,10 +156,10 @@
                                     <input type="hidden" name = "topic_id" value="${topic.topic_id}">
                                     <input type="hidden" name = "reply_comment_id" value="${reply_comment_id}">
 
-                                       <input type="hidden" name = "comment_content" value="" id="true_comment_content2">
-                                <div id="editor2" class="uk-margin-large-left uk-margin-large-right">
-                                    ${toAuthor}
-                                </div>
+                                    <input type="hidden" name = "comment_content" value="" id="true_comment_content2">
+                                    <div id="editor2" class="uk-margin-large-left uk-margin-large-right">
+
+                                    </div>
 
                                     <input type="submit" class="uk-button">
                                 </div>
@@ -158,18 +167,12 @@
                         </div>
                         `;
                         var replynode = $(reply);
-                        $(this).closest('.uk-comment').append(replynode);
-//                        if( $(this).closest('.reply-item').find('.reply-child-item').eq(0).length > 0)
-//                        {
-//                            $(this).closest('.reply-item').find('.reply-child-item').eq(0).before(replynode);
-//                        }
-//                        else {
-//                            $(this).closest('.reply-item').append(replynode);
-//                        }
 
+                        $(this).closest('.uk-comment').append(replynode);
 
                         editor2 = new E('#editor2')
                         editor2.create()
+                        editor2.txt.html('<a href="${pageContext.request.contextPath}/user/home/${user_info.user_id}">'+toAuthor+'</a>')
                         return false;
                     })
 
@@ -398,79 +401,7 @@
             </div>
         </div>
     </div>
-    <%--<div class="uk-container uk-container-center">--%>
 
-        <%--<div class="uk-panel uk-panel-box">--%>
-            <%--<h2>${topic.topic_title}</h2>--%>
-            <%--<div>--%>
-                <%--${topic.topic_content}--%>
-            <%--</div>--%>
-
-
-            <%--&lt;%&ndash;<ul class="uk-comment-list" id="uk-comment-list">&ndash;%&gt;--%>
-             <%--&lt;%&ndash;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;</ul>&ndash;%&gt;--%>
-
-            <%--<ul class="uk-comment-list" id="uk-comment-list">--%>
-                <%--<c:forEach items="${mapComments}" var="entry">--%>
-                    <%--<li class="reply-item" id="comment_${entry.value.curr_comment_id}">--%>
-                        <%--<article class="uk-comment">--%>
-                            <%--<header class="uk-comment-header">--%>
-                                <%--<img class="uk-comment-avatar" src="${pageContext.request.contextPath}/avatar/${entry.value.curr_user_avatar}" width="50" height="50" alt="">--%>
-                                <%--<h4 class="uk-comment-title">${entry.value.curr_user_name}</h4>--%>
-                                <%--<div class="uk-comment-meta">${entry.value.curr_comment_createtime} | Profile | #</div>--%>
-                            <%--</header>--%>
-                            <%--<div class="uk-comment-body">--%>
-                                <%--<p>${entry.value.curr_comment_content}</p>--%>
-                            <%--</div>--%>
-                            <%--<div class="x-comment-footer uk-margin-top">--%>
-                                <%--<a href="#" class="uk-button btn-reply"><i class="uk-icon-reply"></i> 回复</a>--%>
-                                <%--<a href="#" class="uk-button">赞</a>--%>
-                            <%--</div>--%>
-                        <%--</article>--%>
-
-                        <%--<ul class="ul-comment-list-child">--%>
-                            <%--<c:forEach items="${entry.value.childCommentList}" var="childComment">--%>
-                                <%--<li class="reply-child-item" id="comment_${childComment.comment_id}">--%>
-                                    <%--<article class="uk-comment">--%>
-                                        <%--<header class="uk-comment-header">--%>
-                                            <%--<img class="uk-comment-avatar" src="${pageContext.request.contextPath}/avatar/${childComment.user_avatar}" width="50" height="50" alt="">--%>
-                                            <%--<h4 class="uk-comment-title">${childComment.user_name}</h4>--%>
-                                            <%--<div class="uk-comment-meta">${childComment.comment_createtime}| Profile | #</div>--%>
-                                        <%--</header>--%>
-                                        <%--<div class="uk-comment-body">--%>
-                                            <%--<p>${childComment.comment_content}</p>--%>
-                                        <%--</div>--%>
-                                        <%--<div class="x-comment-footer uk-margin-top">--%>
-                                            <%--<a href="#" class="uk-button btn-reply"><i class="uk-icon-reply"></i> 回复</a>--%>
-                                            <%--<a href="#" class="uk-button">赞</a>--%>
-                                        <%--</div>--%>
-                                    <%--</article>--%>
-                                <%--</li>--%>
-                            <%--</c:forEach>--%>
-                        <%--</ul>--%>
-                    <%--</li>--%>
-                <%--</c:forEach>--%>
-            <%--</ul>--%>
-
-            <%--<div class="reply" id="final-reply">--%>
-                <%--<form class="uk-form" action="#" method="post" id="reply-form">--%>
-                    <%--<div class="uk-form-row">--%>
-                        <%--<div class="editormd" id="test-editormd">--%>
-                            <%--<input type="hidden" name = "topic_id" value="${topic.topic_id}">--%>
-                            <%--<textarea class="editormd-markdown-textarea" name="comment_markdown_content"></textarea>--%>
-                            <%--<!-- html textarea 需要开启配置项 saveHTMLToTextarea == true -->--%>
-                            <%--&lt;%&ndash;<textarea class="editormd-html-textarea" name="article_content"></textarea>&ndash;%&gt;--%>
-
-                        <%--</div>--%>
-                        <%--<input type="submit" class="uk-button" id="submit">--%>
-                    <%--</div>--%>
-                <%--</form>--%>
-            <%--</div>--%>
-
-        <%--</div>--%>
-
-    <%--</div>--%>
 </div>
 </body>
 </html>
