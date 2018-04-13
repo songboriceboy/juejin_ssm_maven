@@ -6,6 +6,7 @@ import school.coder.domain.TagInfo;
 import school.coder.domain.TagTopicInfo;
 import school.coder.mapper.TagMapper;
 import school.coder.service.TagServcie;
+import school.coder.vo.TagInfoEx;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class TagServiceImpl implements TagServcie {
     @Autowired
     TagMapper tagMapper;
     @Override
-    public List<TagInfo> getAllTags(String search) {
+    public List<TagInfoEx> getAllTags(String search) {
         return tagMapper.getAllTags(search);
     }
 

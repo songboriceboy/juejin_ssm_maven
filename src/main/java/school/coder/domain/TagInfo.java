@@ -5,9 +5,9 @@ package school.coder.domain;
  */
 
 public class TagInfo {
-    private int tag_id;
-    private String tag_name;
-    private String tag_desc;
+    protected int tag_id;
+    protected String tag_name;
+    protected String tag_desc;
 
     public int getTag_id() {
         return tag_id;

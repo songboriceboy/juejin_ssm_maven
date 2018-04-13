@@ -10,6 +10,7 @@ import school.coder.domain.TagInfo;
 import school.coder.domain.TopicInfoEx;
 import school.coder.service.TagServcie;
 import school.coder.vo.TagAuto;
+import school.coder.vo.TagInfoEx;
 import school.coder.vo.TagList;
 
 import javax.servlet.http.HttpServletResponse;
@@ -36,9 +37,9 @@ public class TagController {
     @RequestMapping("/get_tags")
     public void get_tags(String keyword, HttpServletResponse response) throws IOException {
         System.out.println(keyword);
-        List<TagInfo> lst = tagServcie.getAllTags("%"+keyword+"%");
+        List<TagInfoEx> lst = tagServcie.getAllTags("%"+keyword+"%");
         List<TagAuto> lstTagAuto = new ArrayList<>();
-        for(TagInfo tagInfo : lst)
+        for(TagInfoEx tagInfo : lst)
         {
             TagAuto tagAuto = new TagAuto();
             tagAuto.setTitle(tagInfo.getTag_name());
@@ -54,7 +55,7 @@ public class TagController {
 
     @RequestMapping("/get_all_tags")
     public ModelAndView getAllTags() throws IOException {
-        List<TagInfo> lst = tagServcie.getAllTags("%%");
+        List<TagInfoEx> lst = tagServcie.getAllTags("%%");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("tags",lst);
         modelAndView.setViewName("front/tag/tag");

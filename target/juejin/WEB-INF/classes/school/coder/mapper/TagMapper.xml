@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="school.coder.mapper.TagMapper">
-    <select id="getAllTags" resultType="TagInfo" parameterType="String">
-        select * from taginfo where tag_name like #{value}
+    <select id="getAllTags" resultType="TagInfoEx" parameterType="String">
+        select taginfo.*,COALESCE(tabTmp.num,0) as article_num from taginfo
+left join (select count(1) as num, tag_id from tag_topic_info group by tag_id) tabTmp on tabTmp.tag_id = taginfo.tag_id
+        where tag_name like #{value}
     </select>
 
     <insert id="insertTopicTagInfo" parameterType="TagTopicInfo">

@@ -35,14 +35,12 @@
                         <a>
                             <img src="https://lc-mhke0kuv.cn-n1.lcfile.com/f8ee3cd45f949a546263.png" width="32" height="32">
                             <h2>${tag.tag_name}</h2>
-                            <p class="uk-text-muted"><span>38699</span> 关注 <span>5555</span> 文章</p>
+                            <p class="uk-text-muted"><span>38699</span> 关注 <span>${tag.article_num}</span> 文章</p>
                             <button class="uk-button uk-button-primary uk-button-success uk-margin-top">已关注</button>
                         </a>
                     </div>
                 </li>
             </c:forEach>
-
-
         </ul>
     </div>
 </div>
