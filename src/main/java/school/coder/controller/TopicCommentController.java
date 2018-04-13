@@ -29,14 +29,15 @@ public class TopicCommentController {
             , HttpServletResponse response,TopicCommentInfo topicCommentInfo) throws IOException {
 
 
-        String strMarkdown2 = request.getParameter("test-editormd2-html-code");
-        String strMarkdown = request.getParameter("test-editormd-html-code");
-        if(strMarkdown != null) {
-            topicCommentInfo.setComment_content(strMarkdown);
-        }
-        if(strMarkdown2 != null) {
-            topicCommentInfo.setComment_content(strMarkdown2);
-        }
+//        String strMarkdown2 = request.getParameter("test-editormd2-html-code");
+//        String strMarkdown = request.getParameter("test-editormd-html-code");
+//        if(strMarkdown != null) {
+//            topicCommentInfo.setComment_content(strMarkdown);
+//        }
+//        if(strMarkdown2 != null) {
+//            topicCommentInfo.setComment_content(strMarkdown2);
+//        }
+        topicCommentInfo.setComment_markdown_content("");
         Date date = new Date();
         topicCommentInfo.setComment_createtime(date);
         UserInfo userInfo = (UserInfo)request.getSession().getAttribute("user_info");

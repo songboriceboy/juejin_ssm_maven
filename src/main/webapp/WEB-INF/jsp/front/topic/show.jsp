@@ -18,17 +18,17 @@
           content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>Title</title>
     <link href="${pageContext.request.contextPath}/assets/uikit-2.25.0/css/uikit.almost-flat.css" rel="stylesheet">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/editor-md-master/css/editormd.css" />
+
 
     <script src="${pageContext.request.contextPath}/assets/jquery/jquery.js"></script>
     <%--<script src="${pageContext.request.contextPath}/assets/js/autosize.js"></script>--%>
     <script src="${pageContext.request.contextPath}/assets/uikit-2.25.0/js/components/tooltip.js"></script>
     <script src="${pageContext.request.contextPath}/assets/uikit-2.25.0/js/uikit.min.js"></script>
 
-    <script src="${pageContext.request.contextPath}/assets/editor-md-master/editormd.min.js"></script>
+
     <script src="${pageContext.request.contextPath}/assets/js/adapter.js"></script>
     <script src="${pageContext.request.contextPath}/assets/layer/layer.js"></script>
-
+    <script src="${pageContext.request.contextPath}/assets/wangEditor/wangEditor.js"></script>
     <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet">
 <style>
     .topic-author{
@@ -42,8 +42,9 @@
     }
 </style>
     <script>
-        var testEditor = null;
-        var testEditor2 = null;
+        var editor = null;
+        var editor2 = null;
+        var E = window.wangEditor;
         function isLogin() {
             <c:if test="${empty user_info}">
                 return 0;
@@ -51,78 +52,6 @@
             <c:if test="${!empty user_info}">
                 return 1;
             </c:if>
-        }
-
-        function initMdEditor(num) {
-
-            editormd.urls.atLinkBase = "${pageContext.request.contextPath}/user/"
-            //markdown
-           var editorMd = editormd({
-                id: "test-editormd"+num,
-//                height: 840,
-               autoFocus:false,
-                width   : "90%",
-                watch : false,
-                height  : 250,
-               lineNumbers:false,
-                placeholder          : "文明社会，理性评论，支持Markdown",
-                path: "${pageContext.request.contextPath}/assets/editor-md-master/lib/",
-                toolbarIcons: function () {
-                    // Or return editormd.toolbarModes[name]; // full, simple, mini
-                    // Using "||" set icons align right.
-                    return ["undo", "redo", "|", "watch", "fullscreen", "preview"]
-                },
-                //toolbar  : false,             // 关闭工具栏
-                codeFold: true,
-                searchReplace: true,
-                saveHTMLToTextarea: true,      // 保存 HTML 到 Textarea
-                htmlDecode: "style,script,iframe|on*",            // 开启 HTML 标签解析，为了安全性，默认不开启
-                emoji: true,
-                taskList: true,
-                tocm: true,          // Using [TOCM]
-                tex: true,                      // 开启科学公式 TeX 语言支持，默认关闭
-                //previewCodeHighlight : false,  // 关闭预览窗口的代码高亮，默认开启
-                flowChart: true,                // 疑似 Sea.js与 Raphael.js 有冲突，必须先加载 Raphael.js ，Editor.md 才能在 Sea.js 下正常进行；
-                sequenceDiagram: true,          // 同上
-                //dialogLockScreen : false,      // 设置弹出层对话框不锁屏，全局通用，默认为 true
-                //dialogShowMask : false,     // 设置弹出层对话框显示透明遮罩层，全局通用，默认为 true
-                //dialogDraggable : false,    // 设置弹出层对话框不可拖动，全局通用，默认为 true
-                //dialogMaskOpacity : 0.4,    // 设置透明遮罩层的透明度，全局通用，默认值为 0.1
-                //dialogMaskBgColor : "#000", // 设置透明遮罩层的背景颜色，全局通用，默认为 #fff
-                imageUpload: true,
-                imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-                imageUploadURL: "{:url('api/uploader/uploadEditorImg?pic_type=10')}"
-            });
-
-            /**
-             * 上传图片
-             */
-            $("#test-editormd"+num).on('paste', function (ev) {
-                var data = ev.clipboardData;
-                var items = (event.clipboardData || event.originalEvent.clipboardData).items;
-                for (var index in items) {
-                    var item = items[index];
-                    if (item.kind === 'file') {
-                        var blob = item.getAsFile();
-                        var reader = new FileReader();
-                        reader.onload = function (event) {
-                            var base64 = event.target.result;
-                            //ajax上传图片
-                            $.post("${pageContext.request.contextPath}/topic/uploadimg",{base:base64}, function (res) {
-                                // layer.msg(ret.msg);
-                                var ret = JSON.parse(res);
-                                if (ret.code === 1) {
-                                    //新一行的图片显示
-                                    editorMd.insertValue("\n![" + "image.png" + "](${pageContext.request.contextPath}/" + ret.path + ")");
-                                }
-                            });
-                        }; // data url!
-                        var url = reader.readAsDataURL(blob);
-                    }
-                }
-            });
-
-            return editorMd;
         }
 
         //动态生成的评论框提交
@@ -135,7 +64,8 @@
                 layer.msg('未登录',{time:2000});
                 return false;
             }
-
+            var true_comment_content = document.getElementById('true_comment_content2');
+            true_comment_content.value = editor2.txt.html();
             var param = $("#reply-reply-form").serialize();
             $.post('${pageContext.request.contextPath}/comment/add_comment', param)
                     .done(function (comment) {
@@ -167,7 +97,7 @@
                             var $div = $('#reply-anywhere');
                             if ($div.length > 0)
                             {
-                                testEditor2.editor.remove();
+                                $('#editor2').remove();
                                 $('#reply-anywhere').remove();
                             }
 
@@ -184,10 +114,11 @@
 
         }
 
-
         $(document).ready(function () {
 
-                    testEditor = initMdEditor('');
+
+                    editor = new E('#editor');
+                    editor.create();
 
                     //点击某条评论里的回复按钮，动态生成一个textarea
                     $('#uk-comment-list').on('click', '.btn-reply', function () {
@@ -204,28 +135,41 @@
                         var $div = $('#reply-anywhere');
                         if ($div.length > 0)
                         {
-                            testEditor2.editor.remove();
+//                            testEditor2.editor.remove();
+                            $('#editor2').remove();
                             $('#reply-anywhere').remove();
+
                         }
-                        var reply = `<li>
+                        var reply = `
                                    <div class="reply" id="reply-anywhere">
                             <form class="uk-form" id="reply-reply-form" action="#" method="post" onsubmit="return check_submit(this);">
                                 <div class="uk-form-row">
                                     <input type="hidden" name = "topic_id" value="${topic.topic_id}">
                                     <input type="hidden" name = "reply_comment_id" value="${reply_comment_id}">
-                               <div class="editormd" id="test-editormd2">
-    <textarea class="editormd-markdown-textarea" name="comment_markdown_content">${toAuthor}</textarea>
-</div>
+
+                                       <input type="hidden" name = "comment_content" value="" id="true_comment_content2">
+                                <div id="editor2" class="uk-margin-large-left uk-margin-large-right">
+                                    ${toAuthor}
+                                </div>
+
                                     <input type="submit" class="uk-button">
                                 </div>
                             </form>
                         </div>
-                        </li>`;
+                        `;
                         var replynode = $(reply);
-//                        $(this).closest('.reply-item').append(replynode);
-                        $(this).closest('.reply-child-item').after(replynode);
-                        testEditor2 = initMdEditor(2);
+                        $(this).closest('.uk-comment').append(replynode);
+//                        if( $(this).closest('.reply-item').find('.reply-child-item').eq(0).length > 0)
+//                        {
+//                            $(this).closest('.reply-item').find('.reply-child-item').eq(0).before(replynode);
+//                        }
+//                        else {
+//                            $(this).closest('.reply-item').append(replynode);
+//                        }
 
+
+                        editor2 = new E('#editor2')
+                        editor2.create()
                         return false;
                     })
 
@@ -244,13 +188,15 @@
                             return false;
                         }
 
+                        var true_comment_content = document.getElementById('true_comment_content');
+                        true_comment_content.value = editor.txt.html();
                         var param = $("#reply-form").serialize();
                         $.post('${pageContext.request.contextPath}/comment/add_comment', param)
                                 .done(function (comment) {
                                     if(comment.comment_id >= 0)
                                     {
                                         alert('first');
-                                        var txt = testEditor.getHTML();
+                                        var txt = editor.txt.html();
                                         var comment = `
                     <li class="reply-item" id="comment_${cid}">
                     <article class="uk-comment">
@@ -359,12 +305,10 @@
                     <div class="reply" id="final-reply">
                         <form class="uk-form" action="#" method="post" id="reply-form">
                             <div class="uk-form-row">
-                                <div class="editormd" id="test-editormd">
-                                    <input type="hidden" name = "topic_id" value="${topic.topic_id}">
-                                    <textarea class="editormd-markdown-textarea" name="comment_markdown_content"></textarea>
-                                    <!-- html textarea 需要开启配置项 saveHTMLToTextarea == true -->
-                                    <%--<textarea class="editormd-html-textarea" name="article_content"></textarea>--%>
-
+                                <input type="hidden" name = "topic_id" value="${topic.topic_id}">
+                                <input type="hidden" name = "comment_content" value="" id="true_comment_content">
+                                <div id="editor" class="uk-margin-large-left uk-margin-large-right">
+                                    <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
                                 </div>
                                 <input type="submit" class="uk-button" id="submit">
                             </div>
