@@ -1,6 +1,7 @@
 package school.coder.service;
 
 import school.coder.domain.TagInfo;
+import school.coder.domain.TagTopicInfo;
 
 import java.util.List;
 
@@ -9,4 +10,5 @@ import java.util.List;
  */
 public interface TagServcie {
     List<TagInfo> getAllTags(String search);
+    int insertTopicTagInfo(TagTopicInfo tagTopicInfo);
 }

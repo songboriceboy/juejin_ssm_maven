@@ -3,6 +3,7 @@ package school.coder.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import school.coder.domain.TagInfo;
+import school.coder.domain.TagTopicInfo;
 import school.coder.mapper.TagMapper;
 import school.coder.service.TagServcie;
 
@@ -18,5 +19,10 @@ public class TagServiceImpl implements TagServcie {
     @Override
     public List<TagInfo> getAllTags(String search) {
         return tagMapper.getAllTags(search);
+    }
+
+    @Override
+    public int insertTopicTagInfo(TagTopicInfo tagTopicInfo) {
+        return tagMapper.insertTopicTagInfo(tagTopicInfo);
     }
 }

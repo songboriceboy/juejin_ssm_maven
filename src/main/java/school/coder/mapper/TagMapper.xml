@@ -4,4 +4,8 @@
     <select id="getAllTags" resultType="TagInfo" parameterType="String">
         select * from taginfo where tag_name like #{value}
     </select>
+
+    <insert id="insertTopicTagInfo" parameterType="TagTopicInfo">
+        insert into tag_topic_info(tag_id, topic_id) values(#{tag_id},#{topic_id})
+    </insert>
 </mapper>

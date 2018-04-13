@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import school.coder.domain.*;
 import school.coder.service.SectionService;
+import school.coder.service.TagServcie;
 import school.coder.service.TopicCommentService;
 import school.coder.service.TopicService;
 import school.coder.util.StringDate;
@@ -36,6 +37,8 @@ public class TopicController {
     private TopicCommentService topicCommentService;
     @Autowired
     private SectionService sectionService;
+    @Autowired
+    private TagServcie tagServcie;
     @RequestMapping("/new")
     public ModelAndView newTopic()
     {
@@ -136,7 +139,7 @@ public class TopicController {
     @RequestMapping("/add_topic")
     public String addTopic(HttpServletRequest request, HttpServletResponse response, TopicInfo topicInfo,String tagids) throws IOException {
 
-        System.out.println(tagids);
+
         UserInfo userInfo = (UserInfo)request.getSession().getAttribute("user_info");
         String strMarkdown = request.getParameter("test-editormd-html-code");
         topicInfo.setTopic_content(strMarkdown);
@@ -151,6 +154,20 @@ public class TopicController {
         else //代表是修改文章
         {
             topicService.updateTopic(topicInfo);
+        }
+
+        System.out.println(tagids);
+        String[] tags = tagids.split(",");
+        if(tags.length > 0)
+        {
+            for(String tag : tags)
+            {
+                TagTopicInfo tagTopicInfo = new TagTopicInfo();
+                tagTopicInfo.setTag_id(Integer.parseInt(tag));
+                tagTopicInfo.setTopic_id(topicInfo.getTopic_id());
+                System.out.println(topicInfo.getTopic_id());
+                tagServcie.insertTopicTagInfo(tagTopicInfo);
+            }
         }
 
         return "redirect:/";
