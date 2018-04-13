@@ -21,6 +21,7 @@
     <script src="${pageContext.request.contextPath}/assets/uikit-2.25.0/js/components/tooltip.js"></script>
     <script src="${pageContext.request.contextPath}/assets/uikit-2.25.0/js/uikit.min.js"></script>
     <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet">
+    <%@include file="../common/common_css_js_include.jsp"%>
 </head>
 <body>
 <%@include file="../common/header.jsp"%>
@@ -35,7 +36,7 @@
                             <img src="https://lc-mhke0kuv.cn-n1.lcfile.com/f8ee3cd45f949a546263.png" width="32" height="32">
                             <h2>${tag.tag_name}</h2>
                             <p class="uk-text-muted"><span>38699</span> 关注 <span>5555</span> 文章</p>
-                            <button class="uk-button uk-button-primary uk-button-success">已关注</button>
+                            <button class="uk-button uk-button-primary uk-button-success uk-margin-top">已关注</button>
                         </a>
                     </div>
                 </li>
