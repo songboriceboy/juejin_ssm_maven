@@ -51,4 +51,13 @@ public class TagController {
         System.out.println(strJson);
         response.getWriter().println(strJson);
     }
+
+    @RequestMapping("/get_all_tags")
+    public ModelAndView getAllTags() throws IOException {
+        List<TagInfo> lst = tagServcie.getAllTags("%%");
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("tags",lst);
+        modelAndView.setViewName("front/tag/tag");
+        return modelAndView;
+    }
 }

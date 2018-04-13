@@ -10,8 +10,8 @@
 <header class="uk-hidden-small" id="top-header">
     <div class="uk-container uk-container-center">
         <nav class="uk-navbar uk-navbar-attached app-nav">
-            <a class="uk-navbar-brand" href="${pageContext.request.contextPath}/" title="魔工坊">
-                <img src="https://gold-cdn.xitu.io/v3/static/img/logo.a7995ad.svg" alt="魔工坊" width="60" height="60">
+            <a class="uk-navbar-brand" href="${pageContext.request.contextPath}/" title="掘金">
+                <img src="https://gold-cdn.xitu.io/v3/static/img/logo.a7995ad.svg" alt="掘金" width="60" height="60">
             </a>
             <ul class="uk-navbar-nav">
                 <li><a href="${pageContext.request.contextPath}/">首页</a></li>
@@ -19,7 +19,7 @@
                     <a href="${pageContext.request.contextPath}/">开源库</a>
                 </li>
                 <li class="uk-parent" data-uk-dropdown="">
-                    <a href="${pageContext.request.contextPath}/tag/index">标签</a>
+                    <a href="${pageContext.request.contextPath}/tag/get_all_tags">标签</a>
                 </li>
             </ul>
 
@@ -31,7 +31,7 @@
                             <div class="uk-border-circle"><img
                                     class="uk-border-circle" width="40" height="40"
                                     src="${pageContext.request.contextPath}/avatar/${user_info.user_avatar}"
-                                    alt="魔工坊">
+                                    alt="掘金">
                                 <div class="uk-border-circle" >
 
                                 </div>
@@ -77,7 +77,7 @@
         <div class="uk-grid">
             <div class="uk-width-4-6">
                 <div class="uk-navbar-brand uk-float-left">
-                    <a class="w1" href="#"> <i class="uk-icon-home"></i> 会员 - 魔工坊</a>
+                    <a class="w1" href="#"> <i class="uk-icon-home"></i> 会员 - 掘金</a>
                 </div>
             </div>
             <div class="uk-width-2-6">

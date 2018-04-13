@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en" class="uk-height-1-1">
 <head>
@@ -27,126 +28,20 @@
     <div class="b20"></div>
     <div class="uk-container uk-container-center">
         <ul class="uk-grid ">
-            <li class="uk-width-medium-1-4 uk-width-small-1-2 uk-margin-large-bottom">
-                <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-text-center">
-                    <a>
-                        <img src="https://dn-mhke0kuv.qbox.me/f655215074250f10f8d4.png?imageView2/2/w/200/h/64/q/85/format/webp/interlace/1">
-                        <h2>React.js</h2>
-                        <p class="uk-text-muted"><span>38699</span> 关注 <span>5555</span> 文章</p>
-                        <button class="uk-button uk-button-primary uk-button-success">已关注</button>
-                    </a>
-                </div>
-            </li>
-            <li class="uk-width-medium-1-4 uk-width-small-1-2 uk-margin-large-bottom">
-                <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-text-center">
-                    <a>
-                        <img src="https://dn-mhke0kuv.qbox.me/f655215074250f10f8d4.png?imageView2/2/w/200/h/64/q/85/format/webp/interlace/1">
-                        <h2>React.js</h2>
-                        <p class="uk-text-muted"><span>38699</span> 关注 <span>5555</span> 文章</p>
-                        <button class="uk-button uk-button-primary uk-button-success">已关注</button>
-                    </a>
-                </div>
-            </li>
-            <li class="uk-width-medium-1-4 uk-width-small-1-2 uk-margin-large-bottom">
-                <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-text-center">
-                    <a>
-                        <img src="https://dn-mhke0kuv.qbox.me/f655215074250f10f8d4.png?imageView2/2/w/200/h/64/q/85/format/webp/interlace/1">
-                        <h2>React.js</h2>
-                        <p class="uk-text-muted"><span>38699</span> 关注 <span>5555</span> 文章</p>
-                        <button class="uk-button uk-button-primary uk-button-success">已关注</button>
-                    </a>
-                </div>
-            </li>
-            <li class="uk-width-medium-1-4 uk-width-small-1-2 uk-margin-large-bottom">
-                <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-text-center">
-                    <a>
-                        <img src="https://dn-mhke0kuv.qbox.me/f655215074250f10f8d4.png?imageView2/2/w/200/h/64/q/85/format/webp/interlace/1">
-                        <h2>React.js</h2>
-                        <p class="uk-text-muted"><span>38699</span> 关注 <span>5555</span> 文章</p>
-                        <button class="uk-button uk-button-primary uk-button-success">已关注</button>
-                    </a>
-                </div>
-            </li>
-            <li class="uk-width-medium-1-4 uk-width-small-1-2 uk-margin-large-bottom">
-                <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-text-center">
-                    <a>
-                        <img src="https://dn-mhke0kuv.qbox.me/f655215074250f10f8d4.png?imageView2/2/w/200/h/64/q/85/format/webp/interlace/1">
-                        <h2>React.js</h2>
-                        <p class="uk-text-muted"><span>38699</span> 关注 <span>5555</span> 文章</p>
-                        <button class="uk-button uk-button-primary uk-button-success">已关注</button>
-                    </a>
-                </div>
-            </li>
-            <li class="uk-width-medium-1-4 uk-width-small-1-2 uk-margin-large-bottom">
-                <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-text-center">
-                    <a>
-                        <img src="https://dn-mhke0kuv.qbox.me/f655215074250f10f8d4.png?imageView2/2/w/200/h/64/q/85/format/webp/interlace/1">
-                        <h2>React.js</h2>
-                        <p class="uk-text-muted"><span>38699</span> 关注 <span>5555</span> 文章</p>
-                        <button class="uk-button uk-button-primary uk-button-success">已关注</button>
-                    </a>
-                </div>
-            </li>
-            <li class="uk-width-medium-1-4 uk-width-small-1-2 uk-margin-large-bottom">
-                <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-text-center">
-                    <a>
-                        <img src="https://dn-mhke0kuv.qbox.me/f655215074250f10f8d4.png?imageView2/2/w/200/h/64/q/85/format/webp/interlace/1">
-                        <h2>React.js</h2>
-                        <p class="uk-text-muted"><span>38699</span> 关注 <span>5555</span> 文章</p>
-                        <button class="uk-button uk-button-primary uk-button-success">已关注</button>
-                    </a>
-                </div>
-            </li>
-            <li class="uk-width-medium-1-4 uk-width-small-1-2 uk-margin-large-bottom">
-                <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-text-center">
-                    <a>
-                        <img src="https://dn-mhke0kuv.qbox.me/f655215074250f10f8d4.png?imageView2/2/w/200/h/64/q/85/format/webp/interlace/1">
-                        <h2>React.js</h2>
-                        <p class="uk-text-muted"><span>38699</span> 关注 <span>5555</span> 文章</p>
-                        <button class="uk-button uk-button-primary uk-button-success">已关注</button>
-                    </a>
-                </div>
-            </li>
-            <li class="uk-width-medium-1-4 uk-width-small-1-2 uk-margin-large-bottom">
-                <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-text-center">
-                    <a>
-                        <img src="https://dn-mhke0kuv.qbox.me/f655215074250f10f8d4.png?imageView2/2/w/200/h/64/q/85/format/webp/interlace/1">
-                        <h2>React.js</h2>
-                        <p class="uk-text-muted"><span>38699</span> 关注 <span>5555</span> 文章</p>
-                        <button class="uk-button uk-button-primary uk-button-success">已关注</button>
-                    </a>
-                </div>
-            </li>
-            <li class="uk-width-medium-1-4 uk-width-small-1-2 uk-margin-large-bottom">
-                <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-text-center">
-                    <a>
-                        <img src="https://dn-mhke0kuv.qbox.me/f655215074250f10f8d4.png?imageView2/2/w/200/h/64/q/85/format/webp/interlace/1">
-                        <h2>React.js</h2>
-                        <p class="uk-text-muted"><span>38699</span> 关注 <span>5555</span> 文章</p>
-                        <button class="uk-button uk-button-primary uk-button-success">已关注</button>
-                    </a>
-                </div>
-            </li>
-            <li class="uk-width-medium-1-4 uk-width-small-1-2 uk-margin-large-bottom">
-                <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-text-center">
-                    <a>
-                        <img src="https://dn-mhke0kuv.qbox.me/f655215074250f10f8d4.png?imageView2/2/w/200/h/64/q/85/format/webp/interlace/1">
-                        <h2>React.js</h2>
-                        <p class="uk-text-muted"><span>38699</span> 关注 <span>5555</span> 文章</p>
-                        <button class="uk-button uk-button-primary uk-button-success">已关注</button>
-                    </a>
-                </div>
-            </li>
-            <li class="uk-width-medium-1-4 uk-width-small-1-2 uk-margin-large-bottom">
-                <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-text-center">
-                    <a>
-                        <img src="https://dn-mhke0kuv.qbox.me/f655215074250f10f8d4.png?imageView2/2/w/200/h/64/q/85/format/webp/interlace/1">
-                        <h2>React.js</h2>
-                        <p class="uk-text-muted"><span>38699</span> 关注 <span>5555</span> 文章</p>
-                        <button class="uk-button uk-button-primary uk-button-success">已关注</button>
-                    </a>
-                </div>
-            </li>
+            <c:forEach items="${tags}" var="tag">
+                <li class="uk-width-medium-1-4 uk-width-small-1-2 uk-margin-large-bottom">
+                    <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-text-center">
+                        <a>
+                            <img src="https://lc-mhke0kuv.cn-n1.lcfile.com/f8ee3cd45f949a546263.png" width="32" height="32">
+                            <h2>${tag.tag_name}</h2>
+                            <p class="uk-text-muted"><span>38699</span> 关注 <span>5555</span> 文章</p>
+                            <button class="uk-button uk-button-primary uk-button-success">已关注</button>
+                        </a>
+                    </div>
+                </li>
+            </c:forEach>
+
+
         </ul>
     </div>
 </div>
