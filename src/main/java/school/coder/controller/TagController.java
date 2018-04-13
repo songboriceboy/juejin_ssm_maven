@@ -5,12 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import school.coder.domain.SectionInfo;
-import school.coder.domain.TagInfo;
-import school.coder.domain.TopicInfoEx;
 import school.coder.service.TagServcie;
 import school.coder.vo.TagAuto;
-import school.coder.vo.TagInfoEx;
+import school.coder.domain.TagInfoEx;
 import school.coder.vo.TagList;
 
 import javax.servlet.http.HttpServletResponse;

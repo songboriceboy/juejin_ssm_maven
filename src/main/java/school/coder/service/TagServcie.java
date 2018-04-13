@@ -1,8 +1,7 @@
 package school.coder.service;
 
-import school.coder.domain.TagInfo;
 import school.coder.domain.TagTopicInfo;
-import school.coder.vo.TagInfoEx;
+import school.coder.domain.TagInfoEx;
 
 import java.util.List;
 

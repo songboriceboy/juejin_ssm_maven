@@ -1,4 +1,4 @@
-package school.coder.vo;
+package school.coder.domain;
 
 
 import school.coder.domain.TagInfo;

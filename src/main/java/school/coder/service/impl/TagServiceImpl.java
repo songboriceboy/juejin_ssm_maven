@@ -2,11 +2,10 @@ package school.coder.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import school.coder.domain.TagInfo;
 import school.coder.domain.TagTopicInfo;
 import school.coder.mapper.TagMapper;
 import school.coder.service.TagServcie;
-import school.coder.vo.TagInfoEx;
+import school.coder.domain.TagInfoEx;
 
 import java.util.List;
 
