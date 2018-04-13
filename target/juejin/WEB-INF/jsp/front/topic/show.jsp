@@ -311,7 +311,7 @@
                                 <input type="hidden" name = "topic_id" value="${topic.topic_id}">
                                 <input type="hidden" name = "comment_content" value="" id="true_comment_content">
                                 <div id="editor" class="uk-margin-large-left uk-margin-large-right">
-                                    <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+
                                 </div>
                                 <input type="submit" class="uk-button" id="submit">
                             </div>
