@@ -52,8 +52,10 @@ join userinfo on userinfo.user_id = topic_info.user_id
     </select>
 
 
-    <select id="getTopicByID" resultType="Topicinfo">
-        select * from topic_info where topic_id = #{value}
+    <select id="getTopicByID" resultType="TopicinfoEx">
+        select topic_info.*,userinfo.user_name,userinfo.user_avatar from topic_info
+        join userinfo on userinfo.user_id = topic_info.user_id
+        where topic_id = #{value}
     </select>
 
     <select id="getTopicsCounts" resultType="int" parameterType="TopicPageInfo">

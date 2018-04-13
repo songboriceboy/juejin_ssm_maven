@@ -34,7 +34,7 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public TopicInfo getTopicByID(int id) {
+    public TopicInfoEx getTopicByID(int id) {
         return topicMapper.getTopicByID(id);
     }
 

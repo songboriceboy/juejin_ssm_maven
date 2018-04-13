@@ -14,7 +14,7 @@ public interface TopicMapper {
     int insertTopic(TopicInfo topicInfo);
     int updateTopic(TopicInfo topicInfo);
     List<TopicInfoEx> getAllTopics();
-    TopicInfo getTopicByID(int id);
+    TopicInfoEx getTopicByID(int id);
     int getTopicsCounts(TopicPageInfo topicPageInfo);
     List<TopicInfoEx> getPagedTopics(TopicPageInfo topicPageInfo);
     List<TopicInfoEx> getPagedTopicsScroll(TopicPageInfoScroll topicPageInfoScroll);

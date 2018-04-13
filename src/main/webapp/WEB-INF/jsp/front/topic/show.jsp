@@ -248,8 +248,8 @@
                     <div class="topic-content">
                         <div class="topic-author">
                             <img class="uk-align-left uk-border-circle"
-                                 src="https://avatars.githubusercontent.com/u/20903311" width="40" height="40">
-                            <div>zhangsan</div>
+                                 src="${pageContext.request.contextPath}/avatar/${topic.user_avatar}" width="40" height="40">
+                            <div>${topic.user_name}</div>
                             <div>2018 年 03 月 07 日</div>
                         </div>
                         <h2 class="article-title uk-margin-large-left">

@@ -70,7 +70,7 @@ public class TopicController {
     @RequestMapping("/show/{id}")
     public ModelAndView showTopic(@PathVariable int id)
     {
-        TopicInfo topicInfo = topicService.getTopicByID(id);
+        TopicInfoEx topicInfo = topicService.getTopicByID(id);
         List<TopicCommentInfoEx> list  = topicCommentService.getAllCommentsByTopicID(id);
         Map<Integer,TopicCommentList> mapComments = new LinkedHashMap<>();
         //获取嵌套评论列表
