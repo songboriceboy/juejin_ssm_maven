@@ -229,16 +229,7 @@
 
 </head>
 <body>
-<%--欢迎您 ${user_info.user_name}--%>
-<%--<a href="${pageContext.request.contextPath}/user/login">login</a>--%>
-<%--<a href="${pageContext.request.contextPath}/user/reg">reg</a>--%>
-<%--<a href="${pageContext.request.contextPath}/topic/new">new topic</a>--%>
-<%--<a href="${pageContext.request.contextPath}/">home</a>--%>
-<%--<div id="wai">--%>
-<%--<div id="nei"></div>--%>
-<%--</div><span id="precent"></span><br/>--%>
-<%--<img class="uk-border-circle" id="avatar">--%>
-<%--<input type="file" name="pic" onchange="upfile();"/>--%>
+
 <%@include file="common/header.jsp"%>
 <div class="firstPageOfLog uk-container uk-container-center">
     <div class="interval"></div>
@@ -587,35 +578,6 @@
 
 <script type="text/html" id="topic-list-tpl">
     {{each list as topic i}}
-    <%--<li class="uk-list uk-list-line uk-clearfix topic uk-margin-top" id="{{topic.topic_id}}">--%>
-    <%--{{topic.topic_id}}--%>
-
-    <%--<div class="content">--%>
-    <%--<div class="uk-grid">--%>
-    <%--<div class="uk-width-5-6">--%>
-    <%--<a href="${pageContext.request.contextPath}/topic/show/{{topic.topic_id}}">{{topic.topic_title}}</a>--%>
-    <%--<a href="${pageContext.request.contextPath}/topic/modify/{{topic.topic_id}}">修改</a>--%>
-    <%--</div>--%>
-    <%--<div class="uk-width-1-6 uk-vertical-align uk-text-center">--%>
-    <%--{{if topic.comment_count > 0}}--%>
-    <%--<span class="uk-badge uk-badge-notification uk-vertical-align-middle">--%>
-    <%--{{topic.comment_count}}--%>
-    <%--</span>--%>
-    <%--{{/if}}--%>
-    <%--</div>--%>
-    <%--</div>--%>
-
-    <%--<div>--%>
-    <%--<span class="node"><a href="javascript:;" section_id = {{topic.section_id}}>{{topic.section_name}}</a></span>--%>
-    <%--<span class="split">•</span>--%>
-    <%--<span class="author"><a href="${pageContext.request.contextPath}/user/show/{{topic.user_id}}">{{topic.user_name}}</a></span>--%>
-    <%--<span class="split">•</span>--%>
-    <%--<span class="datetime">{{topic.createtime_str}}</span>--%>
-    <%--</div>--%>
-
-    <%--</div>--%>
-    <%--</li>--%>
-
     <li class="app-blog-item" id="{{topic.topic_id}}" >
         {{topic.topic_id}}
         <div class="title uk-text-truncate">

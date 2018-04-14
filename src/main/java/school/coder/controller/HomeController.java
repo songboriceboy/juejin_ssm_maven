@@ -9,9 +9,11 @@ import org.springframework.web.servlet.ModelAndView;
 import school.coder.domain.SectionInfo;
 import school.coder.domain.TopicInfo;
 import school.coder.domain.TopicInfoEx;
+import school.coder.domain.UserInfo;
 import school.coder.service.SectionService;
 import school.coder.service.TopicService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -22,15 +24,21 @@ public class HomeController {
 	private SectionService sectionService;
 //	protected Logger log = Logger.getLogger(HomeController.class);
 	@RequestMapping("/")
-	public ModelAndView index()
+	public ModelAndView index(HttpServletRequest request)
 	{
-
-		System.out.println("hello");
-//		List<TopicInfoEx> topicInfoList = topicService.getAllTopics();
 		List<SectionInfo> sectionInfoList = sectionService.getAllSections();
 		ModelAndView maView = new ModelAndView();
-		maView.setViewName("front/index");
-//		maView.addObject("topics",topicInfoList);
+		UserInfo userInfo = (UserInfo)request.getSession().getAttribute("user_info");
+		if(userInfo != null)
+		{
+			maView.setViewName("front/index_after_login");
+		}
+		else
+		{
+			maView.setViewName("front/index");
+		}
+
+
 		maView.addObject("sections",sectionInfoList);
 		return maView;
 	}

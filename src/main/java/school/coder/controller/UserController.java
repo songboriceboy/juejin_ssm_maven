@@ -76,7 +76,7 @@ public class UserController {
             UserInfo userInfo = (UserInfo)request.getSession().getAttribute("user_info");
             userInfo.setUser_avatar(strNewFilePath);
             userService.updateUserAvatar(userInfo);
-//            response.setContentType("application/json;charset=utf-8");
+
             UploadRes uploadRes = new UploadRes();
             uploadRes.setSrc(strNewFilePath);
             String strJson = JSON.toJSONString(uploadRes);
@@ -114,9 +114,6 @@ public class UserController {
         ModelAndView maView = new ModelAndView();
         maView.setViewName("front/index");
         return maView;
-//        ModelAndView maView = new ModelAndView();
-//        maView.setViewName("front/index");
-//        return maView;
     }
     @RequestMapping("/userlogin")
     public String userlogin(UserInfo userInfo, HttpServletRequest request) throws NoSuchAlgorithmException {
