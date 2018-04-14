@@ -13,11 +13,7 @@
     <meta name="viewport"
           content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>Title</title>
-    <link href="${pageContext.request.contextPath}/assets/uikit-2.25.0/css/uikit.almost-flat.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/assets/jquery/jquery.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/uikit-2.25.0/js/components/tooltip.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/uikit-2.25.0/js/uikit.min.js"></script>
-    <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet">
+    <%@include file="../common/common_css_js_include.jsp"%>
     <script>
         $(function () {
             $('.uk-tab').on('change.uk.tab',function (event, item) {
@@ -28,7 +24,7 @@
 </head>
 <body>
 
-<%@include file="../common/header.jsp"%>
+<%@include file="../common/header_only_nav.jsp"%>
 <!--整体背景-->
 <div class="mb-cover">
     <div class="b20"></div>

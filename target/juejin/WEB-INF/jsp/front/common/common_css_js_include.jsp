@@ -14,5 +14,5 @@
 <script src="${pageContext.request.contextPath}/assets/js/template.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/adapter.js"></script>
 
-<link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/assets/css/style.css?ver=0.2" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/assets/layer/layer.js"></script>

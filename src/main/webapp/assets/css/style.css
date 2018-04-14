@@ -8,6 +8,10 @@ html, h1, h2, h3, h4, h5, h6 {
 .uk-dropdown{
     font-size: 0.33rem;
 }
+.uk-tab > * > a
+{
+    font-size: 0.33rem;
+}
 .touch-nav {
     line-height: 40px;
     position: fixed;
