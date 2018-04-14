@@ -19,7 +19,7 @@
 </head>
 <body class="uk-height-1-1">
 
-<%@include file="common/header.jsp"%>
+<%@include file="common/header_only_nav.jsp"%>
 
 <div class="mb-cover uk-height-1-1">
     <div class="b20"></div>
