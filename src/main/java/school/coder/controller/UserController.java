@@ -119,7 +119,7 @@ public class UserController {
 //        return maView;
     }
     @RequestMapping("/userlogin")
-    public ModelAndView userlogin(UserInfo userInfo, HttpServletRequest request) throws NoSuchAlgorithmException {
+    public String userlogin(UserInfo userInfo, HttpServletRequest request) throws NoSuchAlgorithmException {
 
         userInfo.setUser_pwd(CreateMD5.getMd5(userInfo.getUser_pwd()));
         UserInfo userInfo1 = userService.userLogin(userInfo);
@@ -127,17 +127,14 @@ public class UserController {
         {
             request.getSession().setAttribute("user_info",userInfo1);
         }
-        ModelAndView maView = new ModelAndView();
-        maView.setViewName("front/index");
-        return maView;
+
+        return "redirect:/";
     }
 
     @RequestMapping("/logout")
-    public ModelAndView logout(UserInfo userInfo, HttpServletRequest request) throws NoSuchAlgorithmException {
+    public String logout(UserInfo userInfo, HttpServletRequest request) throws NoSuchAlgorithmException {
 
         request.getSession().invalidate();
-        ModelAndView maView = new ModelAndView();
-        maView.setViewName("front/index");
-        return maView;
+        return "redirect:/";
     }
 }

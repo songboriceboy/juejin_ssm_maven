@@ -110,26 +110,6 @@
   <%--<img class="uk-border-circle" id="avatar">--%>
   <%--<input type="file" name="pic" onchange="upfile();"/>--%>
   <%@include file="common/header.jsp"%>
-  <div class="uk-container uk-container-center">
-      <div class="uk-panel uk-panel-box uk-text-center app-cate">
-          <ul class="uk-subnav uk-position-relative">
-              <c:forEach items="${sections}" var="section">
-                  <li><a href="javascript:;" id="${section.section_id}" onclick="getTopicsBySectionID(this.id);">${section.section_name}</a></li>
-              </c:forEach>
-              <%--<li class="uk-active"><a href="#">我关注的</a></li>--%>
-              <%--<li><a href="#">Android</a></li>--%>
-              <%--<li><a href="#">前端</a></li>--%>
-              <%--<li><a href="#">iOS</a></li>--%>
-              <%--<li><a href="#">设计</a></li>--%>
-              <%--<li><a href="#">产品</a></li>--%>
-              <%--<li><a href="#">工具资源</a></li>--%>
-              <%--<li><a href="#">阅读</a></li>--%>
-              <%--<li><a href="#">人工智能</a></li>--%>
-              <li class="app-all-tag uk-position-absolute"><a href="#">标签管理</a></li>
-          </ul>
-
-      </div>
-  </div>
 
   <%--<div class="mb-cover">--%>
   <%--<ul class="uk-margin-top" id="topic-list">--%>

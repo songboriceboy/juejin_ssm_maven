@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link href="../uikit/css/uikit.almost-flat.css" rel="stylesheet">
+    <link href="011剑.svg" rel="SHORTCUT ICON"/>
+    <script src="jquery.js"></script>
+    <script src="../uikit/js/uikit.js"></script>
+    <title>铸剑</title>
+    <link rel="shortcut icon" href="../pic/20180310055306596_easyicon_net_16.ico" type="image/x-icon"/>
+    <style>
+
+        body {
+            background-color: #F4F5F5;
+        }
+
+        .myHomePage .dis {
+            height: 20px;
+        }
+
+        .myHomePage a {
+            font-size: 16px;
+        }
+
+        .myHomePage .personelPic {
+            height: 90px;
+            width: 90px;
+            border-radius: 100%;
+        }
+
+        .myHomePage .personelInfo .jobAndAmbition {
+            text-decoration: none;
+            color: #4A68AD;
+            font-size: 15px;
+        }
+
+        .myHomePage .personelInfo .icon a {
+            font-size: 18px;
+        }
+
+        .myHomePage .personelInfo .editPersonelInfo {
+            color: #3780F7;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #3780F7;
+            border-radius: 6px;
+            /*bottom: 30px;*/
+            /*right: 20px;*/
+            text-decoration: none;
+
+        }
+
+        .myHomePage .collectionAndTag a {
+            border-bottom: 1px solid #EDEDEE;
+        }
+
+        .myHomePage .collectionAndTag .uk-panel {
+            border-radius: 0;
+            border: 0;
+        }
+
+        .myHomePage .collectionAndTag .uk-panel:hover {
+            background-color: #F4F5F5;
+        }
+
+        .myHomePage .fans .uk-panel {
+            border: 0;
+        }
+
+        .myHomePage .fans .uk-panel:hover {
+            background-color: white;
+        }
+
+        .myHomePage .TagBar li {
+            padding: 20px;
+            display: inline-block;
+
+        }
+
+        .myHomePage .TagBar li a {
+
+            text-decoration: none;
+            color: black;
+        }
+
+        .myHomePage .TagBar {
+            background: white;
+        }
+        .myHomePage .TagBar .first{
+            border-bottom: 2px solid #3780F7;
+        }
+        .myHomePage .TagBar .first a{
+            color:#3780F7;
+        }
+
+        .addBorderBottom {
+            border-bottom: 2px solid #3780F7;
+        }
+
+        .myHomePage .uk-panel-box {
+            border: 0;
+        }
+        .myHomePage .content a{
+            border-bottom: 1px solid #F2F2F3;
+        }
+
+    </style>
+    <script>
+        var sentence = ["你的人生格言是什么?", "你有哪些爱好?", "你的信仰是什么?", "你的武器库有哪些武(ji)器(shu)?"];
+        window.onload = function (ev) {
+            var index = 0;
+            var ambition = document.getElementById('ambition');
+            setInterval(function (args) {
+                index = index % sentence.length;
+                ambition.innerHTML = sentence[index++];
+            }, 2000)
+
+            // 选项卡处，uikit里没有掘金这样的选项卡
+            var TagBarLis = document.getElementById('TagBar').getElementsByTagName('li');
+            var TagBarAs = document.getElementById('TagBar').getElementsByTagName('a');
+            for (var i = 0; i < TagBarLis.length; i++) {
+                TagBarLis[i].onclick = function (ev2) {
+                    for (var i = 0; i < TagBarAs.length; i++) {
+                        TagBarAs[i].style.color = 'black';
+                    }
+                    for (var i = 0; i < TagBarLis.length; i++) {
+                        TagBarLis[i].className = '';
+                    }
+                    this.getElementsByTagName('a')[0].style.color = '#3780F7';
+                    this.className = 'addBorderBottom';
+                }
+            }
+         }
+    </script>
+</head>
+<body>
+<div class="myHomePage">
+    <div class="dis">
+    </div>
+    <div class="uk-grid uk-container-center uk-container ">
+        <div class="uk-width-medium-3-4 ">
+            <!--个人信息-->
+            <div class="uk-panel uk-panel-box personelInfo uk-panel-box-secondary">
+                <div class="uk-grid uk-text-center">
+                    <div class="uk-width-medium-1-5">
+                        <img src="../pic/756fbcdea4a13886d90ecd8a7c12bd75.jpg" class=" personelPic ">
+                    </div>
+              <div class="uk-width-medium-3-5">
+                  <ul class="uk-list   basicInfo">
+                      <li class="name uk-text-bold uk-margin-bottom" style="font-size:26px">riceBoy</li>
+                      <li class="uk-margin-small-bottom"><a href="#" class="jobAndAmbition"><span class="uk-margin-right">+</span><span>你从事什么职业？</span></a>
+                      </li>
+                      <li class="uk-margin-bottom"><a href="#" class="jobAndAmbition">
+                          <span class="uk-margin-right">+</span><span id="ambition">你的人生格言是什么？</span></a></li>
+                  </ul>
+              </div>
+                <div class="uk-width-medium-1-5">
+                    <ul class="uk-list  icon ">
+                        <li class="uk-display-inline-block uk-margin-right"><a href="#" class="uk-icon-github" id="github"
+                                                                               style="color: #AAAAAA;"></a></li>
+                        <li class="uk-display-inline-block uk-margin-right"><a href="#" class="uk-icon-weibo"id="weibo"
+                                                                               style="color: #AAAAAA;"></a></li>
+                        <li class="uk-display-inline-block uk-margin-right"><a href="#" class="uk-icon-globe"id="globe"
+                                                                               style="color: #AAAAAA;"></a></li>
+                    </ul>
+                    <div><a class="editPersonelInfo uk-margin-large-top">编辑个人资料</a></div>
+                </div>
+                </div>
+            </div>
+
+            <div class="dis">
+
+            </div>
+            <!--选项卡-->
+            <div class="uk-grid-collapse">
+                <div class="tagBarDiv" >
+                    <ul class="TagBar uk-list" id="TagBar" style="margin: 0;border-bottom: 1px solid #F2F2F3">
+                        <ul>
+                            <li class="first"><a href="#">动态</a></li>
+                            <li><a href="#">专栏<span class="uk-margin-small-left">0</span></a></li>
+                            <li><a href="#">分享<span class="uk-margin-small-left">0</span></a></li>
+                            <li><a href="#">喜欢<span class="uk-margin-small-left">0</span></a></li>
+                            <li><a href="#">更多
+                       <span class="uk-margin-small-left">0</span></a></li>
+                        </ul>
+                    </ul>
+                </div>
+               <!--内容-->
+                <div class="content">
+                    <a href="#" class=" uk-panel-box-secondary uk-panel-box uk-panel ">
+                        <span>喜欢了文章</span>
+                        <div class="uk-panel-hover uk-panel uk-panel-box  uk-text-bold">我的阿里之路+面试经考点</div>
+                    </a>
+                    <a href="#" class=" uk-panel-box-secondary uk-panel-box uk-panel ">
+                        <span>喜欢了文章</span>
+                        <div class="uk-panel-hover uk-panel uk-panel-box  uk-text-bold">我的阿里之路+面试经考点</div>
+                    </a>
+                    <a href="#" class=" uk-panel-box-secondary uk-panel-box uk-panel  ">
+                        <span>喜欢了文章</span>
+                        <div class="uk-panel-hover uk-panel uk-panel-box  uk-text-bold">我的阿里之路+面试经考点</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+<!--右侧-->
+        <div class="uk-width-medium-1-4 ">
+            <div class="uk-grid uk-grid-collapse fans">
+                <div class="uk-width-medium-1-2 ">
+                    <a class="uk-panel-hover uk-text-center uk-panel uk-panel-box uk-panel-box-secondary">
+                        <span>关注</span>
+                        <div class="uk-text-bold">10</div>
+                    </a>
+                </div>
+                <div class="uk-width-medium-1-2">
+                    <a class=" uk-panel-hover uk-text-center uk-panel uk-panel-box uk-panel-box-secondary">
+                        <span>关注了</span>
+                        <div class="uk-text-bold">0</div>
+                    </a>
+                </div>
+            </div>
+            <div class="uk-grid-collapse collectionAndTag">
+                <a class="uk-panel-hover uk-panel" style="margin-top: 20px;border-top: 1px solid #EDEDEE">
+                    <span>收藏集</span> <span>0</span>
+                </a>
+                <a class="uk-panel-hover uk-panel">
+                    <span>关注标签</span> <span>10</span>
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</body>
+</html>

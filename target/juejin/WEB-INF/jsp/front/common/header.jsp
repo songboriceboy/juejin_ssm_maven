@@ -28,10 +28,23 @@
                     <c:when test="${!empty user_info}">
                         <a title="" href="javascript:;"
                            class="uk-border-circle uk-thumbnail" data-cached-title="回到个人中心首页">
-                            <div class="uk-border-circle"><img
-                                    class="uk-border-circle" width="40" height="40"
-                                    src="${pageContext.request.contextPath}/avatar/${user_info.user_avatar}"
-                                    alt="掘金">
+                            <div class="uk-border-circle">
+                                <c:choose>
+                                    <c:when test="${!empty user_info.user_avatar}">
+                                        <img
+                                                class="uk-border-circle" width="40" height="40" title="欢迎您${user_info.user_name}"
+                                                src="${pageContext.request.contextPath}/avatar/${user_info.user_avatar}"
+                                                alt="掘金">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img
+                                                class="uk-border-circle" width="40" height="40" title="欢迎您${user_info.user_name}"
+                                                src="https://user-gold-cdn.xitu.io/2017/7/29/e4663a53d6f246bac968c7c2d5d22e60?imageView2/1/w/90/h/90/q/85/format/webp/interlace/1"
+                                                alt="掘金">
+                                            </c:otherwise>
+                                        </c:choose>
+
+
                                 <div class="uk-border-circle" >
 
                                 </div>
@@ -114,6 +127,26 @@
                 </ul>
             </c:otherwise>
         </c:choose>
+
+    </div>
+</div>
+<div class="uk-container uk-container-center">
+    <div class="uk-panel uk-panel-box uk-text-center app-cate">
+        <ul class="uk-subnav uk-position-relative">
+            <c:forEach items="${sections}" var="section">
+                <li><a href="javascript:;" id="${section.section_id}" onclick="getTopicsBySectionID(this.id);">${section.section_name}</a></li>
+            </c:forEach>
+            <%--<li class="uk-active"><a href="#">我关注的</a></li>--%>
+            <%--<li><a href="#">Android</a></li>--%>
+            <%--<li><a href="#">前端</a></li>--%>
+            <%--<li><a href="#">iOS</a></li>--%>
+            <%--<li><a href="#">设计</a></li>--%>
+            <%--<li><a href="#">产品</a></li>--%>
+            <%--<li><a href="#">工具资源</a></li>--%>
+            <%--<li><a href="#">阅读</a></li>--%>
+            <%--<li><a href="#">人工智能</a></li>--%>
+            <li class="app-all-tag uk-position-absolute uk-hidden-small"><a href="${pageContext.request.contextPath}/tag/get_all_tags">标签管理</a></li>
+        </ul>
 
     </div>
 </div>
