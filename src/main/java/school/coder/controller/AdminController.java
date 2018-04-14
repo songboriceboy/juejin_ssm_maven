@@ -44,7 +44,7 @@ public class AdminController {
         {
             ModelAndView mav = new ModelAndView();
             mav.addObject("message", "登录失败");
-            mav.setViewName("login");
+            mav.setViewName("admin/login");
             return mav;
         }
 

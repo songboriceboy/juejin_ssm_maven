@@ -131,30 +131,6 @@
         }
 
     </script>
-    <%--<script>--%>
-        <%--window.onload = function (ev) {--%>
-            <%--var text=document.getElementById('text');--%>
-            <%--var oas=text.getElementsByTagName('a');--%>
-
-            <%--for(var i=0;i<oas.length;i++)--%>
-            <%--{--%>
-                <%--oas[i].onmouseover=function (ev2) {--%>
-                    <%--var spans=this.getElementsByTagName('span');--%>
-                    <%--// alert(spans.length);--%>
-                    <%--spans[10].style.display='inline';--%>
-                    <%--spans[9].style.display='inline';--%>
-
-                <%--}--%>
-                <%--oas[i].onmouseout=function (ev2) {--%>
-                    <%--var spans=this.getElementsByTagName('span');--%>
-                    <%--// alert(spans.length);--%>
-                    <%--spans[10].style.display='none';--%>
-                    <%--spans[9].style.display='none';--%>
-                <%--}--%>
-            <%--}--%>
-        <%--}--%>
-    <%--</script>--%>
-
 </head>
 <body>
 
