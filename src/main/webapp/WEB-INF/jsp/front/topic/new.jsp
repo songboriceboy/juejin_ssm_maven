@@ -10,57 +10,8 @@
     <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon.png">
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon.png">
-    <link id="data-uikit-theme" rel="stylesheet" href="${pageContext.request.contextPath}/assets/uikit-2.25.0/css/uikit.almost-flat.css">
-    <%--<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/docs.css">--%>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/editor-md-master/css/editormd.css" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bigautocomplete/css/jquery.bigautocomplete.css" />
+    <%@include file="../common/common_css_js_include.jsp"%>
 
-    <script src="${pageContext.request.contextPath}/assets/jquery/jquery.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/editor-md-master/editormd.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/uikit-2.25.0/js/uikit.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/uikit-2.25.0/js/components/form-select.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/bigautocomplete/js/jquery.bigautocomplete.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/template.js"></script>
-    <style>
-        /*发表文章*/
-        .turnonart {
-            width: 336px;
-            border: 1px solid black;
-        }
-
-
-        .turnonart .li1 {
-            color: #949CA5;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .turnonart .li2 {
-            color: #949CA5;
-            font-size: 18px;
-        }
-
-        .turnonart li .a2 {
-            background-color: white;
-            border: 1px solid #007BFF;
-            color: #007BFF;
-        }
-
-        .turnonart li ul li a {
-            color: #949494;
-            background-color: #FFFFFF;
-        }
-
-        .turnonart li ul li a:hover {
-            color: #007BFF;
-            background-color: #F7FFFF;
-        }
-
-        .turnonart li ul li .a1 {
-            color: #007BFF;
-            background-color: #F7FFFF;
-        }
-    </style>
     <script>
         var tags_select = [];
         window.onload = function () {
