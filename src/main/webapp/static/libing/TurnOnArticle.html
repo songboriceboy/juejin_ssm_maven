@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择类别</title>
+    <meta name="viewport"
+          content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link href="uikit/css/uikit.almost-flat.css" rel="stylesheet">
+    <script src="JQpuery/jquery.js"></script>
+    <style>
+        .turnonart {
+            width: 336px;
+            height: 308px;
+            border: 1px solid black;
+        }
+
+        .turnonart li form .input {
+            width: 90%;
+            border: none;
+            border-bottom: 1px solid #f1f1f1;
+            outline: none;
+        }
+
+        .turnonart .li1 {
+            color: #949CA5;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .turnonart .li2 {
+            color: #949CA5;
+            font-size: 18px;
+        }
+
+        .turnonart li .a2 {
+            background-color: white;
+            border: 1px solid #007BFF;
+            color: #007BFF;
+        }
+
+        .turnonart li ul li a {
+            color: #949494;
+            background-color: #FFFFFF;
+        }
+
+        .turnonart li ul li a:hover {
+            color: #007BFF;
+            background-color: #F7FFFF;
+        }
+
+        .turnonart li ul li .a1 {
+            color: #007BFF;
+            background-color: #F7FFFF;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var ul = document.getElementById("lis");
+            var lis = ul.getElementsByTagName('li');
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].onclick = function () {
+                    for (var i = 0; i < lis.length; i++) {
+                        lis[i].getElementsByTagName('a')[0].className = 'uk-button';
+                    }
+                    this.getElementsByTagName('a')[0].className = 'a1 uk-button';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="turnonart">
+    <ul class="uk-list uk-margin-left">
+        <li class="li1 uk-margin-top">发布文章</li>
+        <li class="li2 uk-margin-top">选择分类</li>
+        <li id="lis">
+            <ul class=" uk-margin-top">
+                <li class="uk-display-inline-block uk-margin-small-top uk-margin-small-right"><a href="#"
+                                                                                                 class="a1 uk-button">Android</a>
+                </li>
+                <li class="uk-display-inline-block uk-margin-small-top uk-margin-small-right"><a href="#"
+                                                                                                 class="uk-button">前端</a>
+                </li>
+                <li class="uk-display-inline-block uk-margin-small-top uk-margin-small-right"><a href="#"
+                                                                                                 class="uk-button">ios</a>
+                </li>
+                <li class="uk-display-inline-block uk-margin-small-top uk-margin-small-right"><a href="#"
+                                                                                                 class="uk-button">产品</a>
+                </li>
+                <li class="uk-display-inline-block uk-margin-small-top uk-margin-small-right"><a href="#"
+                                                                                                 class="uk-button">设计</a>
+                </li>
+                <li class="uk-display-inline-block uk-margin-small-top uk-margin-small-right"><a href="#"
+                                                                                                 class="uk-button">工具资源</a>
+                </li>
+                <li class="uk-display-inline-block uk-margin-small-top uk-margin-small-right"><a href="#"
+                                                                                                 class="uk-button">阅读</a>
+                </li>
+                <li class="uk-display-inline-block uk-margin-small-top uk-margin-small-right"><a href="#"
+                                                                                                 class="uk-button">后端</a>
+                </li>
+                <li class="uk-display-inline-block uk-margin-small-top uk-margin-small-right"><a href="#"
+                                                                                                 class="uk-button">人工智能</a>
+                </li>
+
+            </ul>
+        </li>
+        <li>
+            <form>
+                <div class="li2 uk-margin-top">标签</div>
+                <input type="text" placeholder="搜索标签（可选填）" class="input uk-margin-small-top">
+            </form>
+        </li>
+        <li>
+            <div class="uk-text-center"><a href="#" class="a2 uk-button uk-margin-top">确定并发布</a></div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

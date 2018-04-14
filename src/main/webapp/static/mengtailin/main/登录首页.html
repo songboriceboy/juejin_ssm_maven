@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link href="../uikit/css/uikit.almost-flat.css" rel="stylesheet">
+    <link href="011剑.svg" rel="SHORTCUT ICON"/>
+    <script src="jquery.js"></script>
+    <script src="../uikit/js/uikit.js"></script>
+    <title>铸剑</title>
+    <link rel="shortcut icon" href="../pic/20180310055306596_easyicon_net_16.ico" type="image/x-icon"/>
+    <style>
+        body {
+            background-color: #F4F5F5;
+        }
+
+        .firstPageOfLog .interval {
+            height: 25px;
+        }
+
+        .uk-panel-box {
+            border: 0;
+            background-color: white;
+
+        }
+
+        .uk-position-relative, .uk-position-relative li {
+            display: inline-block;
+        }
+
+        .uk-position-relative li {
+            padding-left: 50px;
+            font-size: 15px;
+        }
+
+        .draft {
+            color: #9D9090;
+        }
+
+        .writeArticle {
+            padding: 0;
+            background-color: white;
+            /*border: 1px solid red;*/
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .writeArticle img {
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+        }
+
+        .writeArticle ul li {
+            display: inline-block;
+            margin-left: 20px;
+        }
+
+        .writeArticle ul {
+            margin-top: -1px;
+        }
+
+        .firstPageOfLog .option ul .select {
+            display: inline-block;
+            border-right: 1px solid #EAEAEA;
+
+            padding-right: 14px;
+            margin-left: 10px;
+        }
+
+        .firstPageOfLog .option ul li:hover a {
+            color: #007FFF;
+            text-decoration: none;
+        }
+
+        .firstPageOfLog .option ul li a {
+            color: #909090;
+        }
+
+        .firstPageOfLog .option {
+            border-radius: 0;
+            padding: 6px;
+            border-bottom: 1px solid #F5F5F5;
+        }
+
+        .firstPageOfLog .option ul .first {
+            color: #007FFF;
+        }
+
+        .firstPageOfLog .rank, .firstPageOfLog .rank li {
+            display: inline-block;
+        }
+
+        .firstPageOfLog .rank {
+            padding-left: 370px;
+        }
+
+        .firstPageOfLog .rank li {
+            border: 0px solid white;
+            padding-right: 14px;
+            margin-left: 10px;
+
+        }
+
+        .firstPageOfLog .rank .cicle {
+            display: inline-block;
+            border: 1px solid #AFB8C2;
+            border-radius: 100%;
+            margin-bottom: 4px;
+        }
+
+        .firstPageOfLog .text .cicle {
+            display: inline-block;
+            border: 1px solid #AFB8C2;
+            border-radius: 100%;
+            margin-bottom: 4px;
+        }
+
+        .firstPageOfLog .text span {
+            font-size: 12px;
+            padding: 0 6px;
+            color: #B2BAC2;
+        }
+
+        .firstPageOfLog .text .special-column {
+            color: #B71ED7;
+        }
+
+        .firstPageOfLog .text .content-title {
+            color: black;
+            font-size: 18px;
+        }
+
+        .firstPageOfLog .text .content {
+            margin-top: 6px;
+        }
+
+        .firstPageOfLog .text a {
+            border-bottom: 1px solid #F5F5F5;
+        }
+
+        .firstPageOfLog .buttonGroup .pic {
+            padding: 6px 10px;
+            border: 1px solid #EDEEEF;
+        }
+
+        .firstPageOfLog .buttonGroup .pic:hover {
+            background-color: #EAEAEA;
+        }
+
+        .firstPageOfLog .buttonGroup .count {
+            margin-left: 2px;
+        }
+
+        .firstPageOfLog .buttonGroup {
+            margin-top: 10px;
+        }
+
+        .firstPageOfLog .buttonGroup .share {
+            margin-left: 15px;
+        }
+
+        .firstPageOfLog .buttonGroup .collect, .firstPageOfLog .buttonGroup .share {
+            padding: 6px 15px;
+            border: 1px solid #EDEEEF;
+            display: none;
+        }
+
+        .firstPageOfLog .buttonGroup .share:hover, .firstPageOfLog .buttonGroup .collect:hover {
+            background-color: #EAEAEA;
+        }
+
+        .firstPageOfLog .text .guide .author:hover, .firstPageOfLog .text .guide .time:hover, .firstPageOfLog .text .guide .kinds:hover {
+            color: #007FFF;
+        }
+
+        .firstPageOfLog .text .content .content-title:hover {
+            text-decoration: underline;
+        }
+
+        .firstPageOfLog .text img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .firstPageOfLog .right-part .interest .interestingPeople {
+            border-radius: 0;
+            border-bottom: 1px solid #F5F5F5;
+        }
+
+        .firstPageOfLog .right-part .interest a:hover {
+            background-color: #EAEAEA;
+        }
+
+        .firstPageOfLog .right-part .interest a img {
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+        }
+
+    </style>
+    <script>
+        window.onload = function (ev) {
+            var text=document.getElementById('text');
+            var oas=text.getElementsByTagName('a');
+
+           for(var i=0;i<oas.length;i++)
+           {
+               oas[i].onmouseover=function (ev2) {
+                   var spans=this.getElementsByTagName('span');
+                   // alert(spans.length);
+                    spans[10].style.display='inline';
+                   spans[9].style.display='inline';
+
+               }
+               oas[i].onmouseout=function (ev2) {
+                   var spans=this.getElementsByTagName('span');
+                   // alert(spans.length);
+                   spans[10].style.display='none';
+                   spans[9].style.display='none';
+               }
+           }
+        }
+    </script>
+</head>
+<body>
+<div class="firstPageOfLog uk-container uk-container-center">
+    <div class="interval"></div>
+    <div class="uk-grid">
+        <div class="uk-width-medium-3-4">
+
+            <div class="writeArticle uk-panel uk-panel-box uk-hidden-small">
+                <img src="../pic/ef3ce67f21b1f3b0c7a8d89288ebc33a.jpg" class="uk-float-left">
+                <ul class=" uk-list  uk-text-truncate uk-float-left">
+                    <li><a href="#" class="uk-icon-pencil-square-o" style="margin-right: 6px"></a><a href="#">写文章</a>
+                    </li>
+                    <li><a href="#" class="uk-icon-share-square-o" style="margin-right: 6px"></a><a href="#">分享链接</a>
+                    </li>
+                    <li class="draft uk-position-absolute uk-hidden-small" style="right: 30px">草稿</li>
+                </ul>
+            </div>
+            <div class="interval"></div>
+
+            <!--uikit没有掘金那种选项卡，uikit的都太丑了，我还是用正常css那么写吧-->
+            <div class="uk-panel-box uk-panel option">
+                <ul class="uk-list uk-list-space uk-text-truncate">
+                    <li class="select"><a href="#" class="first">热门</a></li>
+                    <li class="select"><a href="#">最新</a></li>
+                    <li class="select"><a href="#">评论</a></li>
+                    <ul class="rank uk-position-absolute uk-hidden-small" style="right: 15px;top:18px">
+                        <li><a href="#">本周最热</a></li>
+                        <div class="cicle">
+
+                        </div>
+                        <li><a href="#">本月最热</a></li>
+                        <div class="cicle">
+
+                        </div>
+                        <li><a href="#">历史最热</a></li>
+                    </ul>
+                </ul>
+            </div>
+            <div class="text uk-grid-collapse" id="text">
+                <a class=" uk-panel uk-panel-box uk-panel-hover ">
+                    <div class="guide uk-text-truncate">
+                        <span class="special-column">专栏</span>
+                        <div class="cicle">
+
+                        </div>
+                        <span class="author">蚂蚁金服数据体验技术</span>
+                        <div class="cicle">
+
+                        </div>
+                        <span class="time">5小时前</span>
+                        <div class="cicle">
+
+                        </div>
+                        <span class="kinds">ios</span>
+                    </div>
+                    <div class="uk-text-truncate content uk-text-bold">
+                        <span class="content-title">我们需要注意的immutable操作</span>
+                    </div>
+                    <div class="buttonGroup">
+                        <span class="uk-icon-heart pic uk-text-bold">
+                            <span class="count uk-text-bold">100</span>
+                        </span>
+                        <span class="uk-icon-file pic uk-text-bold">
+                            <span class="count uk-text-bold">16</span>
+                        </span>
+                        <span class="uk-icon-share-alt share"></span><span class="uk-icon-envelope collect"></span>
+                    </div>
+                    <!--<img src="timg.jpg" >-->
+                </a>
+                <a class=" uk-panel uk-panel-box uk-panel-hover ">
+                    <div class="guide uk-text-truncate">
+                        <span class="special-column">专栏</span>
+                        <div class="cicle">
+
+                        </div>
+                        <span class="author">蚂蚁金服数据体验技术</span>
+                        <div class="cicle">
+
+                        </div>
+                        <span class="time">5小时前</span>
+                        <div class="cicle">
+
+                        </div>
+                        <span class="kinds">ios</span>
+                    </div>
+                    <div class="uk-text-truncate content uk-text-bold">
+                        <span class="content-title">我们需要注意的immutable操作</span>
+                    </div>
+                    <div class="buttonGroup">
+                        <span class="uk-icon-heart pic uk-text-bold"><span
+                                class="count uk-text-bold">100</span></span><span class="uk-icon-file pic uk-text-bold"><span
+                            class="count uk-text-bold">16</span></span>
+                        <span class="uk-icon-share-alt share"></span><span class="uk-icon-envelope collect"></span>
+                    </div>
+                    <!--<img src="timg.jpg" >-->
+                </a>
+                <a class=" uk-panel uk-panel-box uk-panel-hover ">
+                    <div class="guide uk-text-truncate">
+                        <span class="special-column">专栏</span>
+                        <div class="cicle">
+
+                        </div>
+                        <span class="author">蚂蚁金服数据体验技术</span>
+                        <div class="cicle">
+
+                        </div>
+                        <span class="time">5小时前</span>
+                        <div class="cicle">
+
+                        </div>
+                        <span class="kinds">ios</span>
+                    </div>
+                    <div class="uk-text-truncate content uk-text-bold">
+                        <span class="content-title">我们需要注意的immutable操作</span>
+                    </div>
+                    <div class="buttonGroup">
+                        <span class="uk-icon-heart pic uk-text-bold"><span
+                                class="count uk-text-bold">100</span></span><span class="uk-icon-file pic uk-text-bold"><span
+                            class="count uk-text-bold">16</span></span>
+                        <span class="uk-icon-share-alt share"></span><span class="uk-icon-envelope collect"></span>
+                    </div>
+                    <!--<img src="timg.jpg" >-->
+                </a>
+                <a class=" uk-panel uk-panel-box uk-panel-hover ">
+                    <div class="guide uk-text-truncate">
+                        <span class="special-column">专栏</span>
+                        <div class="cicle">
+
+                        </div>
+                        <span class="author">蚂蚁金服数据体验技术</span>
+                        <div class="cicle">
+
+                        </div>
+                        <span class="time">5小时前</span>
+                        <div class="cicle">
+
+                        </div>
+                        <span class="kinds">ios</span>
+                    </div>
+                    <div class="uk-text-truncate content uk-text-bold">
+                        <span class="content-title">我们需要注意的immutable操作</span>
+                    </div>
+                    <div class="buttonGroup">
+                        <span class="uk-icon-heart pic uk-text-bold"><span
+                                class="count uk-text-bold">100</span></span><span class="uk-icon-file pic uk-text-bold"><span
+                            class="count uk-text-bold">16</span></span>
+                        <span class="uk-icon-share-alt share"></span><span class="uk-icon-envelope collect"></span>
+                    </div>
+                    <!--<img src="timg.jpg" >-->
+                </a>
+                <a class=" uk-panel uk-panel-box uk-panel-hover ">
+                    <div class="guide uk-text-truncate">
+                        <span class="special-column">专栏</span>
+                        <div class="cicle">
+
+                        </div>
+                        <span class="author">蚂蚁金服数据体验技术</span>
+                        <div class="cicle">
+
+                        </div>
+                        <span class="time">5小时前</span>
+                        <div class="cicle">
+
+                        </div>
+                        <span class="kinds">ios</span>
+                    </div>
+                    <div class="uk-text-truncate content uk-text-bold">
+                        <span class="content-title">我们需要注意的immutable操作</span>
+                    </div>
+                    <div class="buttonGroup">
+                        <span class="uk-icon-heart pic uk-text-bold"><span
+                                class="count uk-text-bold">100</span></span><span class="uk-icon-file pic uk-text-bold"><span
+                            class="count uk-text-bold">16</span></span>
+                        <span class="uk-icon-share-alt share"></span><span class="uk-icon-envelope collect"></span>
+                    </div>
+                    <!--<img src="timg.jpg" >-->
+                </a>
+            </div>
+
+
+        </div>
+        <div class="uk-width-medium-1-4 right-part">
+            <div class="uk-collapse interest">
+                <div class="uk-panel uk-panel-box interestingPeople">
+                    <span>你可能感兴趣的人</span>
+                </div>
+                <a class="uk-panel uk-panel-box uk-panel-box-hover ">
+                    <img src="../pic/c55ecbaae860a243699b2b7634a0f25a.jpg"
+                         class="uk-margin-small-top uk-float-left uk-margin-right">
+                    <div class="authorANDsource uk-float-left">
+                        <div>hanperi0000</div>
+                        <div>utai.com</div>
+                    </div>
+
+                </a>
+                <a class="uk-panel uk-panel-box uk-panel-box-hover">
+                    <img src="../pic/cfe62e5071a7393f40064479bbb3ab1d.jpg"
+                         class="uk-margin-small-top uk-float-left uk-margin-right">
+                    <div class="authorANDsource uk-float-left">
+                        <div>西瓜研究所</div>
+                        <div>哈哈犀利</div>
+                    </div>
+                </a>
+                <a class="uk-panel uk-panel-box uk-panel-box-hover">
+                    <img src="../pic/756fbcdea4a13886d90ecd8a7c12bd75.jpg"
+                         class="uk-margin-small-top uk-float-left uk-margin-right">
+                    <div class="authorANDsource uk-float-left">
+                        <div>box</div>
+                        <div>牛客网</div>
+                    </div>
+                </a>
+                <a class="uk-panel uk-panel-box uk-panel-box-hover">
+                    <img src="../pic/timg.jpg" class="uk-margin-small-top uk-float-left uk-margin-right">
+                    <div class="authorANDsource uk-float-left">
+                        <div>UTF-8</div>
+                        <div>网易云</div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

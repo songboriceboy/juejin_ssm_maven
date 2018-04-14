@@ -1,0 +1,138 @@
+html, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Microsoft YaHei',"Helvetica Neue",Helvetica,Arial,sans-serif!important;
+}
+
+.touch-nav {
+    line-height: 40px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 999999;
+    background: #00a8e6 !important;
+}
+a.w1:link, a.w1:visited, a.w1:active, a.w1:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.uk-navbar
+{
+    background: 0;
+    border: 0;
+    text-shadow: none;
+
+}
+
+#top-header {
+    background: #fff;
+    height: 58px;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    position: fixed;
+    z-index: 999999;
+}
+
+#top-header .uk-navbar-brand, #top-header .uk-navbar-content{
+    height: 58px;
+}
+
+#top-header .uk-navbar-nav > li > a {
+    height: 58px;
+    line-height: 58px;
+    font-family: "Microsoft Yahei";
+    font-size: 16px;
+    padding: 0 11px;
+}
+.mb-cover{
+    padding-top: 60px;
+    background: #f2f2f2;
+}
+.app-cover{
+    background: #f2f2f2;
+}
+.b20{
+    height: 20px;
+}
+.b35{
+    height: 35px;
+}
+.uk-panel-box {
+    background: #fff !important
+}
+a.b:link, a.b:visited, a.b:active {
+    color: #444;
+    text-decoration: none
+}
+
+a.b:hover {
+    color: #00a8e6
+}
+
+.avatar{
+    width: 45px;
+    height: 45px;
+}
+.author-avatar
+{
+    float:left;
+}
+.topic
+{
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ccc;
+    line-height: 22px;
+}
+.topic .content
+{
+    margin-left: 60px;
+}
+
+.uk-icon-justify{
+    padding-right: 5px;
+}
+
+/*首页文章列表*/
+.app-cate{
+    border: 0;
+    background: 0;
+    border-radius: 0;
+    padding: 15px 0;
+    padding-top: 80px;
+}
+.app-cate li{
+    margin-right: 10px;
+}
+.app-all-tag{
+    right: 0;
+}
+.app-blog-item{
+    border-bottom: 1px solid rgba(178,186,194,.15);
+    padding: 20px;
+    font-size: 12px;
+
+}
+.app-blog-item .title{
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+.app-blog-item .topic-cate{
+    background-color: #00a8c6;
+    padding: 2px 10px ;
+    color: white;
+    font-size: 12px;
+    margin-right: 6px;
+}
+
+/*评论*/
+.uk-comment-header{
+    background: 0;
+    border: 0;
+    border-top:1px solid #ddd;
+}
+
+/*写文章*/
+.markdown-editor{
+    padding-left: 0;
+}

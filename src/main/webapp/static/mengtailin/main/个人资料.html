@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link href="../uikit/css/uikit.almost-flat.css" rel="stylesheet">
+    <script src="jquery.js"></script>
+    <script src="../uikit/js/uikit.js"></script>
+    <style>
+        body{
+            background-color:#F4F5F5 ;
+        }
+        .personalDate .dis{
+            height: 20px;
+            background-color:#F4F5F5 ;
+        }
+        .personalDate .wordOfPersonalData{
+            font-size: 22px;
+            margin-top: 30px;
+            border-bottom: 1px solid #F1F1F1;
+            padding-bottom: 16px;
+        }
+        .uk-panel{
+            padding-bottom: 0px;
+        }
+        .personalDate .head-portrait img{
+            height: 80px;
+            width: 80px;
+        }
+        .personalDate .head-portrait .words{
+            color: #90909D;
+            margin-bottom: 15px;
+        }
+        .personalDate .head-portrait .uploading{
+            color: white;
+            padding: 8px 14px;
+            background-color: #007FFF;
+        }
+        .personalDate .head-portrait .head-portrait-right-part{
+            top:16px;
+            left:210px;
+        }
+        .personalDate .shinkPddingtop .uk-panel{
+            padding-top:14px;
+        }
+        .personalDate .head-portrait{
+            border-bottom: 1px solid #F1F1F1;
+            padding-bottom: 16px;
+        }
+        .personalDate input{
+            width: 70%;
+            border: 1px solid red;
+            height: 30px;
+            border: 0;
+            outline: none;
+            font-size: 16px;
+            color: #909090;
+        }
+        .personalDate .uk-icon-pencil{
+            top: 35px;
+            right: 35px;
+            padding-left: 50px;
+            corlor:#007FFF;
+        }
+        .personalDate .save{
+            top: 35px;
+            right: 80px;
+            text-decoration: none;
+            display: none;
+        }
+        .personalDate .cancel{
+            top: 35px;
+            right: 38px;
+            text-decoration: none;
+            color: #909090;
+            display: none;
+        }
+        .personalDate .home,.personalDate .intr{
+            margin-right: 22px;
+        }
+        input::-webkit-input-placeholder { /* WebKit browsers */
+            font-size:15px;
+            color: #C3C3C3;
+        }
+
+    </style>
+    <script>
+        window.onload=function (ev) {
+            var alters = document.getElementsByClassName("alter");
+            var inputs = document.getElementsByTagName("input");
+            var saves = document.getElementsByClassName("save");
+            var cancels = document.getElementsByClassName("cancel");
+            for (var i = 0; i < alters.length; i++)
+            {
+                alters[i].index=i;
+                alters[i].onclick=function () {
+                    alters[this.index].style.display = 'none';
+                    saves[this.index].style.display = 'inline-block';
+                    cancels[this.index].style.display = 'inline-block';
+                    inputs[this.index].focus();
+                }
+            }
+
+            for(var i=0;i<inputs.length;i++) {
+                inputs[i].index=i;
+                inputs[i].onfocus = function (ev2) {
+                    alters[this.index].style.display = 'none';
+                    saves[this.index].style.display = 'inline-block';
+                    cancels[this.index].style.display = 'inline-block';
+                }
+            }
+
+
+            for(var i=0;i<inputs.length;i++)
+            {
+                inputs[i].index=i;
+
+                inputs[i].onblur=function (ev2) {
+                    if(this.value=='')
+                    {
+                        alters[this.index].style.display='inline-block';
+                        saves[this.index].style.display='none';
+                        cancels[this.index].style.display='none';
+                    }
+                    else{
+                        alters[this.index].style.display = 'none';
+                        saves[this.index].style.display = 'inline-block';
+                        cancels[this.index].style.display = 'inline-block';
+                    }
+                }
+            }
+            for(var i=0;i<saves.length;i++)
+            {
+                saves[i].index=i;
+                saves[i].onclick=function () {
+                    inputs[this.index].innerHTML=inputs[this.index].value;
+
+                        var valuee=inputs[this.index].value;
+
+                    alters[this.index].style.display='inline-block';
+                    saves[this.index].style.display='none';
+                    cancels[this.index].style.display='none';
+                   return valuee;
+                }
+
+            }
+            for(var i=0;i<saves.length;i++)
+            {
+                cancels[i].index=i;
+                cancels[i].onclick=function () {
+
+                    inputs[this.index].value='';
+                    alters[this.index].style.display='inline-block';
+                    saves[this.index].style.display='none';
+                    cancels[this.index].style.display='none';
+                }
+
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="personalDate">
+    <div class="dis">
+    </div>
+    <!--个人资料-->
+<div class="uk-grid uk-container uk-container-center uk-grid-collapse">
+<div class="uk-width-medium-3-5 ">
+    <div class="summarize uk-panel  uk-panel-space uk-panel-box-secondary">
+        <div class=" wordOfPersonalData uk-text-bold">个人资料</div>
+    </div>
+<!--头像-->
+    <div class="shinkPddingtop">
+        <!--为了缩小这个panel的上填充必须再弄一个div过渡-->
+    <div class=" uk-panel-box-secondary uk-panel uk-panel-space" >
+        <div class="head-portrait">
+        <span class="uk-margin-large-right ">头像</span><img class=" uk-margin-right" src="../pic/ef3ce67f21b1f3b0c7a8d89288ebc33a.jpg">
+        <div class="head-portrait-right-part uk-position-absolute">
+          <div class="words uk-text-small">
+              支持 jpg、png 格式大小 5M 以内的图片
+          </div>
+            <a href="#"><span class="uploading uk-text-small">
+                点击上传
+            </span></a>
+        </div>
+        </div>
+    </div>
+
+</div>
+    <!--昵称-->
+    <div class="uk-panel-box-secondary uk-panel uk-panel-space " >
+        <div class="nickname" style="border-bottom: 1px solid #F1F1F1;padding-bottom: 20px">
+            <span class="uk-margin-large-right">昵称</span><input type="text" placeholder="填写你的昵称">
+            <a href="#" class="uk-icon-pencil uk-position-absolute alter">修改</a>
+            <a href="#" class="uk-position-absolute save">保存</a><a href="#" class="uk-position-absolute cancel">取消</a>
+        </div>
+    </div>
+    <!--职位-->
+    <div class="uk-panel-box-secondary uk-panel uk-panel-space " >
+        <div class="job" style="border-bottom: 1px solid #F1F1F1;padding-bottom: 20px">
+            <span class="uk-margin-large-right">职位</span><input type="text" placeholder="填写你的职位" >
+            <a href="#" class="uk-icon-pencil uk-position-absolute alter">修改</a>
+            <a href="#" class="uk-position-absolute save">保存</a><a href="#" class="uk-position-absolute cancel">取消</a>
+        </div>
+    </div>
+    <!--公司-->
+    <div class="uk-panel-box-secondary uk-panel uk-panel-space " >
+        <div class="company" style="border-bottom: 1px solid #F1F1F1;padding-bottom: 20px">
+            <span class=" uk-margin-large-right">公司</span><input type="text" placeholder="填写你的公司">
+            <a href="#" class="uk-icon-pencil uk-position-absolute alter">修改</a>
+            <a href="#" class="uk-position-absolute save">保存</a><a href="#" class="uk-position-absolute cancel">取消</a>
+        </div>
+    </div>
+    <!--自我介绍-->
+    <div class="uk-panel-box-secondary uk-panel uk-panel-space " >
+        <div class="introduction" style="border-bottom: 1px solid #F1F1F1;padding-bottom: 20px">
+            <span class=" intr">自我介绍</span><input type="text" placeholder="填写职业技能">
+            <a href="#" class="uk-icon-pencil uk-position-absolute alter">修改</a>
+            <a href="#" class="uk-position-absolute save">保存</a><a href="#" class="uk-position-absolute cancel">取消</a>
+        </div>
+    </div>
+    <!--个人主页-->
+    <div class="uk-panel-box-secondary uk-panel uk-panel-space " >
+        <div class="homepage" style="border-bottom: 1px solid #F1F1F1;padding-bottom: 20px">
+            <span class="home">个人主页</span><input type="text" placeholder="填写你的个人主页">
+            <a href="#" class="uk-icon-pencil uk-position-absolute alter">修改</a>
+            <a href="#" class="uk-position-absolute save">保存</a><a href="#" class="uk-position-absolute cancel">取消</a>
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+</body>
+</html>
