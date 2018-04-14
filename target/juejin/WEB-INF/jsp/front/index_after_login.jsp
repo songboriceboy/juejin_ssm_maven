@@ -142,9 +142,22 @@
             <div class="uk-width-medium-3-4">
 
                 <div class="writeArticle uk-panel uk-panel-box ">
-                    <img src="ef3ce67f21b1f3b0c7a8d89288ebc33a.jpg" class="uk-float-left">
+                    <c:choose>
+                        <c:when test="${!empty user_info.user_avatar}">
+                            <img
+                                    class="uk-float-left" width="40" height="40" title="欢迎您${user_info.user_name}"
+                                    src="${pageContext.request.contextPath}/avatar/${user_info.user_avatar}"
+                                    alt="掘金">
+                        </c:when>
+                        <c:otherwise>
+                            <img
+                                    class="uk-float-left" width="40" height="40" title="欢迎您${user_info.user_name}"
+                                    src="https://user-gold-cdn.xitu.io/2017/7/29/e4663a53d6f246bac968c7c2d5d22e60?imageView2/1/w/90/h/90/q/85/format/webp/interlace/1"
+                                    alt="掘金">
+                        </c:otherwise>
+                    </c:choose>
                     <ul class=" uk-list  uk-text-truncate uk-float-left">
-                        <li><a href="#" class="uk-icon-pencil-square-o" style="margin-right: 6px"></a><a href="#">写文章</a>
+                        <li><a href="#" class="uk-icon-pencil-square-o" style="margin-right: 6px"></a><a href="${pageContext.request.contextPath}/topic/new">写文章</a>
                         </li>
                         <li><a href="#" class="uk-icon-share-square-o" style="margin-right: 6px"></a><a href="#">分享链接</a>
                         </li>

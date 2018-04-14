@@ -99,23 +99,7 @@
 
   </head>
   <body>
-  <%--欢迎您 ${user_info.user_name}--%>
-<%--<a href="${pageContext.request.contextPath}/user/login">login</a>--%>
-<%--<a href="${pageContext.request.contextPath}/user/reg">reg</a>--%>
-  <%--<a href="${pageContext.request.contextPath}/topic/new">new topic</a>--%>
-  <%--<a href="${pageContext.request.contextPath}/">home</a>--%>
-  <%--<div id="wai">--%>
-    <%--<div id="nei"></div>--%>
-  <%--</div><span id="precent"></span><br/>--%>
-  <%--<img class="uk-border-circle" id="avatar">--%>
-  <%--<input type="file" name="pic" onchange="upfile();"/>--%>
   <%@include file="common/header.jsp"%>
-
-  <%--<div class="mb-cover">--%>
-  <%--<ul class="uk-margin-top" id="topic-list">--%>
-
-  <%--</ul>--%>
-  <%--</div>--%>
 
   <div class="app-cover">
       <div class="b20"></div>
@@ -123,21 +107,15 @@
       <div class="uk-container uk-container-center">
           <div class="uk-grid" data-uk-grid-margin="">
               <div class="uk-width-medium-3-4">
-
                   <div class="uk-panel uk-panel-box uk-padding-remove">
                       <ul class="uk-list" id="topic-list">
 
-
                       </ul>
-
                   </div>
-
               </div>
 
               <div class="uk-width-medium-1-4 uk-hidden-small" id="mb_list_right">
-
                   <div id="ulogin" class="login uk-panel uk-panel-box uk-panel-box-secondary">
-
                       <div class="uk-text-bold uk-margin-bottom">铸剑-zhujian</div>
                       <form class="uk-form  uk-margin-small-top" action="${pageContext.request.contextPath}/user/reguser" method="post">
                           <div class="uk-form-row ">
