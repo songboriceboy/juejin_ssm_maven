@@ -16,39 +16,7 @@
 
     <link href="${pageContext.request.contextPath}/assets/uikit-2.25.0/css/uikit.almost-flat.css" rel="stylesheet">
     <%@include file="common/common_css_js_include.jsp"%>
-<style>
-/*写文章，分享链接*/
-    .writeArticle {
-        padding: 0;
-        background-color: white;
-        height: 0.92593rem;
-        line-height: 0.92593rem;
-    }
 
-    .writeArticle img {
-        width: 0.92593rem;
-        height: 0.92593rem;
-    }
-
-    .writeArticle ul li {
-        display: inline-block;
-        margin-left: 0.37037rem;
-    }
-
-    .writeArticle .draft {
-        color: #9D9090;
-    }
-
-    #item-list .special-column{
-        color: #B71ED7;
-    }
-
-    #item-list .seperator
-    {
-        padding-left: 4px;
-    }
-
-</style>
     <script type="text/javascript">
         var isNoMore = false;
         var iiLoading=null;

@@ -217,3 +217,34 @@ a.b:hover {
     color: #007BFF;
     background-color: #F7FFFF;
 }
+/*写文章，分享链接*/
+.writeArticle {
+    padding: 0;
+    background-color: white;
+    height: 0.92593rem;
+    line-height: 0.92593rem;
+}
+
+.writeArticle img {
+    width: 0.92593rem;
+    height: 0.92593rem;
+}
+
+.writeArticle ul li {
+    display: inline-block;
+    margin-left: 0.37037rem;
+}
+
+.writeArticle .draft {
+    color: #9D9090;
+}
+
+#item-list .special-column{
+    color: #B71ED7;
+}
+
+#item-list .seperator
+{
+    padding-left: 4px;
+}
+

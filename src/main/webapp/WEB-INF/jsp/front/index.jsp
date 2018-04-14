@@ -166,9 +166,6 @@
                           <div class="tag-item  uk-text-center uk-display-inline-block uk-width-1-3 uk-border-rounded uk-margin-left"><a href="#">铸剑翻译</a></div>
                       </div>
                   </div>
-
-
-
                   <!--页脚部分-->
                   <div class="uk-panel uk-panel-box uk-panel-box-secondary">
                       <h3 class="uk-panel-title">你可能感兴趣的人</h3>
@@ -213,35 +210,6 @@
 
   <script type="text/html" id="topic-list-tpl">
       {{each list as topic i}}
-      <%--<li class="uk-list uk-list-line uk-clearfix topic uk-margin-top" id="{{topic.topic_id}}">--%>
-        <%--{{topic.topic_id}}--%>
-
-          <%--<div class="content">--%>
-            <%--<div class="uk-grid">--%>
-              <%--<div class="uk-width-5-6">--%>
-                <%--<a href="${pageContext.request.contextPath}/topic/show/{{topic.topic_id}}">{{topic.topic_title}}</a>--%>
-                <%--<a href="${pageContext.request.contextPath}/topic/modify/{{topic.topic_id}}">修改</a>--%>
-              <%--</div>--%>
-              <%--<div class="uk-width-1-6 uk-vertical-align uk-text-center">--%>
-                <%--{{if topic.comment_count > 0}}--%>
-                <%--<span class="uk-badge uk-badge-notification uk-vertical-align-middle">--%>
-                  <%--{{topic.comment_count}}--%>
-                <%--</span>--%>
-                <%--{{/if}}--%>
-              <%--</div>--%>
-            <%--</div>--%>
-
-            <%--<div>--%>
-              <%--<span class="node"><a href="javascript:;" section_id = {{topic.section_id}}>{{topic.section_name}}</a></span>--%>
-              <%--<span class="split">•</span>--%>
-              <%--<span class="author"><a href="${pageContext.request.contextPath}/user/show/{{topic.user_id}}">{{topic.user_name}}</a></span>--%>
-              <%--<span class="split">•</span>--%>
-              <%--<span class="datetime">{{topic.createtime_str}}</span>--%>
-            <%--</div>--%>
-
-          <%--</div>--%>
-        <%--</li>--%>
-
       <li class="app-blog-item" id="{{topic.topic_id}}" >
           {{topic.topic_id}}
           <div class="title uk-text-truncate">
