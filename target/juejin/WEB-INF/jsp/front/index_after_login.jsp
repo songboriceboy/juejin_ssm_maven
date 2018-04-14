@@ -13,39 +13,14 @@
     <title>hello</title>
     <meta name="viewport"
           content="width=device-width,user-sctag-item=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <link href="${pageContext.request.contextPath}/assets/uikit-2.25.0/css/uikit.almost-flat.css" rel="stylesheet">
     <%@include file="common/common_css_js_include.jsp"%>
 <style>
-    body {
-        background-color: #F4F5F5;
-    }
-
-    .firstPageOfLog .interval {
-        height: 0.46296rem;
-    }
-
-    .uk-panel-box {
-        border: 0;
-        background-color: white;
-
-    }
-
-    /*.uk-position-relative, .uk-position-relative li {*/
-        /*display: inline-block;*/
-    /*}*/
-
-    /*.uk-position-relative li {*/
-        /*padding-left: 0.92593rem;*/
-        /*font-size: 0.27778rem;*/
-    /*}*/
-
-    .draft {
-        color: #9D9090;
-    }
-
+/*写文章，分享链接*/
     .writeArticle {
         padding: 0;
         background-color: white;
-        /*border: 1px solid red;*/
         height: 0.92593rem;
         line-height: 0.92593rem;
     }
@@ -53,7 +28,6 @@
     .writeArticle img {
         width: 0.92593rem;
         height: 0.92593rem;
-        display: inline-block;
     }
 
     .writeArticle ul li {
@@ -61,404 +35,304 @@
         margin-left: 0.37037rem;
     }
 
-    .writeArticle ul {
-        margin-top: -1px;
+    .writeArticle .draft {
+        color: #9D9090;
     }
 
-    .firstPageOfLog .option ul .select {
-        display: inline-block;
-        border-right: 1px solid #EAEAEA;
-
-        padding-right: 0.25926rem;
-        margin-left: 0.18519rem;
-    }
-
-    .firstPageOfLog .option ul li:hover a {
-        color: #007FFF;
-        text-decoration: none;
-    }
-
-    .firstPageOfLog .option ul li a {
-        color: #909090;
-    }
-
-    .firstPageOfLog .option {
-        border-radius: 0;
-        padding: 0.11111rem;
-        border-bottom: 1px solid #F5F5F5;
-    }
-
-    .firstPageOfLog .option ul .first {
-        color: #007FFF;
-    }
-
-    .firstPageOfLog .rank, .firstPageOfLog .rank li {
-        display: inline-block;
-    }
-
-    .firstPageOfLog .rank {
-        padding-left: 6.85185rem;
-    }
-
-    .firstPageOfLog .rank li {
-        border: 0px solid white;
-        padding-right: 0.25926rem;
-        margin-left: 0.18519rem;
-
-    }
-
-    .firstPageOfLog .rank .cicle {
-        display: inline-block;
-        border: 1px solid #AFB8C2;
-        border-radius: 100%;
-        margin-bottom: 0.07407rem;
-    }
-
-    .firstPageOfLog .text .cicle {
-        display: inline-block;
-        border: 1px solid #AFB8C2;
-        border-radius: 100%;
-        margin-bottom: 0.07407rem;
-    }
-
-    .firstPageOfLog .text span {
-        font-size: 0.22222rem;
-        padding: 0 0.11111rem;
-        color: #B2BAC2;
-    }
-
-    .firstPageOfLog .text .special-column {
+    #item-list .special-column{
         color: #B71ED7;
     }
 
-    .firstPageOfLog .text .content-title {
-        color: black;
-        font-size: 0.33333rem;
+    #item-list .seperator
+    {
+        padding-left: 4px;
     }
 
-    .firstPageOfLog .text .content {
-        margin-top: 0.11111rem;
-    }
-
-    .firstPageOfLog .text a {
-        border-bottom: 1px solid #F5F5F5;
-    }
-
-    .firstPageOfLog .buttonGroup .pic {
-        padding: 0.11111rem 0.18519rem;
-        border: 1px solid #EDEEEF;
-    }
-
-    .firstPageOfLog .buttonGroup .pic:hover {
-        background-color: #EAEAEA;
-    }
-
-    .firstPageOfLog .buttonGroup .count {
-        margin-left: 0.03704rem;
-    }
-
-    .firstPageOfLog .buttonGroup {
-        margin-top: 0.18519rem;
-    }
-
-    .firstPageOfLog .buttonGroup .share {
-        margin-left: 0.27778rem;
-    }
-
-    .firstPageOfLog .buttonGroup .collect, .firstPageOfLog .buttonGroup .share {
-        padding: 0.11111rem 0.27778rem;
-        border: 1px solid #EDEEEF;
-        display: none;
-    }
-
-    .firstPageOfLog .buttonGroup .share:hover, .firstPageOfLog .buttonGroup .collect:hover {
-        background-color: #EAEAEA;
-    }
-
-    .firstPageOfLog .text .guide .author:hover, .firstPageOfLog .text .guide .time:hover, .firstPageOfLog .text .guide .kinds:hover {
-        color: #007FFF;
-    }
-
-    .firstPageOfLog .text .content .content-title:hover {
-        text-decoration: underline;
-    }
-
-    .firstPageOfLog .text img {
-        width: 1.11111rem;
-        height: 1.11111rem;
-    }
-
-    .firstPageOfLog .right-part .interest .interestingPeople {
-        border-radius: 0;
-        border-bottom: 1px solid #F5F5F5;
-    }
-
-    .firstPageOfLog .right-part .interest a:hover {
-        background-color: #EAEAEA;
-    }
-
-    .firstPageOfLog .right-part .interest a img {
-        width: 0.74074rem;
-        height: 0.74074rem;
-        border-radius: 100%;
-    }
 </style>
-    <script>
-        window.onload = function (ev) {
-            var text=document.getElementById('text');
-            var oas=text.getElementsByTagName('a');
+    <script type="text/javascript">
+        var isNoMore = false;
+        var iiLoading=null;
+        var curr_req_id = 0;
+        var g_sid = 0;
+        function refresh(loadmore) {
+            $(window).scroll(function(){
+                console.log('正在滑动f');
 
-            for(var i=0;i<oas.length;i++)
-            {
-                oas[i].onmouseover=function (ev2) {
-                    var spans=this.getElementsByTagName('span');
-                    // alert(spans.length);
-                    spans[10].style.display='inline';
-                    spans[9].style.display='inline';
+                var scrollTop = $(this).scrollTop();    //滚动条距离顶部的高度
+                var scrollHeight = $(document).height();   //当前页面的总高度
+                var clientHeight = $(this).height();    //当前可视的页面高度
+                // console.log("top:"+scrollTop+",doc:"+scrollHeight+",client:"+clientHeight);
+                if(!isNoMore&&(scrollTop + clientHeight >= scrollHeight)){   //距离顶部+当前高度 >=文档总高度 即代表滑动到底部
+                    console.log('下拉');
+                    if(loadmore){
+                        var last_id = $('#topic-list li:last-child').attr('id');
 
+                        loadmore(last_id);
+                    }
                 }
-                oas[i].onmouseout=function (ev2) {
-                    var spans=this.getElementsByTagName('span');
-                    // alert(spans.length);
-                    spans[10].style.display='none';
-                    spans[9].style.display='none';
-                }
-            }
+            });
         }
+
+        $(function () {
+
+            $('#login-btn').on('click', function() {
+
+                        layer.open({
+                            type: 1,
+                            skin: 'layui-layer-lan',
+                            shadeClose: true, //点击遮罩关闭层
+                            area: ['320px', '320px'],
+                            content: $('#ulogin')//弹框显示的url
+                        });
+                    }
+            );
+
+            refresh(function (last_id) {
+                if(last_id == undefined)
+                {
+                    return;
+                }
+
+                if(curr_req_id == last_id)
+                {
+                    return;
+                }
+                curr_req_id = last_id;
+                iiLoading = layer.load();
+                $.post("${pageContext.request.contextPath}/topic/getpagedtopics",{section_id:g_sid,last_topic_id:last_id}, function (res) {
+                    // layer.msg(ret.msg);
+                    var data = JSON.parse(res);
+
+                    var html = template('topic-list-tpl', data);
+                    $('#topic-list').append(html);
+                    layer.close(iiLoading);
+                    if(data.list.length == 0)
+                    {
+                        isNoMore = true;
+                        layer.msg('没有了', {
+                            time: 500
+                        });
+                    }
+                    curr_req_id = 0;
+                });
+            });
+            getTopicsBySectionID(g_sid);
+
+        })
+
+        function getTopicsBySectionID(sid) {
+            g_sid = sid;
+            $.post("${pageContext.request.contextPath}/topic/getpagedtopics",{section_id:sid,last_topic_id:0}, function (res) {
+                var data = JSON.parse(res);
+                var html = template('topic-list-tpl', data);
+                $('#topic-list').html('');
+                $('#topic-list').append(html);
+            });
+        }
+
     </script>
+    <%--<script>--%>
+        <%--window.onload = function (ev) {--%>
+            <%--var text=document.getElementById('text');--%>
+            <%--var oas=text.getElementsByTagName('a');--%>
+
+            <%--for(var i=0;i<oas.length;i++)--%>
+            <%--{--%>
+                <%--oas[i].onmouseover=function (ev2) {--%>
+                    <%--var spans=this.getElementsByTagName('span');--%>
+                    <%--// alert(spans.length);--%>
+                    <%--spans[10].style.display='inline';--%>
+                    <%--spans[9].style.display='inline';--%>
+
+                <%--}--%>
+                <%--oas[i].onmouseout=function (ev2) {--%>
+                    <%--var spans=this.getElementsByTagName('span');--%>
+                    <%--// alert(spans.length);--%>
+                    <%--spans[10].style.display='none';--%>
+                    <%--spans[9].style.display='none';--%>
+                <%--}--%>
+            <%--}--%>
+        <%--}--%>
+    <%--</script>--%>
 
 </head>
 <body>
 
 <%@include file="common/header.jsp"%>
-<div class="firstPageOfLog uk-container uk-container-center">
-    <div class="interval"></div>
-    <div class="uk-grid">
-        <div class="uk-width-medium-3-4">
+<div class="app-cover">
+    <div class="firstPageOfLog uk-container uk-container-center">
+        <div class="b20"></div>
+        <div class="uk-grid">
+            <div class="uk-width-medium-3-4">
 
-            <div class="writeArticle uk-panel uk-panel-box ">
-                <img src="ef3ce67f21b1f3b0c7a8d89288ebc33a.jpg" class="uk-float-left">
-                <ul class=" uk-list  uk-text-truncate uk-float-left">
-                    <li><a href="#" class="uk-icon-pencil-square-o" style="margin-right: 6px"></a><a href="#">写文章</a>
-                    </li>
-                    <li><a href="#" class="uk-icon-share-square-o" style="margin-right: 6px"></a><a href="#">分享链接</a>
-                    </li>
-                    <li class="draft uk-position-absolute uk-hidden-small" style="right: 30px">草稿</li>
-                </ul>
-            </div>
-            <div class="interval"></div>
+                <div class="writeArticle uk-panel uk-panel-box ">
+                    <img src="ef3ce67f21b1f3b0c7a8d89288ebc33a.jpg" class="uk-float-left">
+                    <ul class=" uk-list  uk-text-truncate uk-float-left">
+                        <li><a href="#" class="uk-icon-pencil-square-o" style="margin-right: 6px"></a><a href="#">写文章</a>
+                        </li>
+                        <li><a href="#" class="uk-icon-share-square-o" style="margin-right: 6px"></a><a href="#">分享链接</a>
+                        </li>
+                        <li class="draft uk-position-absolute uk-hidden-small" style="right: 30px">草稿</li>
+                    </ul>
+                </div>
 
-            <!--uikit没有掘金那种选项卡，uikit的都太丑了，我还是用正常css那么写吧-->
-            <div class="uk-panel-box uk-panel option">
-                <ul class="uk-list uk-list-space uk-text-truncate">
-                    <li class="select"><a href="#" class="first">热门</a></li>
-                    <li class="select"><a href="#">最新</a></li>
-                    <li class="select"><a href="#">评论</a></li>
-                    <ul class="rank uk-position-absolute uk-hidden-small" style="right: 15px;top:18px">
+                <div class="b20"></div>
+                <div class="uk-panel-box uk-panel uk-padding-bottom-remove">
+                    <ul class="uk-subnav uk-subnav-line uk-display-inline-block">
+                        <li class="uk-active"><a href="#">热门</a></li>
+                        <li><a href="#">最新</a></li>
+                        <li><a href="#">评论</a></li>
+                    </ul>
+                    <ul class="uk-subnav uk-subnav-line uk-display-inline-block uk-float-right">
                         <li><a href="#">本周最热</a></li>
-                        <div class="cicle">
-
-                        </div>
                         <li><a href="#">本月最热</a></li>
-                        <div class="cicle">
-
-                        </div>
                         <li><a href="#">历史最热</a></li>
                     </ul>
-                </ul>
-            </div>
-            <div class="text uk-grid-collapse" id="text">
-                <a class=" uk-panel uk-panel-box uk-panel-hover ">
-                    <div class="guide uk-text-truncate">
-                        <span class="special-column">专栏</span>
-                        <div class="cicle">
-
-                        </div>
-                        <span class="author">蚂蚁金服数据体验技术</span>
-                        <div class="cicle">
-
-                        </div>
-                        <span class="time">5小时前</span>
-                        <div class="cicle">
-
-                        </div>
-                        <span class="kinds">ios</span>
-                    </div>
-                    <div class="uk-text-truncate content uk-text-bold">
-                        <span class="content-title">我们需要注意的immutable操作</span>
-                    </div>
-                    <div class="buttonGroup">
-                        <span class="uk-icon-heart pic uk-text-bold">
-                            <span class="count uk-text-bold">100</span>
-                        </span>
-                        <span class="uk-icon-file pic uk-text-bold">
-                            <span class="count uk-text-bold">16</span>
-                        </span>
-                        <span class="uk-icon-share-alt share"></span><span class="uk-icon-envelope collect"></span>
-                    </div>
-                    <!--<img src="timg.jpg" >-->
-                </a>
-                <a class=" uk-panel uk-panel-box uk-panel-hover ">
-                    <div class="guide uk-text-truncate">
-                        <span class="special-column">专栏</span>
-                        <div class="cicle">
-
-                        </div>
-                        <span class="author">蚂蚁金服数据体验技术</span>
-                        <div class="cicle">
-
-                        </div>
-                        <span class="time">5小时前</span>
-                        <div class="cicle">
-
-                        </div>
-                        <span class="kinds">ios</span>
-                    </div>
-                    <div class="uk-text-truncate content uk-text-bold">
-                        <span class="content-title">我们需要注意的immutable操作</span>
-                    </div>
-                    <div class="buttonGroup">
-                        <span class="uk-icon-heart pic uk-text-bold"><span
-                                class="count uk-text-bold">100</span></span><span class="uk-icon-file pic uk-text-bold"><span
-                            class="count uk-text-bold">16</span></span>
-                        <span class="uk-icon-share-alt share"></span><span class="uk-icon-envelope collect"></span>
-                    </div>
-                    <!--<img src="timg.jpg" >-->
-                </a>
-                <a class=" uk-panel uk-panel-box uk-panel-hover ">
-                    <div class="guide uk-text-truncate">
-                        <span class="special-column">专栏</span>
-                        <div class="cicle">
-
-                        </div>
-                        <span class="author">蚂蚁金服数据体验技术</span>
-                        <div class="cicle">
-
-                        </div>
-                        <span class="time">5小时前</span>
-                        <div class="cicle">
-
-                        </div>
-                        <span class="kinds">ios</span>
-                    </div>
-                    <div class="uk-text-truncate content uk-text-bold">
-                        <span class="content-title">我们需要注意的immutable操作</span>
-                    </div>
-                    <div class="buttonGroup">
-                        <span class="uk-icon-heart pic uk-text-bold"><span
-                                class="count uk-text-bold">100</span></span><span class="uk-icon-file pic uk-text-bold"><span
-                            class="count uk-text-bold">16</span></span>
-                        <span class="uk-icon-share-alt share"></span><span class="uk-icon-envelope collect"></span>
-                    </div>
-                    <!--<img src="timg.jpg" >-->
-                </a>
-                <a class=" uk-panel uk-panel-box uk-panel-hover ">
-                    <div class="guide uk-text-truncate">
-                        <span class="special-column">专栏</span>
-                        <div class="cicle">
-
-                        </div>
-                        <span class="author">蚂蚁金服数据体验技术</span>
-                        <div class="cicle">
-
-                        </div>
-                        <span class="time">5小时前</span>
-                        <div class="cicle">
-
-                        </div>
-                        <span class="kinds">ios</span>
-                    </div>
-                    <div class="uk-text-truncate content uk-text-bold">
-                        <span class="content-title">我们需要注意的immutable操作</span>
-                    </div>
-                    <div class="buttonGroup">
-                        <span class="uk-icon-heart pic uk-text-bold"><span
-                                class="count uk-text-bold">100</span></span><span class="uk-icon-file pic uk-text-bold"><span
-                            class="count uk-text-bold">16</span></span>
-                        <span class="uk-icon-share-alt share"></span><span class="uk-icon-envelope collect"></span>
-                    </div>
-                    <!--<img src="timg.jpg" >-->
-                </a>
-                <a class=" uk-panel uk-panel-box uk-panel-hover ">
-                    <div class="guide uk-text-truncate">
-                        <span class="special-column">专栏</span>
-                        <div class="cicle">
-
-                        </div>
-                        <span class="author">蚂蚁金服数据体验技术</span>
-                        <div class="cicle">
-
-                        </div>
-                        <span class="time">5小时前</span>
-                        <div class="cicle">
-
-                        </div>
-                        <span class="kinds">ios</span>
-                    </div>
-                    <div class="uk-text-truncate content uk-text-bold">
-                        <span class="content-title">我们需要注意的immutable操作</span>
-                    </div>
-                    <div class="buttonGroup">
-                        <span class="uk-icon-heart pic uk-text-bold"><span
-                                class="count uk-text-bold">100</span></span><span class="uk-icon-file pic uk-text-bold"><span
-                            class="count uk-text-bold">16</span></span>
-                        <span class="uk-icon-share-alt share"></span><span class="uk-icon-envelope collect"></span>
-                    </div>
-                    <!--<img src="timg.jpg" >-->
-                </a>
-            </div>
-
-
-        </div>
-        <div class="uk-width-medium-1-4 right-part">
-            <div class="uk-collapse interest">
-                <div class="uk-panel uk-panel-box interestingPeople">
-                    <span>你可能感兴趣的人</span>
                 </div>
-                <a class="uk-panel uk-panel-box uk-panel-box-hover ">
-                    <img src="c55ecbaae860a243699b2b7634a0f25a.jpg"
-                         class="uk-margin-small-top uk-float-left uk-margin-right">
-                    <div class="authorANDsource uk-float-left">
-                        <div>hanperi0000</div>
-                        <div>utai.com</div>
-                    </div>
 
-                </a>
-                <a class="uk-panel uk-panel-box uk-panel-box-hover">
-                    <img src="cfe62e5071a7393f40064479bbb3ab1d.jpg"
-                         class="uk-margin-small-top uk-float-left uk-margin-right">
-                    <div class="authorANDsource uk-float-left">
-                        <div>西瓜研究所</div>
-                        <div>哈哈犀利</div>
-                    </div>
-                </a>
-                <a class="uk-panel uk-panel-box uk-panel-box-hover">
-                    <img src="756fbcdea4a13886d90ecd8a7c12bd75.jpg"
-                         class="uk-margin-small-top uk-float-left uk-margin-right">
-                    <div class="authorANDsource uk-float-left">
-                        <div>box</div>
-                        <div>牛客网</div>
-                    </div>
-                </a>
-                <a class="uk-panel uk-panel-box uk-panel-box-hover">
-                    <img src="timg.jpg" class="uk-margin-small-top uk-float-left uk-margin-right">
-                    <div class="authorANDsource uk-float-left">
-                        <div>UTF-8</div>
-                        <div>网易云</div>
-                    </div>
-                </a>
+
+                <ul class="text uk-grid-collapse" id="item-list">
+                    <li class="uk-panel uk-panel-box uk-panel-hover">
+                        <ul class="uk-subnav">
+                            <li class="special-column">专栏</li>
+                            <li><a href="#">蚂蚁金服数据体验技术</a></li>
+                            <li>5小时前</li>
+                            <li><a href="#">ios</a></li>
+                            <li class="seperator">/</li>
+                            <li class="seperator"><a href="#">android</a></li>
+                        </ul>
+                        <div class="uk-text-truncate uk-margin-small-top  uk-margin-small-bottom uk-text-bold">
+                            <a class="content-title" href="#">我们需要注意的immutable操作</a>
+                        </div>
+                            <ul class="uk-subnav uk-subnav-pill">
+                                <li><a href="#"><i class="uk-icon-heart uk-margin-small-right"></i>5小时前</a></li>
+                                <li><a href="#"><i class="uk-icon-file uk-margin-small-right"></i>ios</a></li>
+                                <%--<span class="uk-icon-share-alt share"></span>--%>
+                                <%--<span class="uk-icon-envelope collect"></span>--%>
+                            </ul>
+                    </li>
+                    <li class="uk-panel uk-panel-box uk-panel-hover">
+                        <ul class="uk-subnav">
+                            <li class="special-column">专栏</li>
+                            <li><a href="#">蚂蚁金服数据体验技术</a></li>
+                            <li>5小时前</li>
+                            <li><a href="#">ios</a></li>
+                            <li class="seperator">/</li>
+                            <li class="seperator"><a href="#">android</a></li>
+                        </ul>
+                        <div class="uk-text-truncate uk-margin-small-top  uk-margin-small-bottom uk-text-bold">
+                            <a class="content-title" href="#">我们需要注意的immutable操作</a>
+                        </div>
+                        <ul class="uk-subnav uk-subnav-pill">
+                            <li><a href="#"><i class="uk-icon-heart uk-margin-small-right"></i>5小时前</a></li>
+                            <li><a href="#"><i class="uk-icon-file uk-margin-small-right"></i>ios</a></li>
+                            <%--<span class="uk-icon-share-alt share"></span>--%>
+                            <%--<span class="uk-icon-envelope collect"></span>--%>
+                        </ul>
+                    </li>
+                    <li class="uk-panel uk-panel-box uk-panel-hover">
+                        <ul class="uk-subnav">
+                            <li class="special-column">专栏</li>
+                            <li><a href="#">蚂蚁金服数据体验技术</a></li>
+                            <li>5小时前</li>
+                            <li><a href="#">ios</a></li>
+                            <li class="seperator">/</li>
+                            <li class="seperator"><a href="#">android</a></li>
+                        </ul>
+                        <div class="uk-text-truncate uk-margin-small-top  uk-margin-small-bottom uk-text-bold">
+                            <a class="content-title" href="#">我们需要注意的immutable操作</a>
+                        </div>
+                        <ul class="uk-subnav uk-subnav-pill">
+                            <li><a href="#"><i class="uk-icon-heart uk-margin-small-right"></i>5小时前</a></li>
+                            <li><a href="#"><i class="uk-icon-file uk-margin-small-right"></i>ios</a></li>
+                            <%--<span class="uk-icon-share-alt share"></span>--%>
+                            <%--<span class="uk-icon-envelope collect"></span>--%>
+                        </ul>
+                    </li>
+                </ul>
+
 
             </div>
+            <div class="uk-width-medium-1-4 right-part">
+                <div class="uk-panel uk-panel-box uk-panel-box-secondary">
+                    <h3 class="uk-panel-title">你可能感兴趣的人</h3>
+                    <ul class="uk-list">
+                        <li>
+                            <img class="uk-align-left uk-border-circle"
+                                 src="https://avatars.githubusercontent.com/u/20903311" width="40" height="40">
+                            <div>zhangsan</div>
+                            <div>前端学徒</div>
+                        </li>
+                        <li>
+                            <img class="uk-align-left uk-border-circle"
+                                 src="https://avatars.githubusercontent.com/u/20903311" width="40" height="40">
+                            <div>zhangsan</div>
+                            <div>前端学徒</div>
+                        </li>
+                        <li>
+                            <img class="uk-align-left uk-border-circle"
+                                 src="https://avatars.githubusercontent.com/u/20903311" width="40" height="40">
+                            <div>zhangsan</div>
+                            <div>前端学徒</div>
+                        </li>
+                        <li>
+                            <img class="uk-align-left uk-border-circle"
+                                 src="https://avatars.githubusercontent.com/u/20903311" width="40" height="40">
+                            <div>zhangsan</div>
+                            <div>前端学徒</div>
+                        </li>
+                        <li>
+                            <img class="uk-align-left uk-border-circle"
+                                 src="https://avatars.githubusercontent.com/u/20903311" width="40" height="40">
+                            <div>zhangsan</div>
+                            <div>前端学徒</div>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="uk-panel uk-panel-box uk-panel-box-secondary">
+                    <h3 class="uk-panel-title">你可能感兴趣的人</h3>
+                    <ul class="uk-list">
+                        <li>
+                            <img class="uk-align-left uk-border-circle"
+                                 src="https://avatars.githubusercontent.com/u/20903311" width="40" height="40">
+                            <div>zhangsan</div>
+                            <div>前端学徒</div>
+                        </li>
+                        <li>
+                            <img class="uk-align-left uk-border-circle"
+                                 src="https://avatars.githubusercontent.com/u/20903311" width="40" height="40">
+                            <div>zhangsan</div>
+                            <div>前端学徒</div>
+                        </li>
+                        <li>
+                            <img class="uk-align-left uk-border-circle"
+                                 src="https://avatars.githubusercontent.com/u/20903311" width="40" height="40">
+                            <div>zhangsan</div>
+                            <div>前端学徒</div>
+                        </li>
+                        <li>
+                            <img class="uk-align-left uk-border-circle"
+                                 src="https://avatars.githubusercontent.com/u/20903311" width="40" height="40">
+                            <div>zhangsan</div>
+                            <div>前端学徒</div>
+                        </li>
+                        <li>
+                            <img class="uk-align-left uk-border-circle"
+                                 src="https://avatars.githubusercontent.com/u/20903311" width="40" height="40">
+                            <div>zhangsan</div>
+                            <div>前端学徒</div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
         </div>
+
     </div>
 
 </div>
 
-<%--<div class="mb-cover">--%>
-<%--<ul class="uk-margin-top" id="topic-list">--%>
-
-<%--</ul>--%>
-<%--</div>--%>
 
 
 <script type="text/html" id="topic-list-tpl">
