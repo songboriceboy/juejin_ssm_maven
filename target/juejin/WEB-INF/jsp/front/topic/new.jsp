@@ -248,7 +248,7 @@
       target="_blank" id = "article_form">
 
     <div class="uk-grid">
-        <div class="uk-width-4-5">
+        <div class="uk-width-4-6">
             <input type="hidden" name = "topic_id" value="${topic.topic_id}" id="topic_id">
             <input type="hidden" name = "section_id" value="1" id="section_id">
             <input type="hidden" name = "tagids" value="" id="select-tags">
@@ -256,7 +256,7 @@
         </div>
 
             <%--<input type="button" value="发布文章" id = "submit" class="uk-width-1-1 uk-form-large">--%>
-            <div class="uk-width-1-5 uk-text-center uk-button-dropdown" data-uk-dropdown="{pos:'bottom-right',mode:'click'}">
+            <div class="uk-width-1-6 uk-text-center uk-button-dropdown" data-uk-dropdown="{pos:'bottom-right',mode:'click'}">
                 <a href="#" class="uk-link-muted uk-text-large uk-text-primary" style="line-height: 40px">发布文章</a>
 
                 <div class="turnonart uk-dropdown uk-text-left uk-dropdown-bottom">
@@ -305,6 +305,65 @@
 
 
             </div>
+
+        <div id="destoon_member" class="uk-width-1-6 uk-navbar-content uk-navbar-flip uk-button-dropdown" data-uk-dropdown="{mode:'click',pos:'bottom-center'}">
+            <c:choose>
+                <c:when test="${!empty user_info}">
+                    <a title="" href="javascript:;"
+                       class="uk-border-circle uk-thumbnail" data-cached-title="回到个人中心首页">
+                        <div class="uk-border-circle">
+                            <c:choose>
+                                <c:when test="${!empty user_info.user_avatar}">
+                                    <img
+                                            class="uk-border-circle" width="32" height="32" title="欢迎您${user_info.user_name}"
+                                            src="${pageContext.request.contextPath}/avatar/${user_info.user_avatar}"
+                                            alt="掘金">
+                                </c:when>
+                                <c:otherwise>
+                                    <img
+                                            class="uk-border-circle" width="40" height="40" title="欢迎您${user_info.user_name}"
+                                            src="https://user-gold-cdn.xitu.io/2017/7/29/e4663a53d6f246bac968c7c2d5d22e60?imageView2/1/w/90/h/90/q/85/format/webp/interlace/1"
+                                            alt="掘金">
+                                </c:otherwise>
+                            </c:choose>
+
+
+                            <div class="uk-border-circle" >
+
+                            </div>
+
+                        </div>
+                    </a>
+                    <div class="uk-dropdown">
+                        <ul class="uk-nav uk-nav-dropdown">
+                            <li><a href="${pageContext.request.contextPath}/topic/new"><i class="uk-icon-pencil uk-icon-justify "></i>写文章</a></li>
+                            <li class="uk-nav-divider"></li>
+                            <li><a href="${pageContext.request.contextPath}/user/home/${user_info.user_id}"><i class="uk-icon-home uk-icon-justify "></i>我的主页</a></li>
+                            <li><a href="#"><i class="uk-icon-heartbeat uk-icon-justify "></i>我喜欢的</a></li>
+                            <li><a href="#"><i class="uk-icon-book uk-icon-justify "></i>我的收藏集</a></li>
+                            <li><a href="#"><i class="uk-icon-film uk-icon-justify "></i>标签管理</a></li>
+                            <li class="uk-nav-divider"></li>
+                            <li><a href="#"><i class="uk-icon-cog uk-icon-justify "></i>设置</a></li>
+                            <li><a href="${pageContext.request.contextPath}/user/logout"><i class="uk-icon-leaf uk-icon-justify "></i>登出</a></li>
+                        </ul>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="uk-button-group">
+                        <a id = "login-btn" class="uk-button uk-button-primary uk-margin-right"
+                           href="#">免费注册
+                        </a>
+                            <%--<a class="uk-button uk-button-primary uk-margin-right"--%>
+                            <%--href="${pageContext.request.contextPath}/user/reg">免费注册--%>
+                            <%--</a>--%>
+                        <a
+                                class="uk-button uk-button-primary"
+                                href="${pageContext.request.contextPath}/user/login">立即登录
+                        </a>
+                    </div>
+                </c:otherwise>
+            </c:choose>
+        </div>
 
         </div>
 

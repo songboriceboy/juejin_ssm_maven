@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d588897d-0c5a-4cfb-b757-03cf621a0bf6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/common/common_css_js_include.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/common/common_css_js_include.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/user/edit.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/user/edit.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/user/home.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/user/home.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/style.css" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/juejin/WEB-INF/jsp/front/user/edit.jsp" afterPath="$PROJECT_DIR$/target/juejin/WEB-INF/jsp/front/user/edit.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/juejin/WEB-INF/jsp/front/user/home.jsp" afterPath="$PROJECT_DIR$/target/juejin/WEB-INF/jsp/front/user/home.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/juejin/assets/css/style.css" afterPath="$PROJECT_DIR$/target/juejin/assets/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/topic/new.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/topic/new.jsp" />
     </list>
     <ignored path="juejin_maven.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,8 +28,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+            <state relative-caret-position="275">
+              <caret line="38" column="2" selection-start-line="38" selection-start-column="2" selection-end-line="38" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -57,9 +50,23 @@
       <file leaf-file-name="header.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/common/header.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3450">
-              <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="178">
+              <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="83" selection-end-column="0" />
+              <folding>
+                <element signature="n#div#0;n#nav#0;n#div#0;n#header#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="new.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/topic/new.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="263">
+              <caret line="317" column="90" selection-start-line="317" selection-start-column="90" selection-end-line="317" selection-end-column="90" />
+              <folding>
+                <element signature="n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,7 +74,7 @@
       <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="-4050">
               <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="58" />
               <folding />
             </state>
@@ -104,7 +111,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/user/home.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="200">
@@ -119,16 +126,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
               <caret line="15" column="59" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="登录首页.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/static/mengtailin/main/登录首页.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2175">
-              <caret line="126" column="27" selection-start-line="126" selection-start-column="11" selection-end-line="126" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -171,7 +168,6 @@
         <option value="$PROJECT_DIR$/src/main/java/school/coder/vo/TagList.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/assets/bigautocomplete/js/jquery.bigautocomplete.js" />
         <option value="$PROJECT_DIR$/src/main/java/school/coder/vo/TagAuto.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/topic/new.jsp" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/school/coder/controller/TopicCommentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/school/coder/service/TopicService.java" />
@@ -204,6 +200,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/assets/css/style.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/common/common_css_js_include.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/user/home.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/topic/new.jsp" />
       </list>
     </option>
   </component>
@@ -380,6 +377,44 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="juejin_maven" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="juejin_maven" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jsp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="topic" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1186,12 +1221,12 @@
       <workItem from="1523576349531" duration="13311000" />
       <workItem from="1523608222200" duration="6502000" />
       <workItem from="1523673350406" duration="9073000" />
-      <workItem from="1523709923287" duration="3067000" />
+      <workItem from="1523709923287" duration="3404000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49491000" />
+    <option name="totallyTimeSpent" value="49828000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
@@ -1265,13 +1300,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/school/coder/domain/TopicInfoEx.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="24" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/school/coder/service/impl/TopicServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
@@ -1612,22 +1640,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/common/header.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3450">
-          <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/common/header_only_nav.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
@@ -1662,19 +1674,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/user/home.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="146" column="0" selection-start-line="146" selection-start-column="0" selection-end-line="148" selection-end-column="23" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4050">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/common/header.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="83" selection-end-column="0" />
+          <folding>
+            <element signature="n#div#0;n#nav#0;n#div#0;n#header#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="38" column="2" selection-start-line="38" selection-start-column="2" selection-end-line="38" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/topic/new.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="317" column="90" selection-start-line="317" selection-start-column="90" selection-end-line="317" selection-end-column="90" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
