@@ -136,15 +136,6 @@
             <c:forEach items="${sections}" var="section">
                 <li><a href="javascript:;" id="${section.section_id}" onclick="getTopicsBySectionID(this.id);">${section.section_name}</a></li>
             </c:forEach>
-            <%--<li class="uk-active"><a href="#">我关注的</a></li>--%>
-            <%--<li><a href="#">Android</a></li>--%>
-            <%--<li><a href="#">前端</a></li>--%>
-            <%--<li><a href="#">iOS</a></li>--%>
-            <%--<li><a href="#">设计</a></li>--%>
-            <%--<li><a href="#">产品</a></li>--%>
-            <%--<li><a href="#">工具资源</a></li>--%>
-            <%--<li><a href="#">阅读</a></li>--%>
-            <%--<li><a href="#">人工智能</a></li>--%>
             <li class="app-all-tag uk-position-absolute uk-hidden-small"><a href="${pageContext.request.contextPath}/tag/get_all_tags">标签管理</a></li>
         </ul>
 

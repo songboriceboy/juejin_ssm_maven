@@ -13,6 +13,6 @@
 <%--<script src="${pageContext.request.contextPath}/assets/Mricode.Pagination-master/mricode.pagination.js"></script>--%>
 <script src="${pageContext.request.contextPath}/assets/js/template.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/adapter.js"></script>
+
 <link href="${pageContext.request.contextPath}/assets/css/style.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/assets/layer/layer.js"></script>
-
