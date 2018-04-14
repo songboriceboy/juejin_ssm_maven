@@ -33,8 +33,8 @@
                 if(!isNoMore&&(scrollTop + clientHeight >= scrollHeight)){   //距离顶部+当前高度 >=文档总高度 即代表滑动到底部
                     console.log('下拉');
                     if(loadmore){
-                        var last_id = $('#topic-list li:last-child').attr('id');
-
+                        var last_id = $('#topic-list .app-blog-item:last-child').attr('id');
+//                        alert(last_id);
                         loadmore(last_id);
                     }
                 }
@@ -56,6 +56,7 @@
             );
 
             refresh(function (last_id) {
+
                 if(last_id == undefined)
                 {
                     return;
@@ -147,68 +148,10 @@
                     </ul>
                 </div>
 
+                <ul class="text uk-grid-collapse" id="topic-list">
 
-                <ul class="text uk-grid-collapse" id="item-list">
-                    <li class="uk-panel uk-panel-box uk-panel-hover">
-                        <ul class="uk-subnav">
-                            <li class="special-column">专栏</li>
-                            <li><a href="#">蚂蚁金服数据体验技术</a></li>
-                            <li>5小时前</li>
-                            <li><a href="#">ios</a></li>
-                            <li class="seperator">/</li>
-                            <li class="seperator"><a href="#">android</a></li>
-                        </ul>
-                        <div class="uk-text-truncate uk-margin-small-top  uk-margin-small-bottom uk-text-bold">
-                            <a class="content-title" href="#">我们需要注意的immutable操作</a>
-                        </div>
-                            <ul class="uk-subnav uk-subnav-pill">
-                                <li><a href="#"><i class="uk-icon-heart uk-margin-small-right"></i>5小时前</a></li>
-                                <li><a href="#"><i class="uk-icon-file uk-margin-small-right"></i>ios</a></li>
-                                <%--<span class="uk-icon-share-alt share"></span>--%>
-                                <%--<span class="uk-icon-envelope collect"></span>--%>
-                            </ul>
-                    </li>
-                    <li class="uk-panel uk-panel-box uk-panel-hover">
-                        <ul class="uk-subnav">
-                            <li class="special-column">专栏</li>
-                            <li><a href="#">蚂蚁金服数据体验技术</a></li>
-                            <li>5小时前</li>
-                            <li><a href="#">ios</a></li>
-                            <li class="seperator">/</li>
-                            <li class="seperator"><a href="#">android</a></li>
-                        </ul>
-                        <div class="uk-text-truncate uk-margin-small-top  uk-margin-small-bottom uk-text-bold">
-                            <a class="content-title" href="#">我们需要注意的immutable操作</a>
-                        </div>
-                        <ul class="uk-subnav uk-subnav-pill">
-                            <li><a href="#"><i class="uk-icon-heart uk-margin-small-right"></i>5小时前</a></li>
-                            <li><a href="#"><i class="uk-icon-file uk-margin-small-right"></i>ios</a></li>
-                            <%--<span class="uk-icon-share-alt share"></span>--%>
-                            <%--<span class="uk-icon-envelope collect"></span>--%>
-                        </ul>
-                    </li>
-                    <li class="uk-panel uk-panel-box uk-panel-hover">
-                        <ul class="uk-subnav">
-                            <li class="special-column">专栏</li>
-                            <li><a href="#">蚂蚁金服数据体验技术</a></li>
-                            <li>5小时前</li>
-                            <li><a href="#">ios</a></li>
-                            <li class="seperator">/</li>
-                            <li class="seperator"><a href="#">android</a></li>
-                        </ul>
-                        <div class="uk-text-truncate uk-margin-small-top  uk-margin-small-bottom uk-text-bold">
-                            <a class="content-title" href="#">我们需要注意的immutable操作</a>
-                        </div>
-                        <ul class="uk-subnav uk-subnav-pill">
-                            <li><a href="#"><i class="uk-icon-heart uk-margin-small-right"></i>5小时前</a></li>
-                            <li><a href="#"><i class="uk-icon-file uk-margin-small-right"></i>ios</a></li>
-                            <%--<span class="uk-icon-share-alt share"></span>--%>
-                            <%--<span class="uk-icon-envelope collect"></span>--%>
-                        </ul>
-                    </li>
+
                 </ul>
-
-
             </div>
             <div class="uk-width-medium-1-4 right-part">
                 <div class="uk-panel uk-panel-box uk-panel-box-secondary">
@@ -294,27 +237,25 @@
 
 <script type="text/html" id="topic-list-tpl">
     {{each list as topic i}}
-    <li class="app-blog-item" id="{{topic.topic_id}}" >
+    <li class="uk-panel uk-panel-box uk-panel-hover app-blog-item" id="{{topic.topic_id}}" >
         {{topic.topic_id}}
-        <div class="title uk-text-truncate">
+        <ul class="uk-subnav">
+            <li class="special-column">专栏</li>
+            <li><a href="${pageContext.request.contextPath}/user/show/{{topic.user_id}}">{{topic.user_name}}</a></li>
+            <li>{{topic.createtime_str}}</li>
+            <li><a href="#">ios</a></li>
+            <li class="seperator">/</li>
+            <li class="seperator"><a href="#">android</a></li>
+        </ul>
+        <div class="uk-text-truncate uk-margin-small-top  uk-margin-small-bottom uk-text-bold">
             <a href="${pageContext.request.contextPath}/topic/show/{{topic.topic_id}}">{{topic.topic_title}}</a>
         </div>
-        <div>
-            <a href="javascript:;" section_id = {{topic.section_id}}>
-                                    <span class="topic-cate">
-                                        {{topic.section_name}}
-                                    </span>
-            </a>
-            <span>
-                      <a href="${pageContext.request.contextPath}/user/show/{{topic.user_id}}">{{topic.user_name}}</a>
-              </span>
-            <span>
-                   {{topic.createtime_str}}
-              </span>
-            <span>
-                   908次阅读
-               </span>
-        </div>
+        <ul class="uk-subnav uk-subnav-pill">
+            <li><a href="#"><i class="uk-icon-heart uk-margin-small-right"></i>123</a></li>
+            <li><a href="#"><i class="uk-icon-file uk-margin-small-right"></i>15</a></li>
+            <%--<span class="uk-icon-share-alt share"></span>--%>
+            <%--<span class="uk-icon-envelope collect"></span>--%>
+        </ul>
     </li>
     {{/each}}
 </script>

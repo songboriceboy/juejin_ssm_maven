@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d588897d-0c5a-4cfb-b757-03cf621a0bf6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/index.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/index_after_login.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/index_after_login.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/assets/css/style.css" afterPath="$PROJECT_DIR$/src/main/webapp/assets/css/style.css" />
     </list>
     <ignored path="juejin_maven.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index_after_login.jsp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index_after_login.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/index_after_login.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+            <state relative-caret-position="171">
+              <caret line="37" column="41" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -47,11 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="249" column="0" selection-start-line="249" selection-start-column="0" selection-end-line="249" selection-end-column="0" />
+            <state relative-caret-position="175">
+              <caret line="250" column="0" selection-start-line="250" selection-start-column="0" selection-end-line="250" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -199,8 +197,8 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/reg.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/index.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/index_after_login.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/assets/css/style.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/index_after_login.jsp" />
       </list>
     </option>
   </component>
@@ -1047,12 +1045,12 @@
       <workItem from="1523576349531" duration="13311000" />
       <workItem from="1523608222200" duration="6502000" />
       <workItem from="1523673350406" duration="9073000" />
-      <workItem from="1523709923287" duration="5311000" />
+      <workItem from="1523709923287" duration="5945000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51735000" />
+    <option name="totallyTimeSpent" value="52369000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
@@ -1117,7 +1115,7 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1498,14 +1496,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/index_after_login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/common/common_css_js_include.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
@@ -1516,8 +1506,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="249" column="0" selection-start-line="249" selection-start-column="0" selection-end-line="249" selection-end-column="0" />
+        <state relative-caret-position="175">
+          <caret line="250" column="0" selection-start-line="250" selection-start-column="0" selection-end-line="250" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/front/index_after_login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="37" column="41" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
           <folding />
         </state>
       </provider>
