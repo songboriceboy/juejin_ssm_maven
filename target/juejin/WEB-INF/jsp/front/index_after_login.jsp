@@ -34,7 +34,7 @@
                     console.log('下拉');
                     if(loadmore){
                         var last_id = $('#topic-list .app-blog-item:last-child').attr('id');
-                        alert(last_id);
+//                        alert(last_id);
                         loadmore(last_id);
                     }
                 }
