@@ -12,6 +12,8 @@
     <meta charset="utf-8">
     <meta name="viewport"
           content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link href="${pageContext.request.contextPath}/assets/uikit-2.25.0/css/components/form-file.almost-flat.css" rel="stylesheet">
+
     <title>Title</title>
     <%@include file="../common/common_css_js_include.jsp"%>
     <script>
