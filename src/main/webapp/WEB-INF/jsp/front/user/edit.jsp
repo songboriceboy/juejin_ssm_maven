@@ -26,6 +26,7 @@
                 if (this.readyState == 4) {
                     var res = JSON.parse(this.responseText);
                     document.getElementById('avatar').src = '${pageContext.request.contextPath}/avatar/' + res.src;
+                    document.getElementById('avatar_nav').src = '${pageContext.request.contextPath}/avatar/' + res.src;
                 }
             }
 
@@ -52,8 +53,20 @@
                                 <div>点击头像上传</div>
                                 <div class="uk-form-row uk-margin-large-bottom">
                                     <div class="uk-form-file">
-                                        <img id="avatar"
-                                             src="https://user-gold-cdn.xitu.io/2018/2/22/161bc4cd96f02929?imageView2/1/w/90/h/90/q/85/format/webp/interlace/1">
+                                        <c:choose>
+                                            <c:when test="${!empty user_info.user_avatar}">
+                                                <img id="avatar"
+                                                        class="uk-border-circle" width="80" height="80" title="${user_info.user_name}"
+                                                        src="${pageContext.request.contextPath}/avatar/${user_info.user_avatar}"
+                                                        alt="掘金">
+                                            </c:when>
+                                            <c:otherwise>
+                                                <img id="avatar"
+                                                        class="uk-border-circle" width="80" height="80" title="${user_info.user_name}"
+                                                        src="${pageContext.request.contextPath}/assets/img/default.jpg"
+                                                        alt="掘金">
+                                            </c:otherwise>
+                                        </c:choose>
                                         <input type="file" name="pic" onchange="upfile();"/>
                                     </div>
                                 </div>

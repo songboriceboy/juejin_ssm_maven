@@ -31,15 +31,15 @@
                             <div class="uk-border-circle">
                                 <c:choose>
                                     <c:when test="${!empty user_info.user_avatar}">
-                                        <img
+                                        <img id="avatar_nav"
                                                 class="uk-border-circle" width="40" height="40" title="欢迎您${user_info.user_name}"
                                                 src="${pageContext.request.contextPath}/avatar/${user_info.user_avatar}"
                                                 alt="掘金">
                                     </c:when>
                                     <c:otherwise>
-                                        <img
+                                        <img id="avatar_nav"
                                                 class="uk-border-circle" width="40" height="40" title="欢迎您${user_info.user_name}"
-                                                src="https://user-gold-cdn.xitu.io/2017/7/29/e4663a53d6f246bac968c7c2d5d22e60?imageView2/1/w/90/h/90/q/85/format/webp/interlace/1"
+                                                src="${pageContext.request.contextPath}/assets/img/default.jpg"
                                                 alt="掘金">
                                             </c:otherwise>
                                         </c:choose>

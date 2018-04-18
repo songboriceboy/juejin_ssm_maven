@@ -37,7 +37,20 @@
                         <div class="uk-grid user-info">
                             <div class="uk-width-medium-1-5">
                                 <a href="#">
-                                    <img src="https://user-gold-cdn.xitu.io/2018/2/22/161bc4cd96f02929?imageView2/1/w/90/h/90/q/85/format/webp/interlace/1">
+                                    <c:choose>
+                                        <c:when test="${!empty user_info.user_avatar}">
+                                            <img
+                                                    class="uk-border-circle" width="80" height="80" title="${user_info.user_name}"
+                                                    src="${pageContext.request.contextPath}/avatar/${user_info.user_avatar}"
+                                                    alt="掘金">
+                                        </c:when>
+                                        <c:otherwise>
+                                            <img
+                                                    class="uk-border-circle" width="80" height="80" title="${user_info.user_name}"
+                                                    src="${pageContext.request.contextPath}/assets/img/default.jpg"
+                                                    alt="掘金">
+                                        </c:otherwise>
+                                    </c:choose>
                                 </a>
                             </div>
                             <div class="uk-width-medium-3-5">
