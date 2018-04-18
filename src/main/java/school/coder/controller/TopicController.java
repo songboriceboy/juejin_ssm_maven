@@ -137,7 +137,7 @@ public class TopicController {
         return maView;
     }
     @RequestMapping("/add_topic")
-    public String addTopic(HttpServletRequest request, HttpServletResponse response, TopicInfo topicInfo,String tagids) throws IOException {
+    public ModelAndView addTopic(HttpServletRequest request, HttpServletResponse response, TopicInfo topicInfo,String tagids) throws IOException {
 
 
         UserInfo userInfo = (UserInfo)request.getSession().getAttribute("user_info");
@@ -157,20 +157,28 @@ public class TopicController {
         }
 
         System.out.println(tagids);
-        String[] tags = tagids.split(",");
-        if(tags.length > 0)
+        if(!tagids.equals(""))
         {
-            for(String tag : tags)
+            String[] tags = tagids.split(",");
+            if(tags.length > 0)
             {
-                TagTopicInfo tagTopicInfo = new TagTopicInfo();
-                tagTopicInfo.setTag_id(Integer.parseInt(tag));
-                tagTopicInfo.setTopic_id(topicInfo.getTopic_id());
-                System.out.println(topicInfo.getTopic_id());
-                tagServcie.insertTopicTagInfo(tagTopicInfo);
+                for(String tag : tags)
+                {
+                    TagTopicInfo tagTopicInfo = new TagTopicInfo();
+                    tagTopicInfo.setTag_id(Integer.parseInt(tag));
+                    tagTopicInfo.setTopic_id(topicInfo.getTopic_id());
+                    System.out.println(topicInfo.getTopic_id());
+                    tagServcie.insertTopicTagInfo(tagTopicInfo);
+                }
             }
         }
 
-        return "redirect:/";
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("topic",topicInfo);
+        modelAndView.setViewName("front/topic/publish_success");
+
+        return modelAndView;
     }
     @RequestMapping("/save_topic")
     public void saveTopic(HttpServletRequest request, HttpServletResponse response, TopicInfo topicInfo) throws IOException {
