@@ -23,6 +23,7 @@
 
 <div class="mb-cover uk-height-1-1">
     <div class="b20"></div>
+
     <div class="uk-container uk-container-center">
 
         <div class="uk-panel uk-panel-box">

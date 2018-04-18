@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="uk-height-1-1">
 <head>
     <meta charset="utf-8">
     <meta name="viewport"
@@ -35,14 +35,15 @@
         }
     </script>
 </head>
-<body>
+<body class="uk-height-1-1">
 
 <%@include file="../common/header_only_nav.jsp" %>
 <!--整体背景-->
-<div class="mb-cover">
+<div class="mb-cover uk-height-1-1">
     <div class="b20"></div>
     <!--固定宽度，居中对齐-->
     <div class="uk-container uk-container-center">
+
         <div class="uk-grid" data-uk-grid-margin="">
             <div class="uk-width-medium-3-4">
                 <div id="mb_member_left">
