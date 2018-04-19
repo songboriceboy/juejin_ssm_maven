@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="school.coder.mapper.TagMapper">
-    <select id="getAllTags" resultType="TagInfoEx" parameterType="String">
+    <select id="getAllTags" resultType="TagInfoEx" parameterType="TagSearchInfo">
     select taginfo.*,COALESCE(tabTmp.num,0) as article_num ,COALESCE(tabTmp2.num,0) as follow_num
-     ,case when tag_user_info.user_id = 1 then '已关注' else '关注' end as tip
+     ,case when tag_user_info.user_id = #{userid} then '已关注' else '关注' end as tip
      from taginfo
 left join (select count(1) as num, tag_id from tag_topic_info group by tag_id) tabTmp on tabTmp.tag_id = taginfo.tag_id
 left join (select count(1) as num, tag_id from tag_user_info group by tag_id) tabTmp2 on tabTmp2.tag_id = taginfo.tag_id
 left join tag_user_info on tag_user_info.tag_id = taginfo.tag_id
-        where tag_name like #{value}
+        where tag_name like #{word}
     </select>
 
     <insert id="insertTopicTagInfo" parameterType="TagTopicInfo">
@@ -16,12 +16,20 @@ left join tag_user_info on tag_user_info.tag_id = taginfo.tag_id
     </insert>
     <select id="getTagsByUserID" resultType="TagInfoEx" parameterType="int">
 select taginfo.*,COALESCE(tabTmp.num,0) as article_num ,COALESCE(tabTmp2.num,0) as follow_num
-     ,case when tag_user_info.user_id = 1 then '已关注' else '关注' end as tip
+     ,case when tag_user_info.user_id = #{value} then '已关注' else '关注' end as tip
 from taginfo
 left join (select count(1) as num, tag_id from tag_topic_info group by tag_id) tabTmp on tabTmp.tag_id = taginfo.tag_id
 left join (select count(1) as num, tag_id from tag_user_info group by tag_id) tabTmp2 on tabTmp2.tag_id = taginfo.tag_id
 left join tag_user_info on tag_user_info.tag_id = taginfo.tag_id
 where tag_user_info.user_id = #{value}
     </select>
+
+    <insert id="followTag" parameterType="TagUserInfo">
+        insert into tag_user_info(tag_id, user_id) values(#{tag_id},#{user_id})
+    </insert>
+
+    <delete id="cancelFollowTag" parameterType="TagUserInfo">
+        delete from tag_user_info where tag_id = #{tag_id} and user_id = #{user_id}
+    </delete>
 
 </mapper>

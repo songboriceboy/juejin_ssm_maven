@@ -19,6 +19,12 @@
     <link href="${pageContext.request.contextPath}/assets/uikit-2.25.0/css/uikit.almost-flat.css?v=0.1" rel="stylesheet">
 
     <%@include file="../common/common_css_js_include.jsp"%>
+    <style>
+        .tag-follow{
+            background: whitesmoke;
+            color: green;
+        }
+    </style>
     <script>
         function getUserTag() {
             var req = new XMLHttpRequest();
@@ -30,6 +36,21 @@
                 document.getElementById('tag-ul').innerHTML='';
                 document.getElementById('tag-ul').innerHTML=html;
                 document.getElementById('tag-nav').style.display = 'none';
+                $('.app-tag').on('click',function () {
+                    var that = this;
+                    if(this.innerText=='关注')
+                    {
+                        $.post('${pageContext.request.contextPath}/tag/follow_tags',{tagid:this.id},function () {
+                            $(that).html('已关注').removeClass('tag-follow')
+                        })
+                    }
+                    else{
+                        $.post('${pageContext.request.contextPath}/tag/cancel_follow_tags',{tagid:this.id},function () {
+                            $(that).html('关注').addClass('tag-follow')
+                        })
+                    }
+
+                })
             }
         }
         function getAllTag() {
@@ -42,6 +63,20 @@
                 document.getElementById('tag-ul').innerHTML='';
                 document.getElementById('tag-ul').innerHTML=html;
                 document.getElementById('tag-nav').style.display = 'block';
+                $('.app-tag').on('click',function () {
+                    var that = this;
+                    if(this.innerText=='关注')
+                    {
+                        $.post('${pageContext.request.contextPath}/tag/follow_tags',{tagid:this.id},function () {
+                            $(that).html('已关注').removeClass('tag-follow')
+                        })
+                    }
+                    else{
+                        $.post('${pageContext.request.contextPath}/tag/cancel_follow_tags',{tagid:this.id},function () {
+                            $(that).html('关注').addClass('tag-follow')
+                        })
+                    }
+                })
             }
         }
         $(function () {
@@ -57,6 +92,8 @@
                     getAllTag();
                 }
             })
+
+
         })
     </script>
 </head>
@@ -96,7 +133,11 @@
                         <img src="https://lc-mhke0kuv.cn-n1.lcfile.com/f8ee3cd45f949a546263.png" width="32" height="32">
                         <h2>{{ tag.tag_name}}</h2>
                         <p class="uk-text-muted"><span>{{tag.follow_num}}</span> 关注 <span>{{ tag.article_num}}</span> 文章</p>
-                        <button class="uk-button uk-button-primary uk-button-success uk-margin-top">{{ tag.tip}}</button>
+                        {{if tag.tip=='关注'}}
+                        <button class="app-tag uk-button uk-button-primary uk-button-success uk-margin-top tag-follow"  id="{{ tag.tag_id}}">{{ tag.tip}}</button>
+                        {{else}}
+                        <button class="app-tag uk-button uk-button-primary uk-button-success uk-margin-top" id="{{ tag.tag_id}}">{{ tag.tip}}</button>
+                        {{/if}}
                     </a>
                 </div>
             </li>

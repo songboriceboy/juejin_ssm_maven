@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import school.coder.domain.TagInfoEx;
+import school.coder.domain.TagSearchInfo;
+import school.coder.domain.TagUserInfo;
 import school.coder.domain.UserInfo;
 import school.coder.service.TagServcie;
 import school.coder.vo.JsonData;
@@ -62,8 +64,12 @@ public class TagController {
     }
 
     @RequestMapping("/ajax_get_all_tags")
-    public void getAllTagsAjax(HttpServletResponse response) throws IOException {
-        List<TagInfoEx> lst = tagServcie.getAllTags("%%");
+    public void getAllTagsAjax(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        TagSearchInfo tagSearchInfo = new TagSearchInfo();
+        UserInfo userInfo = (UserInfo)request.getSession().getAttribute("user_info");
+        tagSearchInfo.setUserid(userInfo.getUser_id());
+        tagSearchInfo.setWord("%%");
+        List<TagInfoEx> lst = tagServcie.getAllTags(tagSearchInfo);
         ModelAndView modelAndView = new ModelAndView();
         JsonData jsonData = new JsonData();
         jsonData.setList(lst);
@@ -78,5 +84,26 @@ public class TagController {
         JsonData jsonData = new JsonData();
         jsonData.setList(lst);
         response.getWriter().println(JSON.toJSONString(jsonData));
+    }
+
+    @RequestMapping("/follow_tags")
+    public void follow_tags(Integer tagid, HttpServletRequest request,HttpServletResponse response) throws IOException {
+        UserInfo userInfo = (UserInfo)request.getSession().getAttribute("user_info");
+        TagUserInfo tagUserInfo = new TagUserInfo();
+        tagUserInfo.setTag_id(tagid);
+        tagUserInfo.setUser_id(userInfo.getUser_id());
+        int resutlt = tagServcie.followTag(tagUserInfo);
+
+        response.getWriter().println(resutlt);
+    }
+    @RequestMapping("/cancel_follow_tags")
+    public void cancel_follow_tags(Integer tagid, HttpServletRequest request,HttpServletResponse response) throws IOException {
+        UserInfo userInfo = (UserInfo)request.getSession().getAttribute("user_info");
+
+        TagUserInfo tagUserInfo = new TagUserInfo();
+        tagUserInfo.setTag_id(tagid);
+        tagUserInfo.setUser_id(userInfo.getUser_id());
+        int resutlt = tagServcie.cancelFollowTag(tagUserInfo);
+        response.getWriter().println(resutlt);
     }
 }
