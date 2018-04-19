@@ -16,7 +16,7 @@
     <meta name="viewport"
           content="width=device-width,user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>Title</title>
-    <link href="${pageContext.request.contextPath}/assets/uikit-2.25.0/css/uikit.almost-flat.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/assets/uikit-2.25.0/css/uikit.almost-flat.css?v=0.1" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/assets/jquery/jquery.js"></script>
     <script src="${pageContext.request.contextPath}/assets/uikit-2.25.0/js/components/tooltip.js"></script>
     <script src="${pageContext.request.contextPath}/assets/uikit-2.25.0/js/uikit.min.js"></script>
@@ -36,7 +36,8 @@
                             <img src="https://lc-mhke0kuv.cn-n1.lcfile.com/f8ee3cd45f949a546263.png" width="32" height="32">
                             <h2>${tag.tag_name}</h2>
                             <p class="uk-text-muted"><span>38699</span> 关注 <span>${tag.article_num}</span> 文章</p>
-                            <button class="uk-button uk-button-primary uk-button-success uk-margin-top">已关注</button>
+                            <%--<button class="uk-button uk-button-primary uk-button-success uk-margin-top">已关注</button>--%>
+                            <div class="uk-badge uk-text-large uk-background-muted">已关注</div>
                         </a>
                     </div>
                 </li>

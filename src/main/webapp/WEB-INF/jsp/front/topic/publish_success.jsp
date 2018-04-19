@@ -23,8 +23,10 @@
 
                 </div>
                 <div class="uk-width-1-2">
-                    <div class="uk-panel-box uk-margin-large-top" style="padding: 30px 0">
-                        <a class="uk-text-large" href="${pageContext.request.contextPath}/topic/show/${topic.topic_id}">${topic.topic_title}</a>
+                    <div class="uk-panel-box uk-margin-large-top">
+                        <div class="uk-padding ">
+                            <a class="uk-text-large" href="${pageContext.request.contextPath}/topic/show/${topic.topic_id}">${topic.topic_title}</a>
+                        </div>
                     </div>
                 </div>
                 <div class="uk-width-1-4">

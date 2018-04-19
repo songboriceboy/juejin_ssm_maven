@@ -395,6 +395,50 @@ iframe {
     width: device-width;
   }
 }
+/* Auto
+ ========================================================================== */
+.uk-margin-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.uk-margin-auto-left {
+  margin-left: auto !important;
+}
+.uk-margin-auto-right {
+  margin-right: auto !important;
+}
+.uk-margin-auto-vertical {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+/* ========================================================================
+   Component: Padding
+ ========================================================================== */
+.uk-padding {
+  padding: 30px;
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .uk-padding {
+    padding: 40px;
+  }
+}
+/* Small
+ ========================================================================== */
+.uk-padding-small {
+  padding: 15px;
+}
+/* Large
+ ========================================================================== */
+.uk-padding-large {
+  padding: 30px;
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .uk-padding-large {
+    padding: 70px;
+  }
+}
 /* ========================================================================
    Component: Grid
  ========================================================================== */

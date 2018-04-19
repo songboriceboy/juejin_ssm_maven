@@ -52,6 +52,67 @@ a:hover,
   color: #005599;
   text-decoration: underline;
 }
+/* ========================================================================
+   Component: Background
+ ========================================================================== */
+/* Color
+ ========================================================================== */
+.uk-background {
+  background-color: #fff;
+}
+.uk-background-muted {
+  background-color: #f8f8f8;
+}
+.uk-background-primary {
+  background-color: #1e87f0;
+}
+.uk-background-secondary {
+  background-color: #222;
+}
+/* Auto
+ ========================================================================== */
+.uk-margin-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.uk-margin-auto-left {
+  margin-left: auto !important;
+}
+.uk-margin-auto-right {
+  margin-right: auto !important;
+}
+.uk-margin-auto-vertical {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+/* ========================================================================
+   Component: Padding
+ ========================================================================== */
+.uk-padding {
+  padding: 30px;
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .uk-padding {
+    padding: 40px;
+  }
+}
+/* Small
+ ========================================================================== */
+.uk-padding-small {
+  padding: 15px;
+}
+/* Large
+ ========================================================================== */
+.uk-padding-large {
+  padding: 30px;
+}
+/* Desktop and bigger */
+@media (min-width: 1200px) {
+  .uk-padding-large {
+    padding: 70px;
+  }
+}
 /* Text-level semantics
  ========================================================================== */
 /*
