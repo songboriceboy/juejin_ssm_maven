@@ -7,7 +7,7 @@
      from taginfo
 left join (select count(1) as num, tag_id from tag_topic_info group by tag_id) tabTmp on tabTmp.tag_id = taginfo.tag_id
 left join (select count(1) as num, tag_id from tag_user_info group by tag_id) tabTmp2 on tabTmp2.tag_id = taginfo.tag_id
-left join tag_user_info on tag_user_info.tag_id = taginfo.tag_id
+left join tag_user_info on tag_user_info.tag_id = taginfo.tag_id and tag_user_info.user_id = #{userid}
         where tag_name like #{word}
     </select>
 
@@ -20,7 +20,7 @@ select taginfo.*,COALESCE(tabTmp.num,0) as article_num ,COALESCE(tabTmp2.num,0) 
 from taginfo
 left join (select count(1) as num, tag_id from tag_topic_info group by tag_id) tabTmp on tabTmp.tag_id = taginfo.tag_id
 left join (select count(1) as num, tag_id from tag_user_info group by tag_id) tabTmp2 on tabTmp2.tag_id = taginfo.tag_id
-left join tag_user_info on tag_user_info.tag_id = taginfo.tag_id
+left join tag_user_info on tag_user_info.tag_id = taginfo.tag_id and tag_user_info.user_id = #{userid}
 where tag_user_info.user_id = #{value}
     </select>
 

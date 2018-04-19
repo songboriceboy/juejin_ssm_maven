@@ -36,9 +36,13 @@ public class TagController {
         return maView;
     }
     @RequestMapping("/get_tags")
-    public void get_tags(String keyword, HttpServletResponse response) throws IOException {
+    public void get_tags(String keyword,HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.out.println(keyword);
-        List<TagInfoEx> lst = tagServcie.getAllTags("%"+keyword+"%");
+        TagSearchInfo tagSearchInfo = new TagSearchInfo();
+        UserInfo userInfo = (UserInfo)request.getSession().getAttribute("user_info");
+        tagSearchInfo.setUserid(userInfo.getUser_id());
+        tagSearchInfo.setWord("%"+keyword+"%");
+        List<TagInfoEx> lst = tagServcie.getAllTags(tagSearchInfo);
         List<TagAuto> lstTagAuto = new ArrayList<>();
         for(TagInfoEx tagInfo : lst)
         {
