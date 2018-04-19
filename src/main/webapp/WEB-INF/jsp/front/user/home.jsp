@@ -72,8 +72,7 @@
                         </div>
                     </div>
                     <div class="uk-panel uk-panel-box uk-margin">
-                        <div data-v-815abe10="" data-v-4cdfa676="" class="detail-list detail-list sticky-box"
-                             data-v-3f216172="">
+                        <div>
                             <ul class="uk-tab" data-uk-tab="">
                                 <li class="uk-active"><a href="#">动态</a></li>
                                 <li><a href="#">文章<span>2</span></a></li>

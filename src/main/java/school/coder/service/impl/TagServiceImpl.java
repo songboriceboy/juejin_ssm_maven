@@ -25,4 +25,9 @@ public class TagServiceImpl implements TagServcie {
     public int insertTopicTagInfo(TagTopicInfo tagTopicInfo) {
         return tagMapper.insertTopicTagInfo(tagTopicInfo);
     }
+
+    @Override
+    public List<TagInfoEx> getTagsByUserID(int userid) {
+        return tagMapper.getTagsByUserID(userid);
+    }
 }

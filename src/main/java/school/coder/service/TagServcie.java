@@ -11,4 +11,5 @@ import java.util.List;
 public interface TagServcie {
     List<TagInfoEx> getAllTags(String search);
     int insertTopicTagInfo(TagTopicInfo tagTopicInfo);
+    List<TagInfoEx> getTagsByUserID(int userid);
 }

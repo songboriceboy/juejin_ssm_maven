@@ -5,13 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import school.coder.service.TagServcie;
-import school.coder.vo.TagAuto;
 import school.coder.domain.TagInfoEx;
+import school.coder.domain.UserInfo;
+import school.coder.service.TagServcie;
+import school.coder.vo.JsonData;
+import school.coder.vo.TagAuto;
 import school.coder.vo.TagList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,5 +59,14 @@ public class TagController {
         modelAndView.addObject("tags",lst);
         modelAndView.setViewName("front/tag/tag");
         return modelAndView;
+    }
+
+    @RequestMapping("/get_current_user_tags")
+    public void get_current_user_tags(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        UserInfo userInfo = (UserInfo)request.getSession().getAttribute("user_info");
+        List<TagInfoEx> lst = tagServcie.getTagsByUserID(userInfo.getUser_id());
+        JsonData jsonData = new JsonData();
+        jsonData.setList(lst);
+        response.getWriter().println(JSON.toJSONString(jsonData));
     }
 }
