@@ -262,6 +262,16 @@ public class TopicController {
         for(TopicInfoEx topicInfoEx : lstBookInfos)
         {
             topicInfoEx.setCreatetime_str(StringDate.getStringDate(topicInfoEx.getTopic_createtime()));
+            if(topicInfoEx.getTags()!=null&&topicInfoEx.getTags().length() > 0)
+            {
+                String[] tags = topicInfoEx.getTags().split(",");
+                List<String> tagList = new ArrayList<>();
+                for(String tag:tags)
+                {
+                   tagList.add(tag);
+                }
+                topicInfoEx.setLst_tags(tagList);
+            }
         }
         PageData<TopicInfoEx> pageData = new PageData<TopicInfoEx>();
         pageData.setList(lstBookInfos);

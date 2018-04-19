@@ -1,5 +1,7 @@
 package school.coder.domain;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2018/2/21.
  */
@@ -9,6 +11,24 @@ public class TopicInfoEx extends TopicInfo {
     private String section_name;
     private int comment_count;
     private String createtime_str;
+    private String tags;
+    private List<String> lst_tags;
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
+    public List<String> getLst_tags() {
+        return lst_tags;
+    }
+
+    public void setLst_tags(List<String> lst_tags) {
+        this.lst_tags = lst_tags;
+    }
 
     public String getCreatetime_str() {
         return createtime_str;
