@@ -129,7 +129,7 @@
             {{ each list as tag index}}
             <li class="uk-width-medium-1-4 uk-width-small-1-2 uk-margin-large-bottom">
                 <div class="uk-panel uk-panel-box uk-panel-box-secondary uk-text-center">
-                    <a>
+                    <a href="${pageContext.request.contextPath}/tag/get_tag_articles/{{ tag.tag_id}}">
                         <img src="https://lc-mhke0kuv.cn-n1.lcfile.com/f8ee3cd45f949a546263.png" width="32" height="32">
                         <h2>{{ tag.tag_name}}</h2>
                         <p class="uk-text-muted"><span>{{tag.follow_num}}</span> 关注 <span>{{ tag.article_num}}</span> 文章</p>

@@ -3,6 +3,7 @@ package school.coder.controller;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import school.coder.domain.TagInfoEx;
@@ -33,6 +34,13 @@ public class TagController {
     {
         ModelAndView maView = new ModelAndView();
         maView.setViewName("front/tag/tag");
+        return maView;
+    }
+    @RequestMapping("/get_tag_articles/{tid}")
+    public ModelAndView getArticlesByTagID(@PathVariable Integer tid)
+    {
+        ModelAndView maView = new ModelAndView();
+        maView.setViewName("front/topic/tag_list_topics");
         return maView;
     }
     @RequestMapping("/get_tags")
