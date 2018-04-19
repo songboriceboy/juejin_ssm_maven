@@ -1,14 +1,21 @@
 package school.coder.domain;
 
 
-import school.coder.domain.TagInfo;
-
 /**
  * Created by Administrator on 2018/4/13.
  */
 public class TagInfoEx extends TagInfo {
     private int article_num;
     private int follow_num;
+    private String tip;
+
+    public String getTip() {
+        return tip;
+    }
+
+    public void setTip(String tip) {
+        this.tip = tip;
+    }
 
     public int getArticle_num() {
         return article_num;
