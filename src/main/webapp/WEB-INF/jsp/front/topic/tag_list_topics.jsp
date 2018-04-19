@@ -6,14 +6,98 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html class="uk-height-1-1">
+<html>
 <head>
     <title>Title</title>
     <%@include file="../common/common_css_js_include.jsp"%>
+    <script type="text/javascript">
+        var isNoMore = false;
+        var iiLoading=null;
+        var curr_req_id = 0;
+        var g_sid = 0;
+
+        function refresh(loadmore) {
+            $(window).scroll(function(){
+                console.log('正在滑动f');
+
+                var scrollTop = $(this).scrollTop();    //滚动条距离顶部的高度
+                var scrollHeight = $(document).height();   //当前页面的总高度
+                var clientHeight = $(this).height();    //当前可视的页面高度
+                // console.log("top:"+scrollTop+",doc:"+scrollHeight+",client:"+clientHeight);
+                if(!isNoMore&&(scrollTop + clientHeight >= scrollHeight)){   //距离顶部+当前高度 >=文档总高度 即代表滑动到底部
+                    console.log('下拉');
+                    if(loadmore){
+                        var last_id = $('#topic-list .app-blog-item:last-child').attr('id');
+//                        alert(last_id);
+                        loadmore(last_id);
+                    }
+                }
+            });
+        }
+
+        $(function () {
+
+            $('#login-btn').on('click', function() {
+
+                        layer.open({
+                            type: 1,
+                            skin: 'layui-layer-lan',
+                            shadeClose: true, //点击遮罩关闭层
+                            area: ['320px', '320px'],
+                            content: $('#ulogin')//弹框显示的url
+                        });
+                    }
+            );
+
+            refresh(function (last_id) {
+
+                if(last_id == undefined)
+                {
+                    return;
+                }
+
+                if(curr_req_id == last_id)
+                {
+                    return;
+                }
+                curr_req_id = last_id;
+                iiLoading = layer.load();
+                $.post("${pageContext.request.contextPath}/topic/getpagedtopics",{tag_id:${tid},section_id:g_sid,last_topic_id:last_id}, function (res) {
+                    // layer.msg(ret.msg);
+                    var data = JSON.parse(res);
+
+                    var html = template('topic-list-tpl', data);
+                    $('#topic-list').append(html);
+                    layer.close(iiLoading);
+                    if(data.list.length == 0)
+                    {
+                        isNoMore = true;
+                        layer.msg('没有了', {
+                            time: 500
+                        });
+                    }
+                    curr_req_id = 0;
+                });
+            });
+            getTopicsBySectionID(g_sid);
+
+        })
+
+        function getTopicsBySectionID(sid) {
+            g_sid = sid;
+            $.post("${pageContext.request.contextPath}/topic/getpagedtopics",{tag_id:${tid},section_id:sid,last_topic_id:0}, function (res) {
+                var data = JSON.parse(res);
+                var html = template('topic-list-tpl', data);
+                $('#topic-list').html('');
+                $('#topic-list').append(html);
+            });
+        }
+
+    </script>
 </head>
-<body class="uk-height-1-1">
+<body>
 <%@include file="../common/header_only_nav.jsp"%>
-<div class="mb-cover uk-height-1-1">
+<div class="mb-cover">
 
     <header class="uk-background-muted uk-text-center uk-padding">
         <h2 class="uk-margin-large-top uk-text-bold uk-text-large uk-text-muted" style="font-size: 32px;">前端</h2>
@@ -34,11 +118,12 @@
             </ul>
         </nav>
 
-        <div class="uk-panel-box uk-margin-top">
-            <div class="uk-padding ">
 
-            </div>
-        </div>
+
+        <ul class="uk-grid-collapse uk-margin-top" id="topic-list">
+
+
+        </ul>
 
     </div>
 </div>
@@ -55,7 +140,7 @@
             <li class="seperator">/</li>
             <li class="seperator"><a href="#">android</a></li>
         </ul>
-        <div class="uk-text-truncate uk-margin-small-top  uk-margin-small-bottom uk-text-bold">
+        <div class="uk-text-left uk-text-truncate uk-margin-small-top  uk-margin-small-bottom uk-text-bold">
             <a href="${pageContext.request.contextPath}/topic/show/{{topic.topic_id}}">{{topic.topic_title}}</a>
         </div>
         <ul class="uk-subnav uk-subnav-pill">

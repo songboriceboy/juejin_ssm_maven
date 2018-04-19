@@ -22,8 +22,10 @@ select topic_info.*,userinfo.user_name,userinfo.user_avatar from topic_info
 join userinfo on userinfo.user_id = topic_info.user_id
     </select>
     <sql id="query_topics">
-        select topic_info.*,userinfo.user_name,userinfo.user_avatar,section_info.section_name,COALESCE(topic_comment.comment_count,0) as comment_count from topic_info
+        select topic_info.*,userinfo.user_name,userinfo.user_avatar,section_info.section_name
+,COALESCE(topic_comment.comment_count,0) as comment_count from topic_info
         join userinfo on userinfo.user_id = topic_info.user_id
+				left join tag_topic_info on tag_topic_info.topic_id = topic_info.topic_id
         join section_info on section_info.section_id = topic_info.section_id
         left join (select topic_id, count(*) comment_count from topic_comment_info group by topic_id) topic_comment on topic_comment.topic_id = topic_info.topic_id
     </sql>
@@ -33,6 +35,7 @@ join userinfo on userinfo.user_id = topic_info.user_id
             <if test="section_id!=0">
                 topic_info.section_id=#{section_id}
             </if>
+
         </where>
         limit #{pageStart},#{pageSize}
     </select>
@@ -48,7 +51,9 @@ join userinfo on userinfo.user_id = topic_info.user_id
             <if test="section_id!=0">
                 and topic_info.section_id = #{section_id}
             </if>
-
+            <if test="tag_id!=0">
+                and tag_topic_info.tag_id=#{tag_id}
+            </if>
         </where>
         ORDER BY topic_id DESC
         limit 0,20

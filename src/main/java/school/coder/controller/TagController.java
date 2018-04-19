@@ -40,6 +40,7 @@ public class TagController {
     public ModelAndView getArticlesByTagID(@PathVariable Integer tid)
     {
         ModelAndView maView = new ModelAndView();
+        maView.addObject("tid",tid);
         maView.setViewName("front/topic/tag_list_topics");
         return maView;
     }

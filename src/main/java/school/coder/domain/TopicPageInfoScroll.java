@@ -6,6 +6,15 @@ package school.coder.domain;
 public class TopicPageInfoScroll {
     private int section_id;
     private int last_topic_id;
+    private int tag_id;
+
+    public int getTag_id() {
+        return tag_id;
+    }
+
+    public void setTag_id(int tag_id) {
+        this.tag_id = tag_id;
+    }
 
     public int getLast_topic_id() {
         return last_topic_id;

@@ -267,6 +267,7 @@ public class TopicController {
         pageData.setList(lstBookInfos);
         pageData.setTotal(0);
 
+        response.setContentType("text/html;charset=utf-8");
         String strJsonString = JSON.toJSONString(pageData);
         PrintWriter pWriter = response.getWriter();
         Thread.sleep(500);
