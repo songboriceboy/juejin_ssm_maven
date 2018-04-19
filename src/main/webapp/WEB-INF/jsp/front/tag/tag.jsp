@@ -30,16 +30,32 @@
             req.onload = function () {
                 var json = JSON.parse(req.responseText);
                 var html = template('user-tag', json);
-                document.getElementById('user-tag-ul').innerHTML=html;
+                document.getElementById('tag-ul').innerHTML='';
+                document.getElementById('tag-ul').innerHTML=html;
+            }
+        }
+        function getAllTag() {
+            var req = new XMLHttpRequest();
+            req.open('get','${pageContext.request.contextPath}/tag/ajax_get_all_tags',true);
+            req.send();
+            req.onload = function () {
+                var json = JSON.parse(req.responseText);
+                var html = template('user-tag', json);
+                document.getElementById('tag-ul').innerHTML='';
+                document.getElementById('tag-ul').innerHTML=html;
             }
         }
         $(function () {
-            getUserTag();
+//            getUserTag();
             $('.uk-tab').on('change.uk.tab',function (event, item) {
-//                alert(item.text());
-                if(item.text()=='已关注标签')
+                var strTag = item.text().trim();
+                if(strTag=='已关注标签')
                 {
                     getUserTag();
+                }
+                else
+                {
+                    getAllTag();
                 }
             })
         })
@@ -59,7 +75,7 @@
 
             </li>
         </ul>
-        <ul class="uk-grid uk-margin-large-top" id="user-tag-ul">
+        <ul class="uk-grid uk-margin-large-top" id="tag-ul">
         </ul>
     </div>
 </div>

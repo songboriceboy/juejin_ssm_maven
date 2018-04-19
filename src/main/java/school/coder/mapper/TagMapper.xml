@@ -2,8 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="school.coder.mapper.TagMapper">
     <select id="getAllTags" resultType="TagInfoEx" parameterType="String">
-        select taginfo.*,COALESCE(tabTmp.num,0) as article_num from taginfo
+    select taginfo.*,COALESCE(tabTmp.num,0) as article_num ,COALESCE(tabTmp2.num,0) as follow_num from taginfo
 left join (select count(1) as num, tag_id from tag_topic_info group by tag_id) tabTmp on tabTmp.tag_id = taginfo.tag_id
+left join (select count(1) as num, tag_id from tag_user_info group by tag_id) tabTmp2 on tabTmp2.tag_id = taginfo.tag_id
+left join tag_user_info on tag_user_info.tag_id = taginfo.tag_id
         where tag_name like #{value}
     </select>
 
@@ -14,7 +16,7 @@ left join (select count(1) as num, tag_id from tag_topic_info group by tag_id) t
 select taginfo.*,COALESCE(tabTmp.num,0) as article_num ,COALESCE(tabTmp2.num,0) as follow_num from taginfo
 left join (select count(1) as num, tag_id from tag_topic_info group by tag_id) tabTmp on tabTmp.tag_id = taginfo.tag_id
 left join (select count(1) as num, tag_id from tag_user_info group by tag_id) tabTmp2 on tabTmp2.tag_id = taginfo.tag_id
-join tag_user_info on tag_user_info.tag_id = taginfo.tag_id
+left join tag_user_info on tag_user_info.tag_id = taginfo.tag_id
 where tag_user_info.user_id = #{value}
     </select>
 

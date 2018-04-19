@@ -54,12 +54,22 @@ public class TagController {
 
     @RequestMapping("/get_all_tags")
     public ModelAndView getAllTags() throws IOException {
-        List<TagInfoEx> lst = tagServcie.getAllTags("%%");
+
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("tags",lst);
+
         modelAndView.setViewName("front/tag/tag");
         return modelAndView;
     }
+
+    @RequestMapping("/ajax_get_all_tags")
+    public void getAllTagsAjax(HttpServletResponse response) throws IOException {
+        List<TagInfoEx> lst = tagServcie.getAllTags("%%");
+        ModelAndView modelAndView = new ModelAndView();
+        JsonData jsonData = new JsonData();
+        jsonData.setList(lst);
+        response.getWriter().println(JSON.toJSONString(jsonData));
+    }
+
 
     @RequestMapping("/get_current_user_tags")
     public void get_current_user_tags(HttpServletRequest request,HttpServletResponse response) throws IOException {
