@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import school.coder.domain.AdminInfo;
-import school.coder.domain.UserInfo;
 import school.coder.service.AdminService;
 import school.coder.util.CreateMD5;
 
@@ -24,6 +23,7 @@ public class AdminController {
     @RequestMapping("/")
     public ModelAndView index()
     {
+
         System.out.println("hello");
         ModelAndView maView = new ModelAndView();
         maView.setViewName("admin/index");

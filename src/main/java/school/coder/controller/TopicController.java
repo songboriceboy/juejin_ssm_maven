@@ -255,10 +255,9 @@ public class TopicController {
     public void getPagedTopics(TopicPageInfoScroll topicPageInfoScroll
             ,HttpServletResponse response) throws IOException, InterruptedException {
 //        int count = topicService.getTopicsCounts(pageinfo);
-        List<TopicInfoEx> lstBookInfos = new ArrayList<TopicInfoEx>();
+        List<TopicInfoEx> lstBookInfos = topicService.getPagedTopics(topicPageInfoScroll);
 
 
-        lstBookInfos = topicService.getPagedTopics(topicPageInfoScroll);
         for(TopicInfoEx topicInfoEx : lstBookInfos)
         {
             topicInfoEx.setCreatetime_str(StringDate.getStringDate(topicInfoEx.getTopic_createtime()));
