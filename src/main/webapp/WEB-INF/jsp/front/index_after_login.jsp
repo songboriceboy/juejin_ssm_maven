@@ -244,9 +244,11 @@
             <li><a href="${pageContext.request.contextPath}/user/show/{{topic.user_id}}">{{topic.user_name}}</a></li>
             <li>{{topic.createtime_str}}</li>
 
-            {{each topic.lst_tags as tag j}}
-                <li><a href="#">{{tag}}</a></li>
+            {{each topic.lst_tags as tag index}}
+                <li><a href="${pageContext.request.contextPath}/tag/get_tag_articles/{{tag}}">{{tag}}</a></li>
+                {{if index < topic.lst_tags.length-1}}
                 <li class="seperator">/</li>
+                {{/if}}
             {{/each}}
             <%--<li><a href="#">ios</a></li>--%>
             <%--<li class="seperator">/</li>--%>

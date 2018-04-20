@@ -62,7 +62,7 @@
                 }
                 curr_req_id = last_id;
                 iiLoading = layer.load();
-                $.post("${pageContext.request.contextPath}/topic/getpagedtopics",{tag_id:${tid},section_id:g_sid,last_topic_id:last_id}, function (res) {
+                $.post("${pageContext.request.contextPath}/topic/getpagedtopics",{tag_name:'${tag_name}',section_id:g_sid,last_topic_id:last_id}, function (res) {
                     // layer.msg(ret.msg);
                     var data = JSON.parse(res);
 
@@ -85,7 +85,7 @@
 
         function getTopicsBySectionID(sid) {
             g_sid = sid;
-            $.post("${pageContext.request.contextPath}/topic/getpagedtopics",{tag_id:${tid},section_id:sid,last_topic_id:0}, function (res) {
+            $.post("${pageContext.request.contextPath}/topic/getpagedtopics",{tag_name:'${tag_name}',section_id:sid,last_topic_id:0}, function (res) {
                 var data = JSON.parse(res);
                 var html = template('topic-list-tpl', data);
                 $('#topic-list').html('');
@@ -136,9 +136,12 @@
             <li class="special-column">专栏</li>
             <li><a href="${pageContext.request.contextPath}/user/show/{{topic.user_id}}">{{topic.user_name}}</a></li>
             <li>{{topic.createtime_str}}</li>
-            <li><a href="#">ios</a></li>
+            {{each topic.lst_tags as tag index}}
+            <li><a href="${pageContext.request.contextPath}/tag/get_tag_articles/{{tag}}">{{tag}}</a></li>
+            {{if index < topic.lst_tags.length-1}}
             <li class="seperator">/</li>
-            <li class="seperator"><a href="#">android</a></li>
+            {{/if}}
+            {{/each}}
         </ul>
         <div class="uk-text-left uk-text-truncate uk-margin-small-top  uk-margin-small-bottom uk-text-bold">
             <a href="${pageContext.request.contextPath}/topic/show/{{topic.topic_id}}">{{topic.topic_title}}</a>

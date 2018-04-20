@@ -22,7 +22,7 @@ select topic_info.*,userinfo.user_name,userinfo.user_avatar from topic_info
 join userinfo on userinfo.user_id = topic_info.user_id
     </select>
     <sql id="query_topics">
-              select topic_info.*,userinfo.user_name,userinfo.user_avatar,section_info.section_name
+            select topic_info.*,userinfo.user_name,userinfo.user_avatar,section_info.section_name,taginfo.tag_name
 ,COALESCE(topic_comment.comment_count,0) as comment_count,COALESCE(tabTmp.tags,'') as tags from topic_info
         join userinfo on userinfo.user_id = topic_info.user_id
 				left join tag_topic_info on tag_topic_info.topic_id = topic_info.topic_id
@@ -32,6 +32,7 @@ JOIN taginfo on taginfo.tag_id = tag_topic_info.tag_id
 group by topic_id) tabTmp on tabTmp.topic_id =  topic_info.topic_id
 
         join section_info on section_info.section_id = topic_info.section_id
+join taginfo on taginfo.tag_id = tag_topic_info.tag_id
         left join (select topic_id, count(*) comment_count from topic_comment_info group by topic_id) topic_comment on topic_comment.topic_id = topic_info.topic_id
     </sql>
     <select id="getPagedTopics" parameterType="TopicPageInfo" resultType="TopicInfoEx">
@@ -56,8 +57,8 @@ group by topic_id) tabTmp on tabTmp.topic_id =  topic_info.topic_id
             <if test="section_id!=0">
                 and topic_info.section_id = #{section_id}
             </if>
-            <if test="tag_id!=0">
-                and tag_topic_info.tag_id=#{tag_id}
+            <if test="tag_name!=null and tag_name!=''">
+                and taginfo.tag_name=#{tag_name}
             </if>
         </where>
         ORDER BY topic_id DESC

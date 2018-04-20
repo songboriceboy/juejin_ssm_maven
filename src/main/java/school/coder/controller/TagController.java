@@ -36,11 +36,11 @@ public class TagController {
         maView.setViewName("front/tag/tag");
         return maView;
     }
-    @RequestMapping("/get_tag_articles/{tid}")
-    public ModelAndView getArticlesByTagID(@PathVariable Integer tid)
+    @RequestMapping("/get_tag_articles/{name}")
+    public ModelAndView getArticlesByTagID(@PathVariable String name)
     {
         ModelAndView maView = new ModelAndView();
-        maView.addObject("tid",tid);
+        maView.addObject("tag_name",name);
         maView.setViewName("front/topic/tag_list_topics");
         return maView;
     }
