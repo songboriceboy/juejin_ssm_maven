@@ -58,7 +58,7 @@
                       return;
                   }
 
-                  if(curr_req_id == last_id)
+                  if(curr_req_id == last_id)// 防止多次触发加载多次同一页数据
                   {
                       return;
                   }
